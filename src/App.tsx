@@ -8,6 +8,8 @@ import {
 
 import MainPage from "./pages/MainPage";
 import NavBar from "./components/NavBar";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
 
 function AppLayout() {
   return (
@@ -25,6 +27,14 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <MainPage />,
+      },
+      {
+        path: "/login",
+        element: <LoginPage />,
+      },
+      {
+        path: "/register",
+        element: <RegisterPage />,
       },
     ],
   },
