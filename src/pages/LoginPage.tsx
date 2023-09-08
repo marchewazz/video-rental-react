@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import strings from "../utilities/strings";
-import LoginFormData from "../models/LoginForm.model";
+import LoginFormData from "../models/LoginFormData.model";
 
 export default function LoginPage() {
 

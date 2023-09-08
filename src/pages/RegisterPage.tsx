@@ -1,6 +1,8 @@
 import { useState } from "react";
 import strings from "../utilities/strings";
-import RegisterFormData from "../models/RegisterForm.model";
+import RegisterFormData from "../models/RegisterFormData.model";
+
+import AuthService from "../services/AuthService.service";
 
 export default function RegisterPage() {
 
@@ -48,11 +50,24 @@ export default function RegisterPage() {
             }
         }
         if (correct) {
+            
+            
             const userData: RegisterFormData = {
                 userNick: nick,
                 userEmail: email,
                 userPassword: password
             }
+
+            const as: AuthService = new AuthService()
+            
+            as.registerUser(userData).then(async (res: any) => {
+                const message: unknown = res.data.message;
+                console.log(message as keyof typeof strings.registerPage.form);
+                
+                setRegisterMessage(strings.registerPage.form[message as keyof typeof strings.registerPage.form] || "")
+            }).catch((e) => {
+                setRegisterMessage(strings.registerPage.form.errorMessage || "")
+            }) 
         }
         
     }
@@ -83,6 +98,12 @@ export default function RegisterPage() {
                             { passwordMessage }
                         </p>
                     </div>
+                    <p id="register-message">
+                        { registerMessage }
+                        { registerMessage === strings.registerPage.form.registeredSuccess ? (
+                            <a href="/login">{strings.registerPage.form.registeredSuccessHere}</a>
+                        ) : (null)}
+                    </p>
                     <input type="submit" value={strings.registerPage.form.submitButtonText} />
                 </form>
             </div>

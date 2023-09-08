@@ -19,6 +19,11 @@ let strings = new LocalizedStrings({
         missingPasswords: "Pass passwords",
         wrongPasswordFormat: "Password must be at least 5 characters long and contains at least 1 number and 1 special character",
         passwordNotTheSame: "Passwords are not the same",
+        nickTaken: "Nick is already taken",
+        emailTaken: "This email is already registered",
+        errorMessage: "There is some error, try again later",
+        registeredSuccess: "Registered, login ",
+        registeredSuccessHere: "here",
         submitButtonText: "Register"
       }
     },
@@ -49,6 +54,11 @@ let strings = new LocalizedStrings({
         missingPasswords: "Podaj hasła",
         wrongPasswordFormat: "Hasło musi mieć przynajmniej 5 znaków oraz zawierać cyfrę i znak specjalny",
         passwordNotTheSame: "Hasła nie są takie same",
+        nickTaken: "Nick jest już zajęty",
+        emailTaken: "Ten mail jest już zarejestrowany",
+        errorMessage: "TWystąpił błąd, spróbuj ponownie później",
+        registeredSuccess: "Zarejestrowano, zaloguj się ",
+        registeredSuccessHere: "tutaj",
         submitButtonText: "Zarejestruj"
       }
     },
