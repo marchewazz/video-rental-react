@@ -2,6 +2,8 @@ import { useState } from "react";
 
 import strings from "../utilities/strings";
 import LoginFormData from "../models/LoginFormData.model";
+import AuthService from "../services/AuthService.service";
+import { NavigateFunction, useNavigate } from "react-router-dom";
 
 export default function LoginPage() {
 
@@ -10,6 +12,8 @@ export default function LoginPage() {
     const [password, setPassword] = useState<string>("")
     const [passwordMessage, setPasswordMessage] = useState<string>("")
     const [loginMessage, setLoginMessage] = useState<string>("")
+
+    const navigate: NavigateFunction = useNavigate();
 
     function submitForm(event: React.FormEvent<HTMLFormElement>): void {
         event.preventDefault()
@@ -27,6 +31,20 @@ export default function LoginPage() {
                 userNick: nick,
                 userPassword: password
             }
+
+            const as: AuthService = new AuthService()
+            
+            as.loginUser(userData).then(async (res: any) => {
+                console.log(res);
+                const message: unknown = res.data.message;
+                if (message === "logged") {
+                    navigate("/")
+                } else {
+                    setLoginMessage(strings.loginPage.form[message as keyof typeof strings.loginPage.form] || "")
+                }
+            }).catch((e) => {
+                setLoginMessage(strings.loginPage.form.errorMessage || "")
+            }) 
         }
     }
 
@@ -49,6 +67,9 @@ export default function LoginPage() {
                             { passwordMessage }
                         </p>
                     </div>
+                    <p>
+                        { loginMessage }
+                    </p>
                     <input type="submit" value={strings.loginPage.form.submitButtonText} />
                 </form>
             </div>

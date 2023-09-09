@@ -32,6 +32,10 @@ let strings = new LocalizedStrings({
       form: {
         missingNickOrEmail: "Pass nick or email",
         missingPassword: "Pass password",
+        emailNotExists: "There is no account with this email",
+        nickNotExists: "There is no account with this nick",
+        wrongPassword: "Wrong password",
+        errorMessage: "There is some error, try again later",
         submitButtonText: "Login"
       }
     }
@@ -56,7 +60,7 @@ let strings = new LocalizedStrings({
         passwordNotTheSame: "Hasła nie są takie same",
         nickTaken: "Nick jest już zajęty",
         emailTaken: "Ten mail jest już zarejestrowany",
-        errorMessage: "TWystąpił błąd, spróbuj ponownie później",
+        errorMessage: "Wystąpił błąd, spróbuj ponownie później",
         registeredSuccess: "Zarejestrowano, zaloguj się ",
         registeredSuccessHere: "tutaj",
         submitButtonText: "Zarejestruj"
@@ -67,6 +71,10 @@ let strings = new LocalizedStrings({
       form: {
         missingNickOrEmail: "Podaj nick lub email",
         missingPassword: "Podaj hasło",
+        emailNotExists: "Nie ma konta z takim adresem email",
+        nickNotExists: "Nie ma konta z takim nickiem",
+        wrongPassword: "Błędne hasło",
+        errorMessage: "Wystąpił błąd, spróbuj ponownie później",
         submitButtonText: "Zaloguj"
       }
     }
