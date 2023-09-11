@@ -41,8 +41,7 @@ function AppLayout() {
         setUserData(data.userData)
         setIsUserLogged(true)
       } else if (data.message === "invalidToken") {
-        localStorage.setItem("token", "")
-        navigate("/login")
+        logout()
       }
     });
 
