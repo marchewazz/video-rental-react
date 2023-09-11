@@ -38,6 +38,7 @@ export default function LoginPage() {
                 console.log(res);
                 const message: unknown = res.data.message;
                 if (message === "logged") {
+                    localStorage.setItem("token", res.data.token)
                     navigate("/")
                 } else {
                     setLoginMessage(strings.loginPage.form[message as keyof typeof strings.loginPage.form] || "")
