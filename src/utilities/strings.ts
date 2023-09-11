@@ -38,6 +38,9 @@ let strings = new LocalizedStrings({
         errorMessage: "There is some error, try again later",
         submitButtonText: "Login"
       }
+    },
+    showPage: {
+      notFound: "Cannot find show with this ID"
     }
   },
   pl: {
@@ -77,6 +80,9 @@ let strings = new LocalizedStrings({
         errorMessage: "Wystąpił błąd, spróbuj ponownie później",
         submitButtonText: "Zaloguj"
       }
+    },
+    showPage: {
+      notFound: "Nie ma filmu lub serialu o tym ID"
     }
   },
 });

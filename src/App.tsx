@@ -15,6 +15,7 @@ import RegisterPage from "./pages/RegisterPage";
 
 import io, { Socket } from 'socket.io-client';
 import DefaultEventsMap from "socket.io-client";
+import ShowPage from "./pages/ShowPage";
 
 function AppLayout() {
 
@@ -96,6 +97,10 @@ export const router = createBrowserRouter([
       {
         path: "/register",
         element: <RegisterPage />,
+      },
+      {
+        path: "/show/:showid",
+        element: <ShowPage />,
       },
     ],
   },

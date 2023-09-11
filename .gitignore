@@ -26,3 +26,5 @@ src/styles/*.css
 src/styles/*.css.map
 src/styles/*/*.css
 src/styles/*/*.css.map
+
+.env
