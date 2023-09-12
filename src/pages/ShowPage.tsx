@@ -18,8 +18,6 @@ export default function ShowPage() {
     console.log(process.env.REACT_APP_OMDB_URL);
     ss.getShowData(showid || "")
       .then((res: any) => {
-        console.log(res);
-        
         setShowData(res.data);
         setReady(true);
       });
