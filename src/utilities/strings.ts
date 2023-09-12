@@ -40,7 +40,10 @@ let strings = new LocalizedStrings({
       }
     },
     showPage: {
-      notFound: "Cannot find show with this ID"
+      notFound: "Cannot find show with this ID",
+      rentButton: "You can lend {title} for 30 days for {price}$",
+      notEnoughMoney: "You have not enough money. You need: {price}$",
+      cancelButtonText: "Cancel rental"
     }
   },
   pl: {
@@ -82,7 +85,10 @@ let strings = new LocalizedStrings({
       }
     },
     showPage: {
-      notFound: "Nie ma filmu lub serialu o tym ID"
+      notFound: "Nie ma filmu lub serialu o tym ID",
+      rentButton: "Możesz wypożyczyć {title} na 30 dni za {price}$",
+      notEnoughMoney: "Nie masz wystaraczająco środków. Potrzebujesz: {price}$",
+      cancelButtonText: "Usuń wypożyczenie"
     }
   },
 });

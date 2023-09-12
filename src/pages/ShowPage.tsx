@@ -1,10 +1,11 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 
 import ShowsService from "../services/ShowsService.service";
 
 import strings from "../utilities/strings";
+import ShowDisplay from "../components/ShowPage/ShowDisplay";
+import { useOutletContext } from "react-router-dom";
 
 export default function ShowPage() {
   const [showData, setShowData] = useState<any>();
@@ -12,10 +13,11 @@ export default function ShowPage() {
 
   const { showid } = useParams();
 
-    const ss: ShowsService = new ShowsService()
+  const { userDataReady } = useOutletContext<any>();  
+
+  const ss: ShowsService = new ShowsService()
 
   useEffect(() => {
-    console.log(process.env.REACT_APP_OMDB_URL);
     ss.getShowData(showid || "")
       .then((res: any) => {
         setShowData(res.data);
@@ -25,14 +27,11 @@ export default function ShowPage() {
 
   return (
     <main>
-         {ready ? (
+         {ready && userDataReady ? (
             <>
                 { showData.Response === "True" ? (
                     <>
-                        <img src={showData.Poster} alt="" />
-                        <p>
-                            {showData.Title}
-                        </p> 
+                        <ShowDisplay showData={showData} />
                     </>
                 ) : (
                     <p>

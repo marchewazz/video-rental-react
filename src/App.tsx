@@ -22,6 +22,7 @@ function AppLayout() {
   const [userData, setUserData] = useState<any>()
   const [socket, setSocket] = useState<Socket<typeof DefaultEventsMap, typeof DefaultEventsMap> | null>(null);
   const [isUserLogged, setIsUserLogged] = useState(false)
+  const [userDataReady, setUserDataReady] = useState(false)
 
   const navigate = useNavigate()
   const location = useLocation()
@@ -41,6 +42,7 @@ function AppLayout() {
       if (data.message === "userData") {
         setUserData(data.userData)
         setIsUserLogged(true)
+        setUserDataReady(true)
       } else if (data.message === "invalidToken") {
         logout()
       }
@@ -54,6 +56,7 @@ function AppLayout() {
   function logout() {
     localStorage.setItem("token", "")
     setIsUserLogged(false)
+    setUserDataReady(false)
     socket?.disconnect()
     setSocket(null)
     navigate("/login")
@@ -76,7 +79,7 @@ function AppLayout() {
   return (
     <>
       <NavBar userData={userData} isUserLogged={isUserLogged} logoutFunction={logout} />
-      <Outlet context={{socket, userData, isUserLogged}} />
+      <Outlet context={{socket, userData, isUserLogged, userDataReady}} />
     </>
   );
 }
