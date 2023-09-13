@@ -16,6 +16,7 @@ import RegisterPage from "./pages/RegisterPage";
 import io, { Socket } from 'socket.io-client';
 import DefaultEventsMap from "socket.io-client";
 import ShowPage from "./pages/ShowPage";
+import PopUpContainer from "./components/Notifications/PopUpContainer";
 
 function AppLayout() {
 
@@ -80,6 +81,7 @@ function AppLayout() {
     <>
       <NavBar userData={userData} isUserLogged={isUserLogged} logoutFunction={logout} />
       <Outlet context={{socket, userData, isUserLogged, userDataReady}} />
+      <PopUpContainer socket={socket} />
     </>
   );
 }
