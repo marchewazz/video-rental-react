@@ -15,18 +15,20 @@ import RegisterPage from "./pages/RegisterPage";
 
 import io, { Socket } from 'socket.io-client';
 import DefaultEventsMap from "socket.io-client";
+import ShowPage from "./pages/ShowPage";
 
 function AppLayout() {
 
   const [userData, setUserData] = useState<any>()
   const [socket, setSocket] = useState<Socket<typeof DefaultEventsMap, typeof DefaultEventsMap> | null>(null);
   const [isUserLogged, setIsUserLogged] = useState(false)
+  const [userDataReady, setUserDataReady] = useState(false)
 
   const navigate = useNavigate()
   const location = useLocation()
 
-  const onlyLoggedPaths: string[] = ["/"];
-  const onlyNonLoggedPaths: string[] = ["/login", "/registered"];
+  // const onlyLoggedPaths: string[] = ["/"];
+  const onlyNonLoggedPaths: string[] = ["/login", "/register"];
 
   function connectToSocketServer() {
     const socket = io("http://localhost:8000", { query: { token: localStorage.getItem("token") } });
@@ -40,6 +42,7 @@ function AppLayout() {
       if (data.message === "userData") {
         setUserData(data.userData)
         setIsUserLogged(true)
+        setUserDataReady(true)
       } else if (data.message === "invalidToken") {
         logout()
       }
@@ -53,22 +56,22 @@ function AppLayout() {
   function logout() {
     localStorage.setItem("token", "")
     setIsUserLogged(false)
+    setUserDataReady(false)
     socket?.disconnect()
     setSocket(null)
     navigate("/login")
   }
 
   useEffect(() => {
-    if (onlyLoggedPaths.includes(location.pathname)) {
+    if (onlyNonLoggedPaths.includes(location.pathname)) {
+      if (localStorage.getItem("token")) {
+        navigate("/")
+      }
+    } else {
       if (localStorage.getItem("token")) {
         if (!socket) connectToSocketServer()
       } else {
         navigate("/login")
-      }
-    }
-    if (onlyNonLoggedPaths.includes(location.pathname)) {
-      if (localStorage.getItem("token")) {
-        navigate("/")
       }
     }
   }, [location.pathname])
@@ -76,7 +79,7 @@ function AppLayout() {
   return (
     <>
       <NavBar userData={userData} isUserLogged={isUserLogged} logoutFunction={logout} />
-      <Outlet context={{socket, userData, isUserLogged}} />
+      <Outlet context={{socket, userData, isUserLogged, userDataReady}} />
     </>
   );
 }
@@ -96,6 +99,10 @@ export const router = createBrowserRouter([
       {
         path: "/register",
         element: <RegisterPage />,
+      },
+      {
+        path: "/show/:showid",
+        element: <ShowPage />,
       },
     ],
   },

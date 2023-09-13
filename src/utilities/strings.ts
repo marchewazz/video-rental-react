@@ -38,6 +38,12 @@ let strings = new LocalizedStrings({
         errorMessage: "There is some error, try again later",
         submitButtonText: "Login"
       }
+    },
+    showPage: {
+      notFound: "Cannot find show with this ID",
+      rentButton: "You can lend {title} for 30 days for {price}$",
+      notEnoughMoney: "You have not enough money. You need: {price}$",
+      cancelButtonText: "Cancel rental"
     }
   },
   pl: {
@@ -77,6 +83,12 @@ let strings = new LocalizedStrings({
         errorMessage: "Wystąpił błąd, spróbuj ponownie później",
         submitButtonText: "Zaloguj"
       }
+    },
+    showPage: {
+      notFound: "Nie ma filmu lub serialu o tym ID",
+      rentButton: "Możesz wypożyczyć {title} na 30 dni za {price}$",
+      notEnoughMoney: "Nie masz wystaraczająco środków. Potrzebujesz: {price}$",
+      cancelButtonText: "Usuń wypożyczenie"
     }
   },
 });
