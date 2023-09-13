@@ -44,6 +44,12 @@ let strings = new LocalizedStrings({
       rentButton: "You can lend {title} for 30 days for {price}$",
       notEnoughMoney: "You have not enough money. You need: {price}$",
       cancelButtonText: "Cancel rental"
+    },
+    popUpNotifications: {
+      rented: "Rented",
+      rentalCancelled: "Rental cancelled",
+      noMoney: "You don't have enough money",
+      errorMessage: "Error, try again later",
     }
   },
   pl: {
@@ -89,6 +95,12 @@ let strings = new LocalizedStrings({
       rentButton: "Możesz wypożyczyć {title} na 30 dni za {price}$",
       notEnoughMoney: "Nie masz wystaraczająco środków. Potrzebujesz: {price}$",
       cancelButtonText: "Usuń wypożyczenie"
+    },
+    popUpNotifications: {
+      rented: "Wypożyczono",
+      rentalCancelled: "Anulowane wypożyczenie",
+      noMoney: "Nie masz wystarczająco środków",
+      errorMessage: "Wystąpił błąd, spróbuj ponownie później",
     }
   },
 });
