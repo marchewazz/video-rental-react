@@ -13,16 +13,13 @@ export default function ShowDisplay(props: any) {
             showID: props.showData.imdbID,
             rentPrice: price
         })
-        socket.on("rentShow", (data: any) => {
-            console.log(data);
-        })
     }
 
-    useEffect(() => {
-      console.log(userData, props.showData);
-      
-    }, [userData])
-    
+    function cancelRent() {
+        socket.emit("cancelRent", {
+            rentalID: userData.userRentals.filter((rental: any) => rental['rentalShowID'] === props.showData.imdbID && rental['rentalStatus'] === "active" )[0].rentalID
+        })
+    }    
     
     return (
         <div>
@@ -34,7 +31,7 @@ export default function ShowDisplay(props: any) {
                 <>
                     { userData.userRentals.some((rental: any) => rental['rentalShowID'] === props.showData.imdbID && rental['rentalStatus'] === "active" ) ? (
                         <>
-                            <button>
+                            <button onClick={cancelRent}>
                                 { strings.showPage.cancelButtonText }
                             </button>
                         </>
@@ -50,8 +47,6 @@ export default function ShowDisplay(props: any) {
                         )
                     )}
                 </>
-                
-                
             }
         </div>
     )
