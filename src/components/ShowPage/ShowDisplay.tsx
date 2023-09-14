@@ -20,6 +20,14 @@ export default function ShowDisplay(props: any) {
             rentalID: userData.userRentals.filter((rental: any) => rental['rentalShowID'] === props.showData.imdbID && rental['rentalStatus'] === "active" )[0].rentalID
         })
     }    
+
+    function addToFavorites() {
+        socket.emit("addToFavorites", { showID: props.showData.imdbID })
+    }
+    
+    function removeFromFavorites() {
+        socket.emit("removeFromFavorites", { showID: props.showData.imdbID })
+    }
     
     return (
         <div>
@@ -27,6 +35,11 @@ export default function ShowDisplay(props: any) {
             <p>
                 {props.showData.Title}
             </p> 
+            { userData.userLists[0].media.some((item: any) => item.showID === props.showData.imdbID) ? (
+                <button onClick={removeFromFavorites}>{ strings.showPage.removeFromFavorites }</button>
+            ) : (
+                <button onClick={addToFavorites}>{ strings.showPage.addToFavorites }</button>
+            )}
             {
                 <>
                     { userData.userRentals.some((rental: any) => rental['rentalShowID'] === props.showData.imdbID && rental['rentalStatus'] === "active" ) ? (
