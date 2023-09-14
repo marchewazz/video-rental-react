@@ -5,6 +5,7 @@ let strings = new LocalizedStrings({
     nav: {
       login: "LOGIN",
       register: "REGISTER",
+      addMoney: "ADD MONEY"
     },
     mainPage: {
       title: "MAIN PAGE",
@@ -45,10 +46,16 @@ let strings = new LocalizedStrings({
       notEnoughMoney: "You have not enough money. You need: {price}$",
       cancelButtonText: "Cancel rental"
     },
+    addMoneyPage: {
+      title: "Add money",
+      balanceInfo: "You have {balance}$",
+      buttonText: "Confirm"
+    },
     popUpNotifications: {
       rented: "Rented",
       rentalCancelled: "Rental cancelled",
       noMoney: "You don't have enough money",
+      moneyAdded: "Money added",
       errorMessage: "Error, try again later",
     }
   },
@@ -56,6 +63,7 @@ let strings = new LocalizedStrings({
     nav: {
       login: "LOGOWANIE",
       register: "REJESTRACJA",
+      addMoney: "DODAJ ŚRODKI"
     },
     mainPage: {
       title: "STRONA GŁÓWNA",
@@ -96,10 +104,16 @@ let strings = new LocalizedStrings({
       notEnoughMoney: "Nie masz wystaraczająco środków. Potrzebujesz: {price}$",
       cancelButtonText: "Usuń wypożyczenie"
     },
+    addMoneyPage: {
+      title: "Dodaj środki",
+      balanceInfo: "Masz {balance}$",
+      buttonText: "Zatwierdź"
+    },
     popUpNotifications: {
       rented: "Wypożyczono",
       rentalCancelled: "Anulowane wypożyczenie",
       noMoney: "Nie masz wystarczająco środków",
+      moneyAdded: "Środki dodane",
       errorMessage: "Wystąpił błąd, spróbuj ponownie później",
     }
   },
