@@ -12,11 +12,13 @@ import MainPage from "./pages/MainPage";
 import NavBar from "./components/NavBar";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
+import ShowPage from "./pages/ShowPage";
+import PopUpContainer from "./components/Notifications/PopUpContainer";
+import AddMoneyPage from "./pages/AddMoneyPage";
 
 import io, { Socket } from 'socket.io-client';
 import DefaultEventsMap from "socket.io-client";
-import ShowPage from "./pages/ShowPage";
-import PopUpContainer from "./components/Notifications/PopUpContainer";
+
 
 function AppLayout() {
 
@@ -106,6 +108,10 @@ export const router = createBrowserRouter([
         path: "/show/:showid",
         element: <ShowPage />,
       },
+      {
+        path: "/add-money",
+        element: <AddMoneyPage />
+      }
     ],
   },
 ]);
