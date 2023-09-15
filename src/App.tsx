@@ -18,6 +18,8 @@ import AddMoneyPage from "./pages/AddMoneyPage";
 
 import io, { Socket } from 'socket.io-client';
 import DefaultEventsMap from "socket.io-client";
+import OtherUserPage from "./pages/OtherUserPage";
+import UserPage from "./pages/UserPage";
 
 
 function AppLayout() {
@@ -111,7 +113,15 @@ export const router = createBrowserRouter([
       {
         path: "/add-money",
         element: <AddMoneyPage />
-      }
+      },
+      {
+        path: "/user/:userid",
+        element: <OtherUserPage />
+      },
+      {
+        path: "/myprofile",
+        element: <UserPage />
+      },
     ],
   },
 ]);

@@ -53,6 +53,9 @@ let strings = new LocalizedStrings({
       balanceInfo: "You have {balance}$",
       buttonText: "Confirm"
     },
+    otherUserPage: {
+      notFound: "Not found user with this ID",
+    },
     popUpNotifications: {
       rented: "Rented",
       rentalCancelled: "Rental cancelled",
@@ -114,6 +117,9 @@ let strings = new LocalizedStrings({
       title: "Dodaj środki",
       balanceInfo: "Masz {balance}$",
       buttonText: "Zatwierdź"
+    },
+    otherUserPage: {
+      notFound: "Nie znaleziono użytkownika o tym ID",
     },
     popUpNotifications: {
       rented: "Wypożyczono",
