@@ -35,7 +35,7 @@ export default function ShowDisplay(props: any) {
             <p>
                 {props.showData.Title}
             </p> 
-            { userData.userLists[0].media.some((item: any) => item.showID === props.showData.imdbID) ? (
+            { userData.userLists[0].listShows.some((item: any) => item.showID === props.showData.imdbID) ? (
                 <button onClick={removeFromFavorites}>{ strings.showPage.removeFromFavorites }</button>
             ) : (
                 <button onClick={addToFavorites}>{ strings.showPage.addToFavorites }</button>
