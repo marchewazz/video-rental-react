@@ -27,7 +27,7 @@ export default function PopUpContainer(props: any) {
     useEffect(() => {
       notificationRef.current = notifications;
 
-      const successMessages: string[] = ["rented", "rentalCancelled", "moneyAdded"];
+      const successMessages: string[] = ["rented", "rentalCancelled", "moneyAdded", "addedToFavorites", "removedFromFavorites"];
       const errorMessages: string[] = ["errorMessage", "noMoney"];
 
       notifications.forEach((notification: any) => {

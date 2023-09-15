@@ -44,6 +44,10 @@ let strings = new LocalizedStrings({
       notFound: "Cannot find show with this ID",
       rentButton: "You can lend {title} for 30 days for {price}$",
       notEnoughMoney: "You have not enough money. You need: {price}$",
+      addToFavorites: "Add to favorites",
+      removeFromFavorites: "Remove from favorites",
+      addedToFavorites: "Added to favorites",
+      removedFromFavorites: "Removed from favorites",
       cancelButtonText: "Cancel rental"
     },
     addMoneyPage: {
@@ -102,6 +106,8 @@ let strings = new LocalizedStrings({
       notFound: "Nie ma filmu lub serialu o tym ID",
       rentButton: "Możesz wypożyczyć {title} na 30 dni za {price}$",
       notEnoughMoney: "Nie masz wystaraczająco środków. Potrzebujesz: {price}$",
+      addToFavorites: "Dodaj do ulubionych",
+      removeFromFavorites: "Usuń z ulubionych",
       cancelButtonText: "Usuń wypożyczenie"
     },
     addMoneyPage: {
@@ -114,6 +120,8 @@ let strings = new LocalizedStrings({
       rentalCancelled: "Anulowane wypożyczenie",
       noMoney: "Nie masz wystarczająco środków",
       moneyAdded: "Środki dodane",
+      addedToFavorites: "Dodano do ulubionych",
+      removedFromFavorites: "Usunięto z ulubionych",
       errorMessage: "Wystąpił błąd, spróbuj ponownie później",
     }
   },
