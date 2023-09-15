@@ -46,8 +46,6 @@ let strings = new LocalizedStrings({
       notEnoughMoney: "You have not enough money. You need: {price}$",
       addToFavorites: "Add to favorites",
       removeFromFavorites: "Remove from favorites",
-      addedToFavorites: "Added to favorites",
-      removedFromFavorites: "Removed from favorites",
       cancelButtonText: "Cancel rental"
     },
     addMoneyPage: {
@@ -59,6 +57,8 @@ let strings = new LocalizedStrings({
       rented: "Rented",
       rentalCancelled: "Rental cancelled",
       noMoney: "You don't have enough money",
+      addedToFavorites: "Added to favorites",
+      removedFromFavorites: "Removed from favorites",
       moneyAdded: "Money added",
       errorMessage: "Error, try again later",
     }
