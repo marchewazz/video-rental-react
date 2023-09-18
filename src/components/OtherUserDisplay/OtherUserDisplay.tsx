@@ -8,6 +8,18 @@ export default function OtherUserDisplay(props: any) {
         socket.emit("sendInvitation", { receiverID: props.otherUserData.userID })
     }
 
+    function acceptInvitation() {
+        socket.emit("acceptInvitation", { invitationData: userData.userInvitations.filter((invitation: any) => invitation.receiverID === userData.userID)[0] })
+    }
+
+    function rejectInvitation() {
+        socket.emit("rejectInvitation", { invitationData: userData.userInvitations.filter((invitation: any) => invitation.receiverID === userData.userID)[0] })
+    }
+
+    function cancelInvitation() {
+        socket.emit("cancelInvitation", { invitationData: userData.userInvitations.filter((invitation: any) => invitation.receiverID === userData.userID)[0] })
+    }
+
     return (
         <div>
             { props.otherUserData.userNick }
@@ -18,16 +30,25 @@ export default function OtherUserDisplay(props: any) {
                     </p>
                 ) : (
                     <>
-                        { userData.userInvitations.some((invitation: any) => invitation.senderID === userData.userID ) ? (
-                            <p>
-                                Sent
-                            </p>
+                        { userData.userInvitations.some((invitation: any) => invitation.senderID === userData.userID) ? (
+                            <button onClick={cancelInvitation}>
+                                Cancel invitation 
+                            </button>
                         ) : (
                             <>
-                                { userData.userInvitations.some((invitation: any) => invitation.receiverID === userData.userID ) ? (
-                                    <p>
-                                        Received
-                                    </p>
+                                { userData.userInvitations.some((invitation: any) => invitation.receiverID === userData.userID) ? (
+                                    <>
+                                        <p>
+                                            Invitation
+                                        </p>
+                                        <button onClick={acceptInvitation}>
+                                            Accept 
+                                        </button>
+                                        <button onClick={rejectInvitation}>
+                                            Reject
+                                        </button>
+                                    </>
+                                    
                                 ) : (
                                     <button onClick={sendInvitation}>
                                         Send invitation
