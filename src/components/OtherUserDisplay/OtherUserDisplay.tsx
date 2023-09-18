@@ -20,14 +20,24 @@ export default function OtherUserDisplay(props: any) {
         socket.emit("cancelInvitation", { invitationData: userData.userInvitations.filter((invitation: any) => invitation.senderID === userData.userID)[0] })
     }
 
+    function deleteFriend() {
+        socket.emit("deleteFriend", { friendID: props.otherUserData.userID })
+    }
+
     return (
         <div>
             { props.otherUserData.userNick }
             <>
                 { userData.userFriends.some((friend: any) => friend.friendID === props.otherUserData.userID) ? (
-                    <p>
+                    <>
+                        <p>
                         You are friends
-                    </p>
+                        </p>
+                        <button onClick={deleteFriend}>
+                            Delete friend
+                        </button>
+                    </>
+                   
                 ) : (
                     <>
                         { userData.userInvitations.some((invitation: any) => invitation.senderID === userData.userID) ? (
