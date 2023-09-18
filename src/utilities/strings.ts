@@ -63,6 +63,9 @@ let strings = new LocalizedStrings({
       addedToFavorites: "Added to favorites",
       removedFromFavorites: "Removed from favorites",
       moneyAdded: "Money added",
+      invitationSent: "Invitation sent",
+      invitationReceived: "{senderNick} sent you an invitation",
+      viewProfile: "View profile",
       errorMessage: "Error, try again later",
     }
   },
@@ -128,6 +131,9 @@ let strings = new LocalizedStrings({
       moneyAdded: "Środki dodane",
       addedToFavorites: "Dodano do ulubionych",
       removedFromFavorites: "Usunięto z ulubionych",
+      invitationSent: "Wysłano zaproszenie",
+      invitationReceived: "{senderNick} wysłał(a) Ci zaproszenie",
+      viewProfile: "Zobacz profil",
       errorMessage: "Wystąpił błąd, spróbuj ponownie później",
     }
   },

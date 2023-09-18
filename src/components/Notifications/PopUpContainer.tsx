@@ -26,8 +26,8 @@ export default function PopUpContainer(props: any) {
 
     useEffect(() => {
       notificationRef.current = notifications;
-
-      const successMessages: string[] = ["rented", "rentalCancelled", "moneyAdded", "addedToFavorites", "removedFromFavorites"];
+      
+      const successMessages: string[] = ["rented", "rentalCancelled", "moneyAdded", "addedToFavorites", "removedFromFavorites", "invitationSent", "invitationReceived"];
       const errorMessages: string[] = ["errorMessage", "noMoney"];
 
       notifications.forEach((notification: any) => {
@@ -36,9 +36,19 @@ export default function PopUpContainer(props: any) {
           ${successMessages.includes(notification.message) ? "success" : ""} 
           ${errorMessages.includes(notification.message) ? "error" : ""}`
           }>
-            <p>
-              { strings.popUpNotifications[notification.message as keyof typeof strings.popUpNotifications] || ""}
-            </p>
+            { notification.message === "invitationReceived" ? (
+              <p>
+                { strings.formatString(strings.popUpNotifications.invitationReceived, { senderNick: notification.senderNick })}
+                <a href={`/user/${notification.senderID}`}>
+                  { strings.popUpNotifications.viewProfile}
+                </a>
+              </p>
+            ) : (
+              <p>
+                { strings.popUpNotifications[notification.message as keyof typeof strings.popUpNotifications] || ""}
+              </p>
+            )}
+            
           </div>
         )])
       });

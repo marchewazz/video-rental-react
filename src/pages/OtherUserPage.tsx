@@ -34,10 +34,10 @@ export default function OtherUserPage() {
 
     return (
         <main>
-            { ready ? (
+            { ready && userDataReady ? (
                 <>
                     { response.message === "userData" ? (
-                        <OtherUserDisplay userData={response.userData} />
+                        <OtherUserDisplay otherUserData={response.userData} />
                     ) : (
                         <p>
                             { strings.otherUserPage.notFound }
