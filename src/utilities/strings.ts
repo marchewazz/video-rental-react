@@ -46,8 +46,6 @@ let strings = new LocalizedStrings({
       notEnoughMoney: "You have not enough money. You need: {price}$",
       addToFavorites: "Add to favorites",
       removeFromFavorites: "Remove from favorites",
-      addedToFavorites: "Added to favorites",
-      removedFromFavorites: "Removed from favorites",
       cancelButtonText: "Cancel rental"
     },
     addMoneyPage: {
@@ -55,11 +53,26 @@ let strings = new LocalizedStrings({
       balanceInfo: "You have {balance}$",
       buttonText: "Confirm"
     },
+    otherUserPage: {
+      notFound: "Not found user with this ID",
+      friendsText: "You are friends since {date}",
+      deleteButton: "Delete friend",
+      cancelButton: "Delete invitation",
+      invitationText: "You got an invitation",
+      acceptButton: "Accept",
+      rejectButton: "Reject",
+      sendInvitation: "Send invitation"
+    },
     popUpNotifications: {
       rented: "Rented",
       rentalCancelled: "Rental cancelled",
       noMoney: "You don't have enough money",
+      addedToFavorites: "Added to favorites",
+      removedFromFavorites: "Removed from favorites",
       moneyAdded: "Money added",
+      invitationSent: "Invitation sent",
+      invitationReceived: "{senderNick} sent you an invitation",
+      viewProfile: "View profile",
       errorMessage: "Error, try again later",
     }
   },
@@ -115,6 +128,16 @@ let strings = new LocalizedStrings({
       balanceInfo: "Masz {balance}$",
       buttonText: "Zatwierdź"
     },
+    otherUserPage: {
+      notFound: "Nie znaleziono użytkownika o tym ID",
+      friendsText: "Jesteście znajomymi od {date}",
+      deleteButton: "Usuń znajomego",
+      cancelButton: "Usuń zaproszenie",
+      invitationText: "Masz zaproszenie",
+      acceptButton: "Zaakceptuj",
+      rejectButton: "Odrzuć",
+      sendInvitation: "Wyślij zaproszenie"
+    },
     popUpNotifications: {
       rented: "Wypożyczono",
       rentalCancelled: "Anulowane wypożyczenie",
@@ -122,6 +145,9 @@ let strings = new LocalizedStrings({
       moneyAdded: "Środki dodane",
       addedToFavorites: "Dodano do ulubionych",
       removedFromFavorites: "Usunięto z ulubionych",
+      invitationSent: "Wysłano zaproszenie",
+      invitationReceived: "{senderNick} wysłał(a) Ci zaproszenie",
+      viewProfile: "Zobacz profil",
       errorMessage: "Wystąpił błąd, spróbuj ponownie później",
     }
   },
