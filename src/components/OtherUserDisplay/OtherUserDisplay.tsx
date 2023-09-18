@@ -1,4 +1,5 @@
 import { useOutletContext } from "react-router-dom";
+import strings from "../../utilities/strings";
 
 export default function OtherUserDisplay(props: any) {
 
@@ -31,10 +32,10 @@ export default function OtherUserDisplay(props: any) {
                 { userData.userFriends.some((friend: any) => friend.friendID === props.otherUserData.userID) ? (
                     <>
                         <p>
-                        You are friends
+                            { strings.formatString(strings.otherUserPage.friendsText, { date: new Date(userData.userFriends.filter((friend: any) => friend.friendID === props.otherUserData.userID)[0].friendsSinceDate).toUTCString() }) }
                         </p>
                         <button onClick={deleteFriend}>
-                            Delete friend
+                            { strings.otherUserPage.deleteButton }
                         </button>
                     </>
                    
@@ -42,26 +43,26 @@ export default function OtherUserDisplay(props: any) {
                     <>
                         { userData.userInvitations.some((invitation: any) => invitation.senderID === userData.userID) ? (
                             <button onClick={cancelInvitation}>
-                                Cancel invitation 
+                                { strings.otherUserPage.cancelButton }
                             </button>
                         ) : (
                             <>
                                 { userData.userInvitations.some((invitation: any) => invitation.receiverID === userData.userID) ? (
                                     <>
                                         <p>
-                                            Invitation
+                                            { strings.otherUserPage.invitationText }
                                         </p>
                                         <button onClick={acceptInvitation}>
-                                            Accept 
+                                            { strings.otherUserPage.acceptButton }
                                         </button>
                                         <button onClick={rejectInvitation}>
-                                            Reject
+                                            { strings.otherUserPage.rejectButton }
                                         </button>
                                     </>
                                     
                                 ) : (
                                     <button onClick={sendInvitation}>
-                                        Send invitation
+                                        { strings.otherUserPage.sendInvitation }
                                     </button>
                                 )}
                             </>

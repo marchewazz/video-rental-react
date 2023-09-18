@@ -55,6 +55,13 @@ let strings = new LocalizedStrings({
     },
     otherUserPage: {
       notFound: "Not found user with this ID",
+      friendsText: "You are friends since {date}",
+      deleteButton: "Delete friend",
+      cancelButton: "Delete invitation",
+      invitationText: "You got an invitation",
+      acceptButton: "Accept",
+      rejectButton: "Reject",
+      sendInvitation: "Send invitation"
     },
     popUpNotifications: {
       rented: "Rented",
@@ -123,6 +130,13 @@ let strings = new LocalizedStrings({
     },
     otherUserPage: {
       notFound: "Nie znaleziono użytkownika o tym ID",
+      friendsText: "Jesteście znajomymi od {date}",
+      deleteButton: "Usuń znajomego",
+      cancelButton: "Usuń zaproszenie",
+      invitationText: "Masz zaproszenie",
+      acceptButton: "Zaakceptuj",
+      rejectButton: "Odrzuć",
+      sendInvitation: "Wyślij zaproszenie"
     },
     popUpNotifications: {
       rented: "Wypożyczono",
