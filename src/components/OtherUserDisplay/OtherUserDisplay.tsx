@@ -17,7 +17,7 @@ export default function OtherUserDisplay(props: any) {
     }
 
     function cancelInvitation() {
-        socket.emit("cancelInvitation", { invitationData: userData.userInvitations.filter((invitation: any) => invitation.receiverID === userData.userID)[0] })
+        socket.emit("cancelInvitation", { invitationData: userData.userInvitations.filter((invitation: any) => invitation.senderID === userData.userID)[0] })
     }
 
     return (
