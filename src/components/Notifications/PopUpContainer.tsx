@@ -1,16 +1,17 @@
 import { useEffect, useRef, useState } from "react"
 import strings from "../../utilities/strings"
+import PopUpMessage from "../../models/PopUpMessage.model";
 
 export default function PopUpContainer(props: any) {
 
-    const [notifications, setNotifications] = useState<any>([])
-    const notificationRef = useRef(notifications);
-    const [notificationsElements, setNotificationsElements] = useState<any>([])
-    const notificationElementsRef = useRef(notificationsElements);
+    const [notifications, setNotifications] = useState<PopUpMessage[]>([])
+    const notificationRef = useRef<PopUpMessage[]>(notifications);
+    const [notificationsElements, setNotificationsElements] = useState<React.JSX.Element[]>([])
+    const notificationElementsRef = useRef<React.JSX.Element[]>(notificationsElements);
 
     useEffect(() => {
       if (props.socket) {
-        props.socket.on("emitPopUpNotification", (data: any) => {
+        props.socket.on("emitPopUpNotification", (data: PopUpMessage) => {
           setNotifications([...notifications, data])  
           const timeout = setTimeout(() => {
             setNotifications(notificationRef.current.slice(1))
@@ -30,7 +31,7 @@ export default function PopUpContainer(props: any) {
       const successMessages: string[] = ["rented", "rentalCancelled", "moneyAdded", "addedToFavorites", "removedFromFavorites", "invitationSent", "invitationReceived"];
       const errorMessages: string[] = ["errorMessage", "noMoney"];
 
-      notifications.forEach((notification: any) => {
+      notifications.forEach((notification: PopUpMessage) => {
         setNotificationsElements([...notificationsElements, (
           <div className={`notification 
           ${successMessages.includes(notification.message) ? "success" : ""} 

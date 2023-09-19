@@ -6,6 +6,7 @@ import OtherUserDisplay from "../components/OtherUserDisplay/OtherUserDisplay";
 import strings from "../utilities/strings";
 
 import Context from "../models/Context.model";
+import OtherUserDataResponse from "../models/responses/OtherUserDataResponse.model";
 
 export default function OtherUserPage() {
 
@@ -17,7 +18,7 @@ export default function OtherUserPage() {
 
     const navigate = useNavigate()
 
-    const [response, setResponse] = useState<any>({})
+    const [response, setResponse] = useState<OtherUserDataResponse>()
     const [ready, setReady] = useState(false)
 
     useEffect(() => {
@@ -36,7 +37,7 @@ export default function OtherUserPage() {
 
     return (
         <main>
-            { ready && userDataReady ? (
+            { ready && userDataReady && response ? (
                 <>
                     { response.message === "userData" ? (
                         <OtherUserDisplay otherUserData={response.userData} />
