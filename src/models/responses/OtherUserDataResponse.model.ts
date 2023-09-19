@@ -1,6 +1,6 @@
-import UserData from "../UserData.model";
+import OtherUserData from "../OtherUserData.model";
 
 export default interface OtherUserDataResponse {
     message: string,
-    userData?: OtherUserDataResponse
+    userData?: OtherUserData
 }
