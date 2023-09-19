@@ -5,15 +5,17 @@ import ShowsService from "../services/ShowsService.service";
 
 import strings from "../utilities/strings";
 import ShowDisplay from "../components/ShowPage/ShowDisplay";
-import { useOutletContext } from "react-router-dom";
+
+import { Params, useOutletContext } from "react-router-dom";
+import Context from "../models/Context.model";
 
 export default function ShowPage() {
   const [showData, setShowData] = useState<any>();
-  const [ready, setReady] = useState(false);
+  const [ready, setReady] = useState<boolean>(false);
 
-  const { showid } = useParams();
+  const { showid }: Readonly<Params<string>> = useParams<string>();
 
-  const { userDataReady } = useOutletContext<any>();  
+  const { userDataReady } = useOutletContext<Context>();  
 
   const ss: ShowsService = new ShowsService()
 

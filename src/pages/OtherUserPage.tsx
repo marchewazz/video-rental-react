@@ -5,13 +5,15 @@ import UsersService from "../services/UsersService.service"
 import OtherUserDisplay from "../components/OtherUserDisplay/OtherUserDisplay";
 import strings from "../utilities/strings";
 
+import Context from "../models/Context.model";
+
 export default function OtherUserPage() {
 
     const us: UsersService = new UsersService();
 
     const { userid } = useParams();
 
-    const { userData, socket, userDataReady } = useOutletContext<any>();
+    const { userData, socket, userDataReady } = useOutletContext<Context>();
 
     const navigate = useNavigate()
 
