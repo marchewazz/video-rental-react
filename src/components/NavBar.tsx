@@ -1,12 +1,13 @@
+import UserData from "../models/UserData.model";
 import strings from "../utilities/strings";
 
-export default function NavBar(props: any) {
+export default function NavBar(props: { userData: UserData | undefined, isUserLogged: boolean, logoutFunction: React.MouseEventHandler<HTMLButtonElement> }) {
 
     return (
         <nav>
             <ul>
                 <li>
-                    { props.isUserLogged ? (
+                    { props.isUserLogged && props.userData ? (
                         <>
                             <p>
                             { props.userData.userNick }

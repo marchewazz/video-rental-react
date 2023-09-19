@@ -1,12 +1,13 @@
 import { useOutletContext } from "react-router-dom";
 import strings from "../utilities/strings";
 import { ChangeEvent, useState } from "react";
+import Context from "../models/Context.model";
 
 export default function AddMoneyPage() {
 
     const [inputMoney, setInputMoney] = useState<string>("0")
 
-    const { socket, userData, userDataReady } = useOutletContext<any>(); 
+    const { socket, userData, userDataReady } = useOutletContext<Context>(); 
 
     function formatInput(event: ChangeEvent<HTMLInputElement>): void {
 

@@ -4,9 +4,11 @@ import strings from "../utilities/strings";
 
 import { useOutletContext } from "react-router-dom";
 
+import Context from "../models/Context.model";
+
 export default function MainPage() {
 
-    const { userData } = useOutletContext<any>();    
+    const { userData } = useOutletContext<Context>();    
 
     useEffect(() => {
       console.log(userData);

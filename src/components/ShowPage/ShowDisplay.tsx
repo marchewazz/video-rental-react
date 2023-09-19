@@ -2,9 +2,12 @@ import { useOutletContext } from "react-router-dom"
 import strings from "../../utilities/strings";
 import { useEffect } from "react";
 
+import Rental from "../../models/Rental.model";
+import Context from "../../models/Context.model";
+
 export default function ShowDisplay(props: any) {
 
-    const { userData, socket } = useOutletContext<any>();    
+    const { userData, socket } = useOutletContext<Context>();    
 
     const price: number = 5.50    
 
@@ -17,7 +20,7 @@ export default function ShowDisplay(props: any) {
 
     function cancelRent() {
         socket.emit("cancelRent", {
-            rentalID: userData.userRentals.filter((rental: any) => rental['rentalShowID'] === props.showData.imdbID && rental['rentalStatus'] === "active" )[0].rentalID
+            rentalID: userData.userRentals.filter((rental: Rental) => rental['rentalShowID'] === props.showData.imdbID && rental['rentalStatus'] === "active" )[0].rentalID
         })
     }    
 

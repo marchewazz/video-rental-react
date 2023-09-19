@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 
 import {
   createBrowserRouter,
+  Location,
+  NavigateFunction,
   Outlet,
   RouterProvider,
   useLocation,
@@ -21,29 +23,31 @@ import DefaultEventsMap from "socket.io-client";
 import OtherUserPage from "./pages/OtherUserPage";
 import UserPage from "./pages/UserPage";
 
+import UserData from "./models/UserData.model";
+import UserDataResponse from "./models/responses/UserDataResponse.model";
 
 function AppLayout() {
 
-  const [userData, setUserData] = useState<any>()
+  const [userData, setUserData] = useState<UserData>()
   const [socket, setSocket] = useState<Socket<typeof DefaultEventsMap, typeof DefaultEventsMap> | null>(null);
-  const [isUserLogged, setIsUserLogged] = useState(false)
-  const [userDataReady, setUserDataReady] = useState(false)
+  const [isUserLogged, setIsUserLogged] = useState<boolean>(false)
+  const [userDataReady, setUserDataReady] = useState<boolean>(false)
 
-  const navigate = useNavigate()
-  const location = useLocation()
+  const navigate: NavigateFunction = useNavigate()
+  const location: Location = useLocation()
 
   // const onlyLoggedPaths: string[] = ["/"];
   const onlyNonLoggedPaths: string[] = ["/login", "/register"];
 
-  function connectToSocketServer() {
-    const socket = io("http://localhost:8000", { query: { token: localStorage.getItem("token") } });
+  function connectToSocketServer(): void {
+    const socket: Socket = io("http://localhost:8000", { query: { token: localStorage.getItem("token") } });
     setSocket(socket);
 
     socket.on('connect', () => {
       socket.emit("getUserDataByToken")
     });
 
-    socket.on('getUserDataByToken', (data) => {
+    socket.on('getUserDataByToken', (data: UserDataResponse) => {
       if (data.message === "userData") {
         setUserData(data.userData)
         setIsUserLogged(true)
@@ -126,7 +130,7 @@ export const router = createBrowserRouter([
   },
 ]);
 
-function App() {
+function App(): React.JSX.Element {
   return <RouterProvider router={router} />;
 }
 
