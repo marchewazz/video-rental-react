@@ -87,7 +87,7 @@ function AppLayout() {
 
   return (
     <>
-      <NavBar userData={userData} isUserLogged={isUserLogged} logoutFunction={logout} />
+      <NavBar userData={userData} isUserLogged={isUserLogged} logoutFunction={logout} onlyNonLoggedPaths={onlyNonLoggedPaths} />
       <Outlet context={{socket, userData, isUserLogged, userDataReady}} />
       <PopUpContainer socket={socket} />
     </>
