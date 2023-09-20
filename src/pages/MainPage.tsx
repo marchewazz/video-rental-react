@@ -10,11 +10,6 @@ export default function MainPage() {
 
     const { userData } = useOutletContext<Context>();    
 
-    useEffect(() => {
-      console.log(userData);
-      
-    }, [userData])
-
     return (
         <div>
             <p>

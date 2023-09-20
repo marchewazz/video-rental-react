@@ -5,5 +5,6 @@ export default interface Context {
     socket: Socket, 
     userData: UserData, 
     isUserLogged: boolean, 
-    userDataReady: boolean
+    userDataReady: boolean,
+    darkMode: boolean
 }

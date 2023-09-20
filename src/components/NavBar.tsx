@@ -2,7 +2,7 @@ import { Location, useLocation } from "react-router-dom";
 import UserData from "../models/UserData.model";
 import strings from "../utilities/strings";
 
-export default function NavBar(props: { userData: UserData | undefined, isUserLogged: boolean, logoutFunction: React.MouseEventHandler<HTMLButtonElement>, onlyNonLoggedPaths: string[] }) {
+export default function NavBar(props: { userData: UserData | undefined, isUserLogged: boolean, logoutFunction: React.MouseEventHandler<HTMLButtonElement>, onlyNonLoggedPaths: string[], darkMode: boolean, darkModeChangeFunction: React.ChangeEventHandler<HTMLInputElement> }) {
 
     const location: Location = useLocation()
 
@@ -34,6 +34,9 @@ export default function NavBar(props: { userData: UserData | undefined, isUserLo
                             <a href="/register">{ strings.nav.register }</a>
                         </>
                     )}
+                </li>
+                <li>
+                    <input checked={props.darkMode} onChange={props.darkModeChangeFunction} type="checkbox" />
                 </li>
             </ul>
         </nav>
