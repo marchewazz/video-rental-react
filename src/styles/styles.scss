@@ -35,3 +35,10 @@ textarea,
 select {
   font: inherit;
 }
+
+button {
+  background-color: green;
+  &:disabled {
+    background-color: red;
+  }
+}
