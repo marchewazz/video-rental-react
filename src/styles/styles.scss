@@ -15,9 +15,13 @@
   margin: 0;
 }
 
-body {
+html, body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
 }
 
 img,
@@ -36,9 +40,34 @@ select {
   font: inherit;
 }
 
-button {
-  background-color: green;
-  &:disabled {
-    background-color: red;
+@layer components {
+  .nav-item {
+    @apply font-bold text-dark-green h-full flex items-center transition-all ease-in-out duration-300
+  }
+  .nav-item-clickable {
+    @apply nav-item parallelogram
+    hover:bg-light-green hover:text-white
+  }
+}
+
+.parallelogram {
+  height: 100px;
+  transform: skew(-10deg);
+  -webkit-transform: skew(-10deg);
+  -moz-transform: skew(-10deg);
+  -ms-transform: skew(-10deg);
+  -o-transform: skew(-10deg);
+
+  & > a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    height: 100%;
+    transform: skew(10deg);
+    -webkit-transform: skew(10deg);
+    -moz-transform: skew(10deg);
+    -ms-transform: skew(10deg);
+    -o-transform: skew(10deg);
   }
 }

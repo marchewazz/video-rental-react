@@ -75,7 +75,7 @@ function AppLayout() {
   function changeDarkMode(): void {
     setDarkMode(!darkMode)
     localStorage.setItem("darkMode", (!darkMode.valueOf()).toString())
-  }
+  }  
 
   useEffect(() => {
     if (onlyNonLoggedPaths.includes(location.pathname)) {
@@ -92,11 +92,11 @@ function AppLayout() {
   }, [location.pathname])
 
   return (
-    <>
+    <div className={`${darkMode && "dark"}`}>
       <NavBar userData={userData} isUserLogged={isUserLogged} logoutFunction={logout} onlyNonLoggedPaths={onlyNonLoggedPaths} darkMode={darkMode} darkModeChangeFunction={changeDarkMode} />
       <Outlet context={{socket, userData, isUserLogged, userDataReady, darkMode}} />
       <PopUpContainer socket={socket} />
-    </>
+    </div>
   );
 }
 

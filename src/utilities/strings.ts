@@ -5,7 +5,9 @@ let strings = new LocalizedStrings({
     nav: {
       login: "LOGIN",
       register: "REGISTER",
-      addMoney: "ADD MONEY"
+      addMoney: "ADD MONEY",
+      balanceInfo: "Balance: {balance}$",
+      greeting: "Hello, {nickName}!"
     },
     mainPage: {
       title: "MAIN PAGE",
@@ -80,7 +82,9 @@ let strings = new LocalizedStrings({
     nav: {
       login: "LOGOWANIE",
       register: "REJESTRACJA",
-      addMoney: "DODAJ ŚRODKI"
+      addMoney: "DODAJ ŚRODKI",
+      balanceInfo: "Saldo: {balance}$",
+      greeting: "Cześć, {nickName}!"
     },
     mainPage: {
       title: "STRONA GŁÓWNA",
