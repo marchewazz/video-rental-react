@@ -1,6 +1,7 @@
 import { Location, useLocation } from "react-router-dom";
 import UserData from "../models/UserData.model";
 import strings from "../utilities/strings";
+import DarkModeTogger from "../DarkModeToggler";
 
 export default function NavBar(props: {
   userData: UserData | undefined;
@@ -71,13 +72,7 @@ export default function NavBar(props: {
             </div>
           </>
         )}
-        <div>
-          <input
-            checked={props.darkMode}
-            onChange={props.darkModeChangeFunction}
-            type="checkbox"
-          />
-        </div>
+        <DarkModeTogger darkMode={props.darkMode} darkModeChangeFunction={props.darkModeChangeFunction} />
       </div>
     </nav>
   );
