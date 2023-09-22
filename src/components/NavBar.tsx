@@ -3,6 +3,7 @@ import UserData from "../models/UserData.model";
 import strings from "../utilities/strings";
 import DarkModeToggler from "../DarkModeToggler";
 import { useEffect, useState } from "react";
+import SearchBar from "./SearchBar";
 
 export default function NavBar(props: {
   userData: UserData | undefined;
@@ -28,7 +29,7 @@ export default function NavBar(props: {
               balance: props.userData.userBalance,
             })}
           </div>
-          <div className={`nav-item-clickable ${props.width > 922 ? "parallelogram" : ""}`}>
+          <div className={`nav-item-clickable ${props.width > 1024 ? "parallelogram" : ""}`}>
             <Link
               className="h-full w-full flex items-center pl-4 lg:pl-0"
               to="/add-money"
@@ -36,7 +37,7 @@ export default function NavBar(props: {
               {strings.nav.addMoney}
             </Link>
           </div>
-          <div className={`nav-item-clickable ${props.width > 922 ? "parallelogram" : ""}`}>
+          <div className={`nav-item-clickable ${props.width > 1024 ? "parallelogram" : ""}`}>
             <Link
               className="h-full w-full flex items-center pl-4 lg:pl-0"
               to="/myprofile"
@@ -48,7 +49,7 @@ export default function NavBar(props: {
             </Link>
           </div>
           <button
-            className={`nav-item-clickable p-4 ${props.width > 922 ? "parallelogram" : ""}`}
+            className={`nav-item-clickable p-4 ${props.width > 1024 ? "parallelogram" : ""}`}
             onClick={props.logoutFunction}
           >
             <svg
@@ -74,7 +75,7 @@ export default function NavBar(props: {
   );
 
   useEffect(() => {
-    if (props.width > 992) setShowMobileNavigation(false)
+    if (props.width > 1024) setShowMobileNavigation(false)
   }, [props.width])
   
 
@@ -88,7 +89,7 @@ export default function NavBar(props: {
         </div>
         {!props.onlyNonLoggedPaths.includes(location.pathname) ? (
           <>
-            {props.width < 992 ? (
+            {props.width < 1024 ? (
               <button onClick={() => setShowMobileNavigation(true)}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -108,6 +109,7 @@ export default function NavBar(props: {
             ) : (
               <>
                 {links}
+                <SearchBar />
                 <DarkModeToggler
                   darkMode={props.darkMode}
                   darkModeChangeFunction={props.darkModeChangeFunction}
@@ -149,6 +151,7 @@ export default function NavBar(props: {
               </Link>
             </div>
             {links}
+            <SearchBar />
             <DarkModeToggler
               darkMode={props.darkMode}
               darkModeChangeFunction={props.darkModeChangeFunction}

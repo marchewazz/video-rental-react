@@ -7,7 +7,9 @@ let strings = new LocalizedStrings({
       register: "REGISTER",
       addMoney: "ADD MONEY",
       balanceInfo: "Balance: {balance}$",
-      greeting: "Hello, {nickName}!"
+      greeting: "Hello, {nickName}!",
+      searchBar: "Search...",
+      searchInfo: "Only English or original names"
     },
     mainPage: {
       title: "MAIN PAGE",
@@ -84,7 +86,9 @@ let strings = new LocalizedStrings({
       register: "REJESTRACJA",
       addMoney: "DODAJ ŚRODKI",
       balanceInfo: "Saldo: {balance}$",
-      greeting: "Cześć, {nickName}!"
+      greeting: "Cześć, {nickName}!",
+      searchBar: "Szukaj...",
+      searchInfo: "Tylko angielskie lub oryginalne nazwy"
     },
     mainPage: {
       title: "STRONA GŁÓWNA",
