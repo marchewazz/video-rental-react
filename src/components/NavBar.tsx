@@ -14,11 +14,11 @@ export default function NavBar(props: {
   const location: Location = useLocation();
 
   return (
-    <nav className="border-b-2 border-light-green h-[100px]">
+    <nav className="border-b-2 border-light-green h-[100px] dark:bg-earie-black transition-all duration-300">
       <div className="container flex justify-between items-center h-full">
         <div>
             <a href="/">
-                <img className="w-16 m-2" src="images/logo.png" />
+                <img className="w-16 m-2 dark:invert" src="images/logo.png" />
             </a>
         </div>
         {!props.onlyNonLoggedPaths.includes(location.pathname) ? (

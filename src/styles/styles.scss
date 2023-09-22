@@ -5,6 +5,7 @@
 @import "main-page/main-page";
 @import "pop-up/container";
 @import "dark-mode-toggler/main";
+@import "navigation/main";
 
 *,
 *::before,
@@ -39,16 +40,6 @@ button,
 textarea,
 select {
   font: inherit;
-}
-
-@layer components {
-  .nav-item {
-    @apply font-bold text-dark-green h-full flex items-center transition-all ease-in-out duration-300
-  }
-  .nav-item-clickable {
-    @apply nav-item parallelogram
-    hover:bg-light-green hover:text-white
-  }
 }
 
 .parallelogram {
