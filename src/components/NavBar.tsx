@@ -1,7 +1,8 @@
 import { Location, useLocation } from "react-router-dom";
 import UserData from "../models/UserData.model";
 import strings from "../utilities/strings";
-import DarkModeTogger from "../DarkModeToggler";
+import DarkModeToggler from "../DarkModeToggler";
+import { useEffect, useState } from "react";
 
 export default function NavBar(props: {
   userData: UserData | undefined;
@@ -10,70 +11,151 @@ export default function NavBar(props: {
   onlyNonLoggedPaths: string[];
   darkMode: boolean;
   darkModeChangeFunction: React.ChangeEventHandler<HTMLInputElement>;
+  height: number;
+  width: number;
 }) {
+  const [showMobileNavigation, setShowMobileNavigation] =
+    useState<boolean>(false);
+
   const location: Location = useLocation();
+
+  const links = (
+    <>
+      {props.userData ? (
+        <>
+          <div className="nav-item flex items-center pl-4 lg:pl-0">
+            {strings.formatString(strings.nav.balanceInfo, {
+              balance: props.userData.userBalance,
+            })}
+          </div>
+          <div className="nav-item-clickable lg:parallelogram">
+            <a
+              className="h-full w-full flex items-center pl-4 lg:pl-0"
+              href="/add-money"
+            >
+              {strings.nav.addMoney}
+            </a>
+          </div>
+          <div className="nav-item-clickable lg:parallelogram">
+            <a
+              className="h-full w-full flex items-center pl-4 lg:pl-0"
+              href="/myprofile"
+            >
+              {" "}
+              {strings.formatString(strings.nav.greeting, {
+                nickName: props.userData.userNick,
+              })}
+            </a>
+          </div>
+          <button
+            className="nav-item-clickable lg:parallelogram p-4 "
+            onClick={props.logoutFunction}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-6 h-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75"
+              />
+            </svg>
+          </button>
+        </>
+      ) : (
+        <p>Loading...</p>
+      )}
+    </>
+  );
+
+  useEffect(() => {
+    if (props.width > 992) setShowMobileNavigation(false)
+  }, [props.width])
+  
 
   return (
     <nav className="border-b-2 border-light-green h-[100px] dark:bg-earie-black transition-all duration-300">
       <div className="container flex justify-between items-center h-full">
         <div>
-            <a href="/">
-                <img className="w-16 m-2 dark:invert" src="images/logo.png" />
-            </a>
+          <a href="/">
+            <img className="w-16 m-2 dark:invert" src="images/logo.png" />
+          </a>
         </div>
         {!props.onlyNonLoggedPaths.includes(location.pathname) ? (
           <>
-            {props.userData ? (
-              <>
-                <div className="nav-item">
-                  {strings.formatString(strings.nav.balanceInfo, {
-                    balance: props.userData.userBalance,
-                  })}
-                </div>
-                <div className="nav-item-clickable">
-                  <a href="/add-money">{strings.nav.addMoney}</a>
-                </div>
-                <div className="nav-item-clickable">
-                  <a href="/myprofile">
-                    {" "}
-                    {strings.formatString(strings.nav.greeting, {
-                      nickName: props.userData.userNick,
-                    })}
-                  </a>
-                </div>
-                <button className="nav-item-clickable p-4" onClick={props.logoutFunction}>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    stroke="currentColor"
-                    className="w-6 h-6"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75"
-                    />
-                  </svg>
-                </button>
-              </>
+            {props.width < 992 ? (
+              <button onClick={() => setShowMobileNavigation(true)}>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  className="w-10 h-10 text-black dark:text-light-green"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                  />
+                </svg>
+              </button>
             ) : (
-              <p>Loading...</p>
+              <>
+                {links}
+                <DarkModeToggler
+                  darkMode={props.darkMode}
+                  darkModeChangeFunction={props.darkModeChangeFunction}
+                />
+              </>
             )}
           </>
         ) : (
           <>
             <div className="nav-item-clickable">
-                <a href="/login">{strings.nav.login}</a>
+              <a href="/login">{strings.nav.login}</a>
             </div>
             <div className="nav-item-clickable">
-                <a href="/register">{strings.nav.register}</a>
+              <a href="/register">{strings.nav.register}</a>
             </div>
+            <DarkModeToggler
+              darkMode={props.darkMode}
+              darkModeChangeFunction={props.darkModeChangeFunction}
+            />
           </>
         )}
-        <DarkModeTogger darkMode={props.darkMode} darkModeChangeFunction={props.darkModeChangeFunction} />
       </div>
+      {showMobileNavigation ? (
+        <>
+          <div
+            onClick={() => setShowMobileNavigation(false)}
+            className="w-full h-full absolute bg-earie-black z-[1023] top-0 left-0 opacity-80 cursor-pointer"
+          ></div>
+          <div className="absolute h-full w-2/3 sm:w-1/2 md:w-1/3 bg-white dark:bg-earie-black top-0 right-0 z-[1024] flex flex-col">
+            <button className="bg-light-green self-end p-2 rounded-full m-2"
+            onClick={() => setShowMobileNavigation(false)}>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            <div>
+              <a href="/">
+                <img className="w-16 m-2 dark:invert" src="images/logo.png" />
+              </a>
+            </div>
+            {links}
+            <DarkModeToggler
+              darkMode={props.darkMode}
+              darkModeChangeFunction={props.darkModeChangeFunction}
+            />
+          </div>
+        </>
+      ) : null}
     </nav>
   );
 }

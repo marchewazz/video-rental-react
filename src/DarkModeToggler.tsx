@@ -1,9 +1,9 @@
-export default function DarkModeTogger(props: {
+export default function DarkModeToggler(props: {
   darkMode: boolean;
   darkModeChangeFunction: React.ChangeEventHandler<HTMLInputElement>;
 }) {
   return (
-    <div>
+    <div className="w-fit ml-4 lg:ml-0">
       <label htmlFor="dark-mode-toggler">
         <div className="dark-mode-toggler-label">
           {props.darkMode ? (
