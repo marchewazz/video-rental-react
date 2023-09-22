@@ -68,8 +68,8 @@ let strings = new LocalizedStrings({
       sendInvitation: "Send invitation"
     },
     searchPage: {
-      title: "Results for: {phrase}",
-      notFoundTitle: "We don't have movies or series for: {phrase}",
+      title: "Results for: ",
+      notFoundTitle: "We don't have movies or series for: ",
       notFoundSubTitle: "Check others!"
     },
     popUpNotifications: {
@@ -152,8 +152,8 @@ let strings = new LocalizedStrings({
       sendInvitation: "Wyślij zaproszenie"
     },
     searchPage: {
-      title: "Wyniki wyszukiwania dla: {phrase}",
-      notFoundTitle: "Nie mamy filmów czy seriali dla frazy: {phrase}",
+      title: "Wyniki wyszukiwania dla: ",
+      notFoundTitle: "Nie mamy filmów czy seriali dla frazy: ",
       notFoundSubTitle: "Sprawdź inne!"
     },
     popUpNotifications: {
