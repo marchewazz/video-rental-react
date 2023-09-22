@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react"
 import strings from "../../utilities/strings"
 import PopUpMessage from "../../models/PopUpMessage.model";
+import { Link } from "react-router-dom";
 
 export default function PopUpContainer(props: any) {
 
@@ -40,9 +41,9 @@ export default function PopUpContainer(props: any) {
             { notification.message === "invitationReceived" ? (
               <p>
                 { strings.formatString(strings.popUpNotifications.invitationReceived, { senderNick: notification.senderNick })}
-                <a href={`/user/${notification.senderID}`}>
+                <Link to={`/user/${notification.senderID}`}>
                   { strings.popUpNotifications.viewProfile}
-                </a>
+                </Link>
               </p>
             ) : (
               <p>

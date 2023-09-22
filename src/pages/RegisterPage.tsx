@@ -3,6 +3,7 @@ import strings from "../utilities/strings";
 import RegisterFormData from "../models/RegisterFormData.model";
 
 import AuthService from "../services/AuthService.service";
+import { Link } from "react-router-dom";
 
 export default function RegisterPage() {
 
@@ -101,7 +102,7 @@ export default function RegisterPage() {
                     <p id="register-message">
                         { registerMessage }
                         { registerMessage === strings.registerPage.form.registeredSuccess ? (
-                            <a href="/login">{strings.registerPage.form.registeredSuccessHere}</a>
+                            <Link to="/login">{strings.registerPage.form.registeredSuccessHere}</Link>
                         ) : (null)}
                     </p>
                     <input type="submit" value={strings.registerPage.form.submitButtonText} />
