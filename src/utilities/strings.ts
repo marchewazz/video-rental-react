@@ -67,6 +67,11 @@ let strings = new LocalizedStrings({
       rejectButton: "Reject",
       sendInvitation: "Send invitation"
     },
+    searchPage: {
+      title: "Results for: {phrase}",
+      notFoundTitle: "We don't have movies or series for: {phrase}",
+      notFoundSubTitle: "Check others!"
+    },
     popUpNotifications: {
       rented: "Rented",
       rentalCancelled: "Rental cancelled",
@@ -145,6 +150,11 @@ let strings = new LocalizedStrings({
       acceptButton: "Zaakceptuj",
       rejectButton: "Odrzuć",
       sendInvitation: "Wyślij zaproszenie"
+    },
+    searchPage: {
+      title: "Wyniki wyszukiwania dla: {phrase}",
+      notFoundTitle: "Nie mamy filmów czy seriali dla frazy: {phrase}",
+      notFoundSubTitle: "Sprawdź inne!"
     },
     popUpNotifications: {
       rented: "Wypożyczono",
