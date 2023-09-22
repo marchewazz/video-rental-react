@@ -42,6 +42,12 @@ select {
   font: inherit;
 }
 
+@layer components {
+  .main-background {
+    @apply dark:bg-[#000] transition-all duration-300
+  }
+}
+
 .parallelogram {
   height: 100px;
   transform: skew(-10deg);

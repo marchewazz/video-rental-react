@@ -7,7 +7,9 @@ let strings = new LocalizedStrings({
       register: "REGISTER",
       addMoney: "ADD MONEY",
       balanceInfo: "Balance: {balance}$",
-      greeting: "Hello, {nickName}!"
+      greeting: "Hello, {nickName}!",
+      searchBar: "Search...",
+      searchInfo: "Only English or original names"
     },
     mainPage: {
       title: "MAIN PAGE",
@@ -65,6 +67,11 @@ let strings = new LocalizedStrings({
       rejectButton: "Reject",
       sendInvitation: "Send invitation"
     },
+    searchPage: {
+      title: "Results for: ",
+      notFoundTitle: "We don't have movies or series for: ",
+      notFoundSubTitle: "Check others!"
+    },
     popUpNotifications: {
       rented: "Rented",
       rentalCancelled: "Rental cancelled",
@@ -84,7 +91,9 @@ let strings = new LocalizedStrings({
       register: "REJESTRACJA",
       addMoney: "DODAJ ŚRODKI",
       balanceInfo: "Saldo: {balance}$",
-      greeting: "Cześć, {nickName}!"
+      greeting: "Cześć, {nickName}!",
+      searchBar: "Szukaj...",
+      searchInfo: "Tylko angielskie lub oryginalne nazwy"
     },
     mainPage: {
       title: "STRONA GŁÓWNA",
@@ -141,6 +150,11 @@ let strings = new LocalizedStrings({
       acceptButton: "Zaakceptuj",
       rejectButton: "Odrzuć",
       sendInvitation: "Wyślij zaproszenie"
+    },
+    searchPage: {
+      title: "Wyniki wyszukiwania dla: ",
+      notFoundTitle: "Nie mamy filmów czy seriali dla frazy: ",
+      notFoundSubTitle: "Sprawdź inne!"
     },
     popUpNotifications: {
       rented: "Wypożyczono",
