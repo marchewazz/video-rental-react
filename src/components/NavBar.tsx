@@ -28,7 +28,7 @@ export default function NavBar(props: {
               balance: props.userData.userBalance,
             })}
           </div>
-          <div className="nav-item-clickable lg:parallelogram">
+          <div className={`nav-item-clickable ${props.width > 922 ? "parallelogram" : ""}`}>
             <a
               className="h-full w-full flex items-center pl-4 lg:pl-0"
               href="/add-money"
@@ -36,7 +36,7 @@ export default function NavBar(props: {
               {strings.nav.addMoney}
             </a>
           </div>
-          <div className="nav-item-clickable lg:parallelogram">
+          <div className={`nav-item-clickable ${props.width > 922 ? "parallelogram" : ""}`}>
             <a
               className="h-full w-full flex items-center pl-4 lg:pl-0"
               href="/myprofile"
@@ -48,7 +48,7 @@ export default function NavBar(props: {
             </a>
           </div>
           <button
-            className="nav-item-clickable lg:parallelogram p-4 "
+            className={`nav-item-clickable p-4 ${props.width > 922 ? "parallelogram" : ""}`}
             onClick={props.logoutFunction}
           >
             <svg
