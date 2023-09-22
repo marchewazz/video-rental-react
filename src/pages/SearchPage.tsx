@@ -25,6 +25,9 @@ export default function SearchPage() {
       setReady(false)
       ss.getSearch(searchParams.get("s") || "").then((res: any) => {
         console.log(res);
+        res.data.Search = res.data.Search.filter((show: any) => show.Type != "game")
+        res.data.Search[0].Poster = "N/A"
+        res.data.Search[1].Poster = ""
         setReady(true);
         setSearchResults(res.data);
       });
@@ -48,12 +51,12 @@ export default function SearchPage() {
                   {searchResults.Search.map((show: any) => {
                     return (
                       <Link
-                        className="group relative rounded-3xl border-2 border-light-green"
+                        className="group relative rounded-3xl border-2 border-light-green flex"
                         to={`../show/${show.imdbID}`}
                       >
                         <img
-                          className="w-full rounded-3xl h-full"
-                          src={show.Poster}
+                          className={`${!show.Poster || show.Poster == "N/A" ? "justify-self-center self-center" : "w-full h-full" } rounded-3xl`}
+                          src={!show.Poster || show.Poster == "N/A" ? "images/no-image-icon.png" : show.Poster}
                           alt=""
                         />
                         <div className="collapse rounded-3xl flex items-end absolute group-hover:visible w-full h-full bg-earie-black opacity-90 top-0 right-0 p-2 z-50">
