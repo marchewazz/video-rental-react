@@ -1,4 +1,4 @@
-import { Location, useLocation } from "react-router-dom";
+import { Link, Location, useLocation } from "react-router-dom";
 import UserData from "../models/UserData.model";
 import strings from "../utilities/strings";
 import DarkModeToggler from "../DarkModeToggler";
@@ -29,23 +29,23 @@ export default function NavBar(props: {
             })}
           </div>
           <div className={`nav-item-clickable ${props.width > 922 ? "parallelogram" : ""}`}>
-            <a
+            <Link
               className="h-full w-full flex items-center pl-4 lg:pl-0"
-              href="/add-money"
+              to="/add-money"
             >
               {strings.nav.addMoney}
-            </a>
+            </Link>
           </div>
           <div className={`nav-item-clickable ${props.width > 922 ? "parallelogram" : ""}`}>
-            <a
+            <Link
               className="h-full w-full flex items-center pl-4 lg:pl-0"
-              href="/myprofile"
+              to="/myprofile"
             >
               {" "}
               {strings.formatString(strings.nav.greeting, {
                 nickName: props.userData.userNick,
               })}
-            </a>
+            </Link>
           </div>
           <button
             className={`nav-item-clickable p-4 ${props.width > 922 ? "parallelogram" : ""}`}
@@ -82,9 +82,9 @@ export default function NavBar(props: {
     <nav className="border-b-2 border-light-green h-[100px] dark:bg-earie-black transition-all duration-300">
       <div className="container flex justify-between items-center h-full">
         <div>
-          <a href="/">
+          <Link to="/">
             <img className="w-16 m-2 dark:invert" src="images/logo.png" />
-          </a>
+          </Link>
         </div>
         {!props.onlyNonLoggedPaths.includes(location.pathname) ? (
           <>
@@ -118,10 +118,10 @@ export default function NavBar(props: {
         ) : (
           <>
             <div className="nav-item-clickable">
-              <a href="/login">{strings.nav.login}</a>
+              <Link to="/login">{strings.nav.login}</Link>
             </div>
             <div className="nav-item-clickable">
-              <a href="/register">{strings.nav.register}</a>
+              <Link to="/register">{strings.nav.register}</Link>
             </div>
             <DarkModeToggler
               darkMode={props.darkMode}
@@ -144,9 +144,9 @@ export default function NavBar(props: {
               </svg>
             </button>
             <div>
-              <a href="/">
+              <Link to="/">
                 <img className="w-16 m-2 dark:invert" src="images/logo.png" />
-              </a>
+              </Link>
             </div>
             {links}
             <DarkModeToggler
