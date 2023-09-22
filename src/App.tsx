@@ -25,6 +25,7 @@ import UserPage from "./pages/UserPage";
 
 import UserData from "./models/UserData.model";
 import UserDataResponse from "./models/responses/UserDataResponse.model";
+import useWindowDimensions from "./hooks/useWindowDimensions";
 
 function AppLayout() {
 
@@ -34,6 +35,7 @@ function AppLayout() {
   const [userDataReady, setUserDataReady] = useState<boolean>(false)
   const [darkMode, setDarkMode] = useState<boolean>(localStorage.getItem("darkMode") == "true" || false)
 
+  const { width, height }: { width: number, height: number } = useWindowDimensions();
   const navigate: NavigateFunction = useNavigate()
   const location: Location = useLocation()
 
@@ -75,7 +77,7 @@ function AppLayout() {
   function changeDarkMode(): void {
     setDarkMode(!darkMode)
     localStorage.setItem("darkMode", (!darkMode.valueOf()).toString())
-  }
+  }  
 
   useEffect(() => {
     if (onlyNonLoggedPaths.includes(location.pathname)) {
@@ -92,11 +94,11 @@ function AppLayout() {
   }, [location.pathname])
 
   return (
-    <>
-      <NavBar userData={userData} isUserLogged={isUserLogged} logoutFunction={logout} onlyNonLoggedPaths={onlyNonLoggedPaths} darkMode={darkMode} darkModeChangeFunction={changeDarkMode} />
+    <div className={`${darkMode && "dark"}`}>
+      <NavBar userData={userData} isUserLogged={isUserLogged} logoutFunction={logout} onlyNonLoggedPaths={onlyNonLoggedPaths} darkMode={darkMode} darkModeChangeFunction={changeDarkMode} width={width} height={height} />
       <Outlet context={{socket, userData, isUserLogged, userDataReady, darkMode}} />
       <PopUpContainer socket={socket} />
-    </>
+    </div>
   );
 }
 

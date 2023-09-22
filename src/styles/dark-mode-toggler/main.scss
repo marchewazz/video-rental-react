@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .dark-mode-toggler-label {
+        @apply bg-earie-black rounded-xl cursor-pointer p-1 transition-all ease-in-out duration-300
+        dark:bg-white
+    }
+    .dark-mode-toggler-icon {
+        @apply fill-white w-8 h-8
+        dark:fill-earie-black
+    }
+}
