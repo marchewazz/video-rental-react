@@ -84,7 +84,7 @@ export default function NavBar(props: {
       <div className="container flex justify-between items-center h-full">
         <div>
           <Link to="/">
-            <img className="w-16 m-2 dark:invert" src="images/logo.png" />
+            <img className="w-16 m-2 dark:invert" src="/images/logo.png" />
           </Link>
         </div>
         {!props.onlyNonLoggedPaths.includes(location.pathname) ? (
