@@ -24,10 +24,8 @@ export default function SearchPage() {
     else {
       setReady(false)
       ss.getSearch(searchParams.get("s") || "").then((res: any) => {
-        console.log(res);
-        res.data.Search = res.data.Search.filter((show: any) => show.Type != "game")
-        res.data.Search[0].Poster = "N/A"
-        res.data.Search[1].Poster = ""
+        if (res.data.Response === "True") res.data.Search = res.data.Search.filter((show: any) => show.Type != "game")
+        else res.data.Search = []
         setReady(true);
         setSearchResults(res.data);
       });
@@ -39,7 +37,7 @@ export default function SearchPage() {
       <div className="container py-10">
         {ready && searchResults ? (
           <>
-            {searchResults.Response === "True" ? (
+            {searchResults.Search.length ? (
               <>
                 <p className="text-4xl font-extrabold dark:text-white mb-5">
                   {strings.searchPage.title}

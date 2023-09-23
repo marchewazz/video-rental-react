@@ -15,36 +15,36 @@ export default function ShowPage() {
 
   const { showid }: Readonly<Params<string>> = useParams<string>();
 
-  const { userDataReady } = useOutletContext<Context>();  
+  const { userDataReady } = useOutletContext<Context>();
 
-  const ss: ShowsService = new ShowsService()
+  const ss: ShowsService = new ShowsService();
 
   useEffect(() => {
-    ss.getShowData(showid || "")
-      .then((res: any) => {
-        setShowData(res.data);
-        setReady(true);
-      });
+    ss.getShowData(showid || "").then((res: any) => {
+      console.log(res);
+      
+      setShowData(res.data);
+      setReady(true);
+    });
   }, []);
 
   return (
-    <main>
-         {ready && userDataReady ? (
-            <>
-                { showData.Response === "True" ? (
-                    <>
-                        <ShowDisplay showData={showData} />
-                    </>
-                ) : (
-                    <p>
-                        { strings.showPage.notFound }
-                    </p>
-                )}
-            </>
-            
-            ) : ( 
-            <p>Loading...</p>
-         )}
+    <main className="main-background">
+      <div className="container py-10">
+        {ready && userDataReady ? (
+          <>
+            {showData.Response === "True" ? (
+              <>
+                <ShowDisplay showData={showData} />
+              </>
+            ) : (
+              <p>{strings.showPage.notFound}</p>
+            )}
+          </>
+        ) : (
+          <p>Loading...</p>
+        )}
+      </div>
     </main>
   );
 }
