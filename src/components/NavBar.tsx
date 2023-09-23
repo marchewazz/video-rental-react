@@ -1,7 +1,7 @@
 import { Link, Location, useLocation } from "react-router-dom";
 import UserData from "../models/UserData.model";
 import strings from "../utilities/strings";
-import DarkModeToggler from "../DarkModeToggler";
+import DarkModeToggler from "./DarkModeToggler";
 import { useEffect, useState } from "react";
 import SearchBar from "./SearchBar";
 
