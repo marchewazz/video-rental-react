@@ -5,16 +5,18 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    container: {
-      center: true,
-    },
-    colors: {
-      "light-green": "#00bfb2",
-      "teal": "#028090",
-      "dark-green": "#294643",
-      "earie-black": "#191716",
-      "white": "#FFF"
-    }
+    extend: {
+      container: {
+        center: true,
+      },
+      colors: {
+        "light-green": "#00bfb2",
+        "teal": "#028090",
+        "dark-green": "#294643",
+        "earie-black": "#191716",
+        "white": "#FFF"
+      }
+    }     
   },
   plugins: [],
 }

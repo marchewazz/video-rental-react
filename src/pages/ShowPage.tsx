@@ -9,42 +9,63 @@ import ShowDisplay from "../components/ShowPage/ShowDisplay";
 import { Params, useOutletContext } from "react-router-dom";
 import Context from "../models/Context.model";
 
+import translate, { DeeplLanguages } from "deepl";
+
 export default function ShowPage() {
   const [showData, setShowData] = useState<any>();
   const [ready, setReady] = useState<boolean>(false);
 
   const { showid }: Readonly<Params<string>> = useParams<string>();
 
-  const { userDataReady } = useOutletContext<Context>();  
+  const { userDataReady } = useOutletContext<Context>();
 
-  const ss: ShowsService = new ShowsService()
+  const ss: ShowsService = new ShowsService();
 
   useEffect(() => {
-    ss.getShowData(showid || "")
-      .then((res: any) => {
-        setShowData(res.data);
-        setReady(true);
-      });
+    ss.getShowData(showid || "").then(async (res: any) => {
+      console.log(res.data);
+      
+      if (res.data.Type != "movie" && res.data.Type != "series") setShowData({ Response: "False" })
+      else {
+        if (strings.getLanguage() != "en") {
+          translate({
+            free_api: true,
+            text: res.data.Plot,
+            target_lang: strings.getLanguage() as unknown as DeeplLanguages,
+            auth_key: process.env.REACT_APP_DEEPL_AUTH || ""
+          }).then((translationRes: any) => {
+            res.data.PlotTranslated = translationRes.data.translations[0].text
+          }).catch((e) => {
+            console.log(e);
+          }).finally(() => {
+            setShowData(res.data)
+            setReady(true);
+          })
+        } else {
+          setShowData(res.data)
+          setReady(true);
+        }
+      };
+    })
   }, []);
 
   return (
-    <main>
-         {ready && userDataReady ? (
-            <>
-                { showData.Response === "True" ? (
-                    <>
-                        <ShowDisplay showData={showData} />
-                    </>
-                ) : (
-                    <p>
-                        { strings.showPage.notFound }
-                    </p>
-                )}
-            </>
-            
-            ) : ( 
-            <p>Loading...</p>
-         )}
+    <main className="main-background">
+      <div className="container py-10">
+        {ready && userDataReady ? (
+          <>
+            {showData.Response === "True" ? (
+              <>
+                <ShowDisplay showData={showData} />
+              </>
+            ) : (
+              <p>{strings.showPage.notFound}</p>
+            )}
+          </>
+        ) : (
+          <p>Loading...</p>
+        )}
+      </div>
     </main>
   );
 }

@@ -4,7 +4,7 @@ import { useState } from "react";
 
 export default function SearchBar() {
 
-    const [searchPhrase, setSearchPhrase] = useState("fdsfsd")
+    const [searchPhrase, setSearchPhrase] = useState<string>("")
     
     const navigate = useNavigate();
 
