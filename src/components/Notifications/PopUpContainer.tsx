@@ -34,9 +34,8 @@ export default function PopUpContainer(props: any) {
 
       notifications.forEach((notification: PopUpMessage) => {
         setNotificationsElements([...notificationsElements, (
-          <div className={`notification 
-          ${successMessages.includes(notification.message) ? "success" : ""} 
-          ${errorMessages.includes(notification.message) ? "error" : ""}`
+          <div className={`${successMessages.includes(notification.message) ? "notification-success" : ""} 
+          ${errorMessages.includes(notification.message) ? "notification-error" : ""}`
           }>
             { notification.message === "invitationReceived" ? (
               <p>
