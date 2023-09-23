@@ -9,6 +9,8 @@ import ShowDisplay from "../components/ShowPage/ShowDisplay";
 import { Params, useOutletContext } from "react-router-dom";
 import Context from "../models/Context.model";
 
+import translate, { DeeplLanguages } from "deepl";
+
 export default function ShowPage() {
   const [showData, setShowData] = useState<any>();
   const [ready, setReady] = useState<boolean>(false);
@@ -20,13 +22,31 @@ export default function ShowPage() {
   const ss: ShowsService = new ShowsService();
 
   useEffect(() => {
-    ss.getShowData(showid || "").then((res: any) => {
+    ss.getShowData(showid || "").then(async (res: any) => {
       console.log(res.data);
       
       if (res.data.Type != "movie" && res.data.Type != "series") setShowData({ Response: "False" })
-      else setShowData(res.data);
-      setReady(true);
-    });
+      else {
+        if (strings.getLanguage() != "en") {
+          translate({
+            free_api: true,
+            text: res.data.Plot,
+            target_lang: strings.getLanguage() as unknown as DeeplLanguages,
+            auth_key: process.env.REACT_APP_DEEPL_AUTH || ""
+          }).then((translationRes: any) => {
+            res.data.PlotTranslated = translationRes.data.translations[0].text
+          }).catch((e) => {
+            console.log(e);
+          }).finally(() => {
+            setShowData(res.data)
+            setReady(true);
+          })
+        } else {
+          setShowData(res.data)
+          setReady(true);
+        }
+      };
+    })
   }, []);
 
   return (

@@ -7,15 +7,18 @@ import Context from "../../models/Context.model";
 import generateRandomString from "../../utilities/randomString";
 import PopUpMessage from "../../models/PopUpMessage.model";
 
+
 export default function ShowDisplay(props: any) {
   const { userData, socket } = useOutletContext<Context>();
 
   const [disableAddToFavoritesButton, setDisableAddToFavoritesButton] =
     useState<string>("");
+
   const [
     disableRemoveFromFavoritesButton,
     setDisableRemoveFromFavoritesButton,
   ] = useState<string>("");
+
   const [disableRentButton, setDisableRentButton] = useState<string>("");
   const [disableCancelRentButton, setDisableCancelRentButton] =
     useState<string>("");
@@ -23,9 +26,11 @@ export default function ShowDisplay(props: any) {
   const disableAddToFavoritesButtonRef = useRef<string>(
     disableAddToFavoritesButton
   );
+
   const disableRemoveFromFavoritesButtonRef = useRef<string>(
     disableRemoveFromFavoritesButton
   );
+  
   const disableRentButtonRef = useRef<string>(disableCancelRentButton);
   const disableCancelRentButtonRef = useRef<string>(disableCancelRentButton);
 
@@ -246,7 +251,16 @@ export default function ShowDisplay(props: any) {
       </div>
       <div className="lg:w-full p-4 flex flex-col justify-between">
         <p className="h-full text-xl dark:text-white font-light leading-9">
-            {props.showData.Plot}
+            { strings.getLanguage() != "en" && props.showData.PlotTranslated ? (
+                <>
+                    { props.showData.PlotTranslated }
+                    <span className="block text-gray-400 text-right text-base">
+                        { strings.util.translationInfo }
+                    </span>
+                </>
+            ) : (
+                props.showData.Plot
+            )}
         </p>
       </div>
     </div>
