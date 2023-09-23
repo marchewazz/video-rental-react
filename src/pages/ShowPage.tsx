@@ -21,9 +21,10 @@ export default function ShowPage() {
 
   useEffect(() => {
     ss.getShowData(showid || "").then((res: any) => {
-      console.log(res);
+      console.log(res.data);
       
-      setShowData(res.data);
+      if (res.data.Type != "movie" && res.data.Type != "series") setShowData({ Response: "False" })
+      else setShowData(res.data);
       setReady(true);
     });
   }, []);

@@ -50,7 +50,14 @@ let strings = new LocalizedStrings({
       notEnoughMoney: "You have not enough money. You need: {price}$",
       addToFavorites: "Add to favorites",
       removeFromFavorites: "Remove from favorites",
-      cancelButtonText: "Cancel rental"
+      cancelButtonText: "Cancel rental",
+      releaseDate: "Release date: ",
+      runTime: "Runtime: ",
+      totalSeasons: "Seasons: ",
+      ratingCategory: "Rating: ",
+      ratingValue: "{rating}/{votes} votes",
+      series: "SERIES",
+      movie: "MOVIE"
     },
     addMoneyPage: {
       title: "Add money",
@@ -134,7 +141,14 @@ let strings = new LocalizedStrings({
       notEnoughMoney: "Nie masz wystaraczająco środków. Potrzebujesz: {price}$",
       addToFavorites: "Dodaj do ulubionych",
       removeFromFavorites: "Usuń z ulubionych",
-      cancelButtonText: "Usuń wypożyczenie"
+      cancelButtonText: "Usuń wypożyczenie",
+      releaseDate: "Data wydania: ",
+      runTime: "Czas trwania: ",
+      totalSeasons: "Sezony: ",
+      ratingCategory: "Ocena: ",
+      ratingValue: "{rating}/{votes} głosów",
+      series: "SERIAL",
+      movie: "FILM"
     },
     addMoneyPage: {
       title: "Dodaj środki",
