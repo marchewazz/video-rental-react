@@ -1,4 +1,5 @@
 export default interface List {
-    name: string,
-    listShows: string[]
+    listID: string;
+    listName: string,
+    listShows: any[]
 }

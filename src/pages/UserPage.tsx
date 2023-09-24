@@ -3,7 +3,8 @@ import Context from "../models/Context.model";
 import { useState } from "react";
 import UserEditForm from "../components/UserPage/UserEditForm";
 import UserDataDisplay from "../components/UserPage/UserDataDisplay";
-import UserLists from "../components/UserPage/UserLists";
+import UserDataLists from "../components/UserPage/UserDataLists";
+
 import strings from "../utilities/strings";
 
 export default function UserPage() {
@@ -25,7 +26,7 @@ export default function UserPage() {
                         ) : (
                             <UserDataDisplay />
                         )}
-                        <UserLists />
+                        <UserDataLists />
                     </div>
                 ) : (
                     <p>
