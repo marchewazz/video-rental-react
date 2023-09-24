@@ -3,4 +3,5 @@ export default interface Invitation {
     invitationDate: string;
     senderID: string;
     receiverID: string;
+    senderNick?: string;
 }
