@@ -45,6 +45,16 @@ select {
   font: inherit;
 }
 
+select::-ms-expand {
+  display: none;
+}
+
+select {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+
 @layer components {
   .main-background {
     @apply dark:bg-[#000] transition-all duration-300

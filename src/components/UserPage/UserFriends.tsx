@@ -42,20 +42,22 @@ export default function UserFriends() {
         setReady(true);
       }
     }
-  }, [userData, userDataReady]);
+  }, [userData.userFriends, userDataReady]);
 
   return (
-    <div>
+    <div className="flex flex-col items-center">
       {ready ? (
         <>
             {friendsList?.length ? (
-                <div>
+                <>
                     { friendsList.map((friend: Friend, index: number) => {
                         return <FriendDisplay friend={friend} key={index} />
                     })}
-                </div>
+                </>
             ) : (
-                <p>No friends</p>
+              <p className="text-center text-3xl lg:text-5xl text-gray-600 dark:text-white">
+                { strings.profilePage.noFriends }
+              </p>
             )}
             </>
       ) : (

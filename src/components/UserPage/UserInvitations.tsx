@@ -4,6 +4,7 @@ import Context from "../../models/Context.model";
 import { useOutletContext } from "react-router-dom";
 import UsersService from "../../services/UsersService.service";
 import InvitationDisplay from "./InvitationDisplay";
+import strings from "../../utilities/strings";
 
 export default function UserInvitaions() {
     
@@ -38,20 +39,22 @@ export default function UserInvitaions() {
         setReady(true);
       }
     }
-  }, [userData, userDataReady]);
+  }, [userData.userInvitations, userDataReady]);
 
   return (
-    <div>
+    <div className="flex flex-col items-center">
       {ready ? (
         <>
             {invitations?.length ? (
-                <div>
+                <>
                     { invitations.map((invitation: Invitation, index: number) => {
                         return <InvitationDisplay invitation={invitation} key={index} />
                     })}
-                </div>
+                </>
             ) : (
-                <p>No friends</p>
+                <p className="text-center text-3xl lg:text-5xl text-gray-600 dark:text-white">
+                  { strings.profilePage.noInvitations }
+                </p>
             )}
             </>
       ) : (

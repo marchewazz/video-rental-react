@@ -37,12 +37,12 @@ export default function FriendDisplay(props: { friend: Friend }) {
   }, [disableDeleteFriendButton]);
 
   return (
-    <div className="flex items-center w-full lg:w-1/2 justify-between">
+    <div className="flex items-center w-4/5 lg:w-1/2 justify-between mb-5">
       <div className="flex flex-col">
-        <Link to={`/user/${props.friend.friendID}`} className="underline text-xl">
+        <Link to={`/user/${props.friend.friendID}`} className="underline text-xl dark:text-white">
           {props.friend.friendNick}
         </Link>
-          <span className="text-gray-600 md:text-xl lg:hidden">
+          <span className="text-gray-600 md:text-xl lg:hidden dark:text-white">
           {strings.formatString(strings.otherUserPage.friendsText, {
             date: new Date(props.friend.friendsSinceDate)
               .toLocaleString()
@@ -50,15 +50,14 @@ export default function FriendDisplay(props: { friend: Friend }) {
           })}
           </span>
       </div>
-      
-      <span className="text-gray-600 md:text-xl hidden lg:block">
+      <span className="text-gray-600 md:text-xl hidden lg:block dark:text-white">
         {strings.formatString(strings.otherUserPage.friendsText, {
           date: new Date(props.friend.friendsSinceDate)
             .toLocaleString()
             .split(",")[0],
         })}
       </span>
-      <button className="bg-red-700 disabled:bg-gray-700 rounded-lg w-10 h-10 flex items-center justify-center" disabled={disableDeleteFriendButton != ""} onClick={deleteFriend}>
+      <button className="bg-red-700 disabled:bg-gray-700 rounded-lg w-10 h-10 flex items-center justify-center hover:bg-red-900 transition-all duration-200 ease-in-out" disabled={disableDeleteFriendButton != ""} onClick={deleteFriend}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"

@@ -45,12 +45,12 @@ export default function UserRentals() {
 
     return (
         <div>
-            <div>
+            <div className="grid grid-cols-2 my-5">
                 <div>
-                    <label htmlFor="active">
-                        active
+                    <input className="peer hidden" type="radio" name="rentalsLists" id="active" checked={rentalsTab === "active"} onChange={() => setRentalsTab("active")} />
+                    <label className="profile-tab-button rounded-l-full" htmlFor="active">
+                        { strings.profilePage.nav.rentalsActive }
                     </label>
-                    <input type="radio" name="rentalsLists" id="active" checked={rentalsTab === "active"} onChange={() => setRentalsTab("active")} />
                 </div>
                 {/* <div>
                     <label htmlFor="expired">
@@ -59,10 +59,10 @@ export default function UserRentals() {
                     <input type="radio" name="rentalsLists" id="expired" checked={rentalsTab === "expired"} onChange={() => setRentalsTab("expired")} />
                 </div> */}
                 <div>
-                    <label htmlFor="cancelled">
-                        cancelled
+                    <input className="peer hidden" type="radio" name="rentalsLists" id="cancelled" checked={rentalsTab === "cancelled"} onChange={() => setRentalsTab("cancelled")} />
+                    <label className="profile-tab-button rounded-r-full" htmlFor="cancelled">
+                        { strings.profilePage.nav.rentalsCancelled }
                     </label>
-                    <input type="radio" name="rentalsLists" id="cancelled" checked={rentalsTab === "cancelled"} onChange={() => setRentalsTab("cancelled")} />
                 </div>
             </div>
             <div>
@@ -74,11 +74,11 @@ export default function UserRentals() {
                             })
                         ) : (
                             rentalsTab === "active" ? (
-                                <p>
+                                <p className="text-center text-3xl lg:text-5xl text-gray-600 dark:text-white">
                                     { strings.profilePage.emptyActiveRentalsLists }
                                 </p>
                             ) : (
-                                <p>
+                                <p className="text-center text-3xl lg:text-5xl text-gray-600 dark:text-white">
                                     { strings.profilePage.emptyCancelledRentalsLists }
                                 </p>
                             )

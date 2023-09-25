@@ -46,8 +46,9 @@ export default function UserLists() {
 
     return (
         <div>
-            <div>
-                <select onChange={(e) => setSelectedListIndex(Number(e.target.value))}>
+            <div className="flex justify-center mb-5">
+                <select onChange={(e) => setSelectedListIndex(Number(e.target.value))}
+                className="bg-light-green rounded-full text-white py-2 px-14 text-xl">
                     { userData.userLists.map((list: List, index: number) => {
                         return <option value={index} selected={index === selectedListIndex}>
                             { list.listName === "default-favorites" ? (
@@ -70,7 +71,7 @@ export default function UserLists() {
                             { selectedList?.listShows.map((show: any, index: number) => {
                                 return <Link to={`/show/${show.showID}`} key={index}
                                 className="group hover:scale-110 transition-all duration-200 ease-in-out">
-                                    <div className="relative overflow-hidden rounded-3xl border-2 flex border-light-green w-full h-full">
+                                    <div className="relative overflow-hidden rounded-3xl border-2 flex border-light-green w-full h-full max-h-[400px]">
                                         <img className={`${!show.Poster || show.Poster == "N/A" ? "justify-self-center self-center" : "w-full h-full" } rounded-3xl`}
                                         src={!show.Poster || show.Poster == "N/A" ? "images/no-image-icon.png" : show.Poster} />
                                         { userData.userRentals.some((rental: any) => rental["rentalShowID"] === show.showID && rental["rentalStatus"] === "active") ? (
@@ -86,7 +87,7 @@ export default function UserLists() {
                             }) }
                         </div>
                     ) : (
-                        <p>
+                        <p className="text-center text-3xl lg:text-5xl text-gray-600 dark:text-white">
                             { strings.profilePage.emptyList }
                         </p>
                     )}
