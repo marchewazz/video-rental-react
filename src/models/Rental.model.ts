@@ -2,5 +2,10 @@ export default interface Rental {
     rentalID: string;
     rentalStatus: string;
     rentalShowID: string;
-    rentalExpiring: Date;
+    rentalShowTitle?: string;
+    rentalShowPoster?: string;
+    rentalStart?: string;
+    rentalExpiring?: string;
+    rentalCancelledDate?: string;
+    rentalExpiredDate?: string;
 }

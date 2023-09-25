@@ -7,6 +7,7 @@
 @import "dark-mode-toggler/main";
 @import "navigation/main";
 @import "show-page/main";
+@import "profile-page/main";
 
 *,
 *::before,
@@ -43,6 +44,16 @@ textarea,
 select {
   font: inherit;
 }
+
+select::-ms-expand {
+  display: none;
+}
+
+select {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
 
 @layer components {
   .main-background {

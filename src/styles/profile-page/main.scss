@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .profile-data-category {
+        @apply show-stat-category
+    }
+    .profile-data-value {
+        @apply show-stat-value
+    }
+    .list-show-rented-etiquete {
+        @apply top-[45px] left-[-40px] w-[185px]
+    }
+    .profile-tab-button {
+        @apply bg-light-green block w-full py-5 text-xl lg:text-2xl text-center font-bold text-white cursor-pointer duration-300 transition-all ease-in-out 
+        peer-checked:bg-teal dark:text-earie-black
+    }
+}

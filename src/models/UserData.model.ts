@@ -14,5 +14,6 @@ export default interface UserData {
     userRentals: Rental[];
     userInvitations: Intivation[];
     userFriends: Friend[],
-    userTokens: Token[]
+    userTokens: Token[],
+    userCreateDate: number;
 }

@@ -36,10 +36,10 @@ export default function OtherUserPage() {
     
 
     return (
-        <main>
+        <main className="main-background">
             { ready && userDataReady && response ? (
                 <>
-                    { response.message === "userData" ? (
+                    { response.message === "userData" && response.userData ? (
                         <OtherUserDisplay otherUserData={response.userData} />
                     ) : (
                         <p>
