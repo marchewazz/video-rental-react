@@ -65,8 +65,9 @@ let strings = new LocalizedStrings({
       buttonText: "Confirm"
     },
     otherUserPage: {
+      title: "{nick}'s profile",
       notFound: "Not found user with this ID",
-      friendsText: "You are friends since {date}",
+      friendsText: "You are friends since ",
       deleteButton: "Delete friend",
       cancelButton: "Delete invitation",
       invitationText: "You got an invitation",
@@ -96,6 +97,7 @@ let strings = new LocalizedStrings({
       userCreateDate: "User since: ",
       emptyList: "List is empty",
       favorites: "Favorites",
+      friendsText: "You are friends since {date}",
       emptyActiveRentalsLists: "No active rentals",
       emptyCancelledRentalsLists: "No cancelled rentals",
       noInvitations: "No invitations",
@@ -177,8 +179,9 @@ let strings = new LocalizedStrings({
       buttonText: "Zatwierdź"
     },
     otherUserPage: {
+      title: "Profil użytkownika {nick}",
       notFound: "Nie znaleziono użytkownika o tym ID",
-      friendsText: "Jesteście znajomymi od {date}",
+      friendsText: "Jesteście znajomymi od ",
       deleteButton: "Usuń znajomego",
       cancelButton: "Usuń zaproszenie",
       invitationText: "Masz zaproszenie",
@@ -212,6 +215,7 @@ let strings = new LocalizedStrings({
       emptyCancelledRentalsLists: "Brak anulowanych wypożyczeń",
       noInvitations: "Brak zaproszeń",
       noFriends: "Brak znajomych",
+      friendsText: "Jesteście znajomymi od {date}",
       rentalStarted: "Od: ",
       rentalEnding: "Kończy się: ",
       rentalCancelled: "Anulowano: ",

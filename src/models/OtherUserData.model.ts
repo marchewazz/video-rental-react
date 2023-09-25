@@ -8,4 +8,5 @@ export default interface OtherUserData {
     userLists: List[];
     userRentals: Rental[];
     userFriends: Friend[],
+    userCreateDate: string;
 }

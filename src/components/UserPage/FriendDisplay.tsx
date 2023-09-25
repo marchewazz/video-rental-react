@@ -43,7 +43,7 @@ export default function FriendDisplay(props: { friend: Friend }) {
           {props.friend.friendNick}
         </Link>
           <span className="text-gray-600 md:text-xl lg:hidden dark:text-white">
-          {strings.formatString(strings.otherUserPage.friendsText, {
+          {strings.formatString(strings.profilePage.friendsText, {
             date: new Date(props.friend.friendsSinceDate)
               .toLocaleString()
               .split(",")[0],
@@ -51,7 +51,7 @@ export default function FriendDisplay(props: { friend: Friend }) {
           </span>
       </div>
       <span className="text-gray-600 md:text-xl hidden lg:block dark:text-white">
-        {strings.formatString(strings.otherUserPage.friendsText, {
+        {strings.formatString(strings.profilePage.friendsText, {
           date: new Date(props.friend.friendsSinceDate)
             .toLocaleString()
             .split(",")[0],
