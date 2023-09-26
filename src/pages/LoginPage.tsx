@@ -13,6 +13,8 @@ export default function LoginPage() {
     const [passwordMessage, setPasswordMessage] = useState<string>("")
     const [loginMessage, setLoginMessage] = useState<string>("")
 
+    const [disabledButton, setDisabledButton] = useState(false)
+
     const navigate: NavigateFunction = useNavigate();
 
     function submitForm(event: React.FormEvent<HTMLFormElement>): void {
@@ -33,7 +35,7 @@ export default function LoginPage() {
             }
 
             const as: AuthService = new AuthService()
-            
+            setDisabledButton(true)
             as.loginUser(userData).then(async (res: any) => {
                 console.log(res);
                 const message: unknown = res.data.message;
@@ -43,35 +45,37 @@ export default function LoginPage() {
                 } else {
                     setLoginMessage(strings.loginPage.form[message as keyof typeof strings.loginPage.form] || "")
                 }
+                setDisabledButton(false)
             }).catch((e) => {
                 setLoginMessage(strings.loginPage.form.errorMessage || "")
+                setDisabledButton(false)
             }) 
         }
     }
 
     return (
-        <main>
-            <div className="container">
-                <p>
+        <main className="main-background">
+            <div className="container py-10 flex flex-col">
+                <p className="font-semibold text-6xl italic text-dark-green dark:text-light-green mb-10">
                     { strings.loginPage.title }
                 </p>
-                <form onSubmit={submitForm}>
+                <form onSubmit={submitForm} className="flex flex-col self-center">
                     <div>
-                        <input type="text" name="nick" onChange={(e) => {setNickMessage(""); setNick(e.target.value)}} />
-                        <p>
+                        <input className="text-input w-full" placeholder={strings.loginPage.form.passEmailOrNick}  type="text" name="nick" onChange={(e) => {setLoginMessage(""); setNickMessage(""); setNick(e.target.value)}} />
+                        <p className="px-4 text-red-700 font-bold">
                             { nickMessage }
                         </p>
                     </div>
-                    <div>
-                        <input type="password" name="passoword" onChange={(e) => {setPasswordMessage(""); setPassword(e.target.value)}} />
-                        <p>
+                    <div className="my-5">
+                        <input className="text-input w-full" placeholder={strings.loginPage.form.passPassword} type="password" name="password" onChange={(e) => {setLoginMessage(""); setPasswordMessage(""); setPassword(e.target.value)}} />
+                        <p className="px-4 text-red-700 font-bold">
                             { passwordMessage }
                         </p>
                     </div>
-                    <p>
+                    <p className="px-4 mb-5 text-red-700 font-bold">
                         { loginMessage }
                     </p>
-                    <input type="submit" value={strings.loginPage.form.submitButtonText} />
+                    <input className="accept-button cursor-pointer" disabled={disabledButton} type="submit" value={strings.loginPage.form.submitButtonText} />
                 </form>
             </div>
         </main>

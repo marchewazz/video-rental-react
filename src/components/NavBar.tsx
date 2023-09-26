@@ -119,10 +119,10 @@ export default function NavBar(props: {
           </>
         ) : (
           <>
-            <div className="nav-item-clickable">
+            <div className="nav-item-clickable parallelogram">
               <Link to="/login">{strings.nav.login}</Link>
             </div>
-            <div className="nav-item-clickable">
+            <div className="nav-item-clickable parallelogram">
               <Link to="/register">{strings.nav.register}</Link>
             </div>
             <DarkModeToggler

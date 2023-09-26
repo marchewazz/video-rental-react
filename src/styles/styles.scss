@@ -70,7 +70,7 @@ select {
     disabled:bg-gray-400 disabled:border-earie-black dark:disabled:border-white disabled:text-white
   }
   .text-input {
-    @apply border-b-2 border-gray-400 px-4 text-xl bg-transparent dark:text-white dark:border-white outline-none
+    @apply border-b-2 border-gray-400 px-4 text-xl bg-transparent dark:text-white dark:border-white outline-none transition-all duration-200 ease-in-out
     focus:border-light-green dark:focus:border-light-green
   }
 }

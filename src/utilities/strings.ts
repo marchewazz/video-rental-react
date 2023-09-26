@@ -17,6 +17,9 @@ let strings = new LocalizedStrings({
     registerPage: {
       title: "Register!",
       form: {
+        repeatPassword: "Powtórz hasło...",
+        passEmail: "Podaj email...",
+        passNick: "Podaj nick...",
         missingNick: "Pass nick",
         atSignInNick: "Nick cannot contain at-sign",
         missingEmail: "Pass email",
@@ -35,6 +38,8 @@ let strings = new LocalizedStrings({
     loginPage: {
       title: "Login!",
       form: {
+        passPassword: "Podaj hasło...",
+        passEmailOrNick: "Podaj email lub nick...",
         missingNickOrEmail: "Pass nick or email",
         missingPassword: "Pass password",
         emailNotExists: "There is no account with this email",
@@ -131,6 +136,9 @@ let strings = new LocalizedStrings({
     registerPage: {
       title: "Zarejestruj się!",
       form: {
+        passEmail: "Podaj email...",
+        repeatPassword: "Powtórz hasło...",
+        passNick: "Podaj nick...",
         missingNick: "Podaj nick",
         atSignInNick: "Nick nie może zawierać znaku @",
         missingEmail: "Podaj email",
@@ -149,6 +157,8 @@ let strings = new LocalizedStrings({
     loginPage: {
       title: "Zaloguj się!",
       form: {
+        passPassword: "Podaj hasło...",
+        passEmailOrNick: "Podaj email lub hasło...",
         missingNickOrEmail: "Podaj nick lub email",
         missingPassword: "Podaj hasło",
         emailNotExists: "Nie ma konta z takim adresem email",
