@@ -61,11 +61,17 @@ select {
   }
   .accept-button {
     @apply bg-green-500 border-2 border-dark-green text-dark-green p-3 rounded-2xl transition-all duration-300
-    hover:bg-dark-green hover:text-green-500
+    enabled:hover:bg-dark-green enabled:hover:text-green-500
+    disabled:bg-gray-400 disabled:border-earie-black dark:disabled:border-white disabled:text-white
   }
   .cancel-button {
     @apply bg-red-300 border-2 border-red-800 text-red-800 p-3 rounded-2xl transition-all duration-300
-    hover:bg-red-800 hover:text-red-300
+    enabled:hover:bg-red-800 enabled:hover:text-red-300
+    disabled:bg-gray-400 disabled:border-earie-black dark:disabled:border-white disabled:text-white
+  }
+  .text-input {
+    @apply border-b-2 border-gray-400 px-4 text-xl bg-transparent dark:text-white dark:border-white outline-none
+    focus:border-light-green dark:focus:border-light-green
   }
 }
 

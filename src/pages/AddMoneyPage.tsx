@@ -89,23 +89,31 @@ export default function AddMoneyPage() {
   
 
   return (
-    <main>
-      {userDataReady ? (
-        <>
-          <p>{strings.addMoneyPage.title}</p>
-          <p>
-            {strings.formatString(strings.addMoneyPage.balanceInfo, {
-              balance: userData.userBalance,
-            })}
-          </p>
-          <input type="text" onChange={formatInput} value={inputMoney} />
-          <button disabled={Number(inputMoney) == 0 || disableAddMoneyButton != ""} onClick={addMoney}>
-            {strings.addMoneyPage.buttonText}
-          </button>
-        </>
-      ) : (
-        <p>Loading...</p>
-      )}
+    <main className="main-background">
+      <div className="container py-10 flex flex-col">
+        {userDataReady ? (
+          <>
+            <p className="font-semibold text-6xl italic text-dark-green dark:text-light-green mb-10">
+              {strings.addMoneyPage.title}
+            </p>
+            <p className="font-semibold text-3xl italic text-light-green mb-4">
+              {strings.formatString(strings.addMoneyPage.balanceInfo, {
+                balance: userData.userBalance,
+              })}
+            </p>
+            <div className="flex flex-col items-center sm:flex-row">
+              <input className="text-input text-center sm:mr-5" type="text" onChange={formatInput} value={inputMoney} />
+              <button className="accept-button px-10 mt-5 sm:mt-0"
+              disabled={Number(inputMoney) == 0 || disableAddMoneyButton != ""} onClick={addMoney}>
+                {strings.addMoneyPage.buttonText}
+              </button>
+            </div>
+          </>
+        ) : (
+          <p>Loading...</p>
+        )}
+      </div>
+      
     </main>
   );
 }
