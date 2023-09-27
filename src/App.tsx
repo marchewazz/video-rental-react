@@ -27,6 +27,7 @@ import UserData from "./models/UserData.model";
 import UserDataResponse from "./models/responses/UserDataResponse.model";
 import useWindowDimensions from "./hooks/useWindowDimensions";
 import SearchPage from "./pages/SearchPage";
+import Footer from "./components/Footer";
 
 function AppLayout() {
 
@@ -99,6 +100,7 @@ function AppLayout() {
       <NavBar userData={userData} isUserLogged={isUserLogged} logoutFunction={logout} onlyNonLoggedPaths={onlyNonLoggedPaths} darkMode={darkMode} darkModeChangeFunction={changeDarkMode} width={width} height={height} />
       <Outlet context={{socket, userData, isUserLogged, userDataReady, darkMode}} />
       <PopUpContainer socket={socket} />
+      <Footer />
     </div>
   );
 }

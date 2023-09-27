@@ -4,7 +4,7 @@
 
 @layer components {
     .nav-item {
-      @apply font-bold text-dark-green lg:h-full flex items-center transition-all ease-in-out duration-300
+      @apply font-bold text-white lg:h-full flex items-center transition-all ease-in-out duration-300
       dark:text-light-green
     }
     .nav-item-clickable {

@@ -80,8 +80,8 @@ export default function NavBar(props: {
   
 
   return (
-    <nav className="border-b-2 border-light-green h-[100px] dark:bg-earie-black transition-all duration-300">
-      <div className="container flex justify-between items-center h-full">
+    <nav className="border-b-2 border-light-green h-[100px] bg-dark-green dark:bg-earie-black transition-all duration-300">
+      <div className="container flex justify-between items-center h-full transition-all duration-300">
         <div>
           <Link to="/">
             <img className="w-16 m-2 dark:invert" src="/images/logo.png" />
