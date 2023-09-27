@@ -3,7 +3,7 @@ export default function DarkModeToggler(props: {
   darkModeChangeFunction: React.ChangeEventHandler<HTMLInputElement>;
 }) {
   return (
-    <div className="w-fit ml-4 lg:ml-0">
+    <div className="w-fit ml-4 mt-4 lg:ml-0 lg:mt-0">
       <label htmlFor="dark-mode-toggler">
         <div className="dark-mode-toggler-label">
           {props.darkMode ? (
