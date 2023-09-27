@@ -22,24 +22,26 @@ export default function NavBar(props: {
 
   const links = (
     <>
-      {props.userData ? (
-        <>
-          <div className="nav-item flex items-center pl-4 lg:pl-0">
+      { !props.onlyNonLoggedPaths.includes(location.pathname) ? (
+          <>
+            {props.userData ? (
+            <>
+          <div className="nav-item flex items-center pl-4 mb-2 lg:pl-0">
             {strings.formatString(strings.nav.balanceInfo, {
               balance: props.userData.userBalance,
             })}
           </div>
-          <div className={`nav-item-clickable ${props.width > 1024 ? "parallelogram" : ""}`}>
+          <div className={`nav-item-clickable p-4 ${props.width > 1024 ? "parallelogram" : ""}`}>
             <Link
-              className="h-full w-full flex items-center pl-4 lg:pl-0"
+              className="h-full w-full flex items-center"
               to="/add-money"
             >
               {strings.nav.addMoney}
             </Link>
           </div>
-          <div className={`nav-item-clickable ${props.width > 1024 ? "parallelogram" : ""}`}>
+          <div className={`nav-item-clickable p-4 ${props.width > 1024 ? "parallelogram" : ""}`}>
             <Link
-              className="h-full w-full flex items-center pl-4 lg:pl-0"
+              className="h-full w-full flex items-center"
               to="/myprofile"
             >
               {" "}
@@ -68,9 +70,20 @@ export default function NavBar(props: {
             </svg>
           </button>
         </>
-      ) : (
-        <p>Loading...</p>
-      )}
+        ) : (
+          <p>Loading...</p>
+        )}
+        </>
+        ) : (
+          <>
+            <div className={`nav-item-clickable p-4 ${props.width > 1024 ? "parallelogram" : ""}`}>
+              <Link to="/login">{strings.nav.login}</Link>
+            </div>
+            <div className={`nav-item-clickable p-4 ${props.width > 1024 ? "parallelogram" : ""}`}>
+              <Link to="/register">{strings.nav.register}</Link>
+            </div>
+          </>
+        )}
     </>
   );
 
@@ -87,7 +100,6 @@ export default function NavBar(props: {
             <img className="w-16 m-2 dark:invert" src="/images/logo.png" />
           </Link>
         </div>
-        {!props.onlyNonLoggedPaths.includes(location.pathname) ? (
           <>
             {props.width < 1024 ? (
               <button onClick={() => setShowMobileNavigation(true)}>
@@ -97,7 +109,7 @@ export default function NavBar(props: {
                   viewBox="0 0 24 24"
                   stroke-width="1.5"
                   stroke="currentColor"
-                  className="w-10 h-10 text-black dark:text-light-green"
+                  className="w-10 h-10 text-white dark:text-light-green"
                 >
                   <path
                     stroke-linecap="round"
@@ -117,20 +129,6 @@ export default function NavBar(props: {
               </>
             )}
           </>
-        ) : (
-          <>
-            <div className="nav-item-clickable parallelogram">
-              <Link to="/login">{strings.nav.login}</Link>
-            </div>
-            <div className="nav-item-clickable parallelogram">
-              <Link to="/register">{strings.nav.register}</Link>
-            </div>
-            <DarkModeToggler
-              darkMode={props.darkMode}
-              darkModeChangeFunction={props.darkModeChangeFunction}
-            />
-          </>
-        )}
       </div>
       {showMobileNavigation ? (
         <>
@@ -147,7 +145,7 @@ export default function NavBar(props: {
             </button>
             <div>
               <Link to="/">
-                <img className="w-16 m-2 dark:invert" src="images/logo.png" />
+                <img className="w-16 ml-4 mb-5 dark:invert" src="images/logo.png" />
               </Link>
             </div>
             {links}
