@@ -116,6 +116,12 @@ let strings = new LocalizedStrings({
         rentalsCancelled: "Cancelled"
       }
     },
+    seriesPage: {
+      title: "Series page could be here but API doesn't allow search only for series :("
+    },
+    moviesPage : {
+      title: "Series page could be here but API doesn't allow search only for movies :("
+    },
     footer: {
       shortcuts: "Shortcuts",
       usefulLinks: "Useful links",
@@ -245,6 +251,12 @@ let strings = new LocalizedStrings({
         rentalsActive: "Aktywne",
         rentalsCancelled: "Anulowane"
       }
+    },
+    seriesPage: {
+      title: "Tu mogłaby być strona z serialami ale API nie pozwala szukać tylko seriali :("
+    },
+    moviesPage : {
+      title: "Tu mogłaby być strona z serialami ale API nie pozwala szukać tylko filmów :("
     },
     footer: {
       shortcuts: "Na skróty",
