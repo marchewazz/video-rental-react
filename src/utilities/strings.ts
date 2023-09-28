@@ -119,8 +119,16 @@ let strings = new LocalizedStrings({
     seriesPage: {
       title: "Series page could be here but API doesn't allow search only for series :("
     },
-    moviesPage : {
+    moviesPage: {
       title: "Series page could be here but API doesn't allow search only for movies :("
+    },
+    cookiesPage: {
+      titleDefault: "Cookies infomation could be here but it's not as it's portoflio app...",
+      titleFromPrivacy: "...same with cookies"
+    },
+    privacyPage: {
+      titleDefault: "Privacy policy could be here but it's not as it's portoflio app...",
+      titleFromCookies: "...same with privacy policy"
     },
     footer: {
       shortcuts: "Shortcuts",
@@ -257,6 +265,14 @@ let strings = new LocalizedStrings({
     },
     moviesPage : {
       title: "Tu mogłaby być strona z serialami ale API nie pozwala szukać tylko filmów :("
+    },
+    cookiesPage: {
+      titleDefault: "Infomacje o ciastkach byłyby tu ale to aplikacja do portfolio...",
+      titleFromPrivacy: "...tak samo z ciastkami"
+    },
+    privacyPage: {
+      titleDefault: "Infomacje o polityce prywatności byłyby tu ale to aplikacja do portfolio...",
+      titleFromCookies: "...tak samo z polityką prywatności"
     },
     footer: {
       shortcuts: "Na skróty",

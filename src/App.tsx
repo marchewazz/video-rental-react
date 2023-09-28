@@ -30,6 +30,8 @@ import SearchPage from "./pages/SearchPage";
 import Footer from "./components/Footer";
 import MoviesPage from "./pages/MoviesPage";
 import SeriesPage from "./pages/SeriesPage";
+import CookiesPage from "./pages/CookiesPage";
+import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 
 function AppLayout() {
 
@@ -150,6 +152,14 @@ export const router = createBrowserRouter([
       {
         path: "/series",
         element: <SeriesPage />
+      },
+      {
+        path: "/cookies",
+        element: <CookiesPage />
+      },
+      {
+        path: "/privacy-policy",
+        element: <PrivacyPolicyPage />
       },
     ],
   },

@@ -1,9 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import strings from "../utilities/strings";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebookF, faInstagram, faTwitter } from "@fortawesome/free-brands-svg-icons";
 
 export default function Footer() {
+
+    const location = useLocation()    
+
   return (
     <footer className="py-5 lg:py-10 border-t-2 border-light-green bg-dark-green dark:bg-earie-black transition-all duration-300">
       <div className="container flex flex-wrap justify-between items-center h-full">
@@ -30,10 +33,12 @@ export default function Footer() {
                 { strings.footer.usefulLinks }
             </h4>
             <div className="flex flex-col">
-                <Link to="/privacy-policy" className="footer-link mb-3">
+                <Link to="/privacy-policy" className="footer-link mb-3"
+                state={{ fromCookies: location.pathname === "/cookies"}}>
                     { strings.footer.privacyPolicy }
                 </Link>
-                <Link to="/cookies" className="footer-link">
+                <Link to="/cookies" className="footer-link"
+                state={{ fromPrivacy: location.pathname === "/privacy-policy"}}>
                     { strings.footer.cookies }
                 </Link>
             </div>
