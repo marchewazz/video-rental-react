@@ -28,6 +28,11 @@ import UserDataResponse from "./models/responses/UserDataResponse.model";
 import useWindowDimensions from "./hooks/useWindowDimensions";
 import SearchPage from "./pages/SearchPage";
 import Footer from "./components/Footer";
+import MoviesPage from "./pages/MoviesPage";
+import SeriesPage from "./pages/SeriesPage";
+import CookiesPage from "./pages/CookiesPage";
+import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 function AppLayout() {
 
@@ -140,6 +145,26 @@ export const router = createBrowserRouter([
       {
         path: "/search",
         element: <SearchPage />
+      },
+      {
+        path: "/movies",
+        element: <MoviesPage />
+      },
+      {
+        path: "/series",
+        element: <SeriesPage />
+      },
+      {
+        path: "/cookies",
+        element: <CookiesPage />
+      },
+      {
+        path: "/privacy-policy",
+        element: <PrivacyPolicyPage />
+      },
+      {
+        path: "/*",
+        element: <NotFoundPage />
       },
     ],
   },
