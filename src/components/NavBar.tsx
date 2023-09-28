@@ -26,7 +26,7 @@ export default function NavBar(props: {
           <>
             {props.userData ? (
             <>
-          <div className="nav-item flex items-center pl-4 mb-2 lg:pl-0">
+          <div className="nav-item flex items-center pl-4 mb-2 lg:mb-0 lg:pl-0">
             {strings.formatString(strings.nav.balanceInfo, {
               balance: props.userData.userBalance,
             })}
