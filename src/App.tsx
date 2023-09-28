@@ -32,6 +32,7 @@ import MoviesPage from "./pages/MoviesPage";
 import SeriesPage from "./pages/SeriesPage";
 import CookiesPage from "./pages/CookiesPage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 function AppLayout() {
 
@@ -160,6 +161,10 @@ export const router = createBrowserRouter([
       {
         path: "/privacy-policy",
         element: <PrivacyPolicyPage />
+      },
+      {
+        path: "/*",
+        element: <NotFoundPage />
       },
     ],
   },
