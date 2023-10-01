@@ -5,6 +5,9 @@ import reportWebVitals from './reportWebVitals';
 
 import "./styles/styles.css";
 
+import 'swiper/css';
+import 'swiper/css/navigation';
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
