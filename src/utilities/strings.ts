@@ -14,6 +14,9 @@ let strings = new LocalizedStrings({
     mainPage: {
       hero: {
         rentNow: "Rent now"
+      },
+      mostPopularShowsSwiper: {
+        title: "Most popular"
       }
     },
     registerPage: {
@@ -157,6 +160,9 @@ let strings = new LocalizedStrings({
     mainPage: {
       hero: {
         rentNow: "Wypożcz teraz"
+      },
+      mostPopularShowsSwiper: {
+        title: "Najpopularniejsze"
       }
     },
     registerPage: {

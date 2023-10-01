@@ -79,7 +79,6 @@ export default function Hero() {
                     1024: {
                         autoplay: {
                             delay: 10000,
-
                         }
                     }
                 }}
