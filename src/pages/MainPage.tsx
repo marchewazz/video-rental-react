@@ -14,7 +14,7 @@ export default function MainPage() {
 
     return (
         <main className="main-background">
-            {/* <Hero /> */}
+            <Hero />
             <div className="container py-10">
                 <p className="text-4xl lg:text-6xl font-extrabold text-dark-green dark:text-light-green italic mb-5">
                     { strings.mainPage.mostPopularShowsSwiper.title }
