@@ -12,7 +12,12 @@ let strings = new LocalizedStrings({
       searchInfo: "Only English or original names"
     },
     mainPage: {
-      title: "MAIN PAGE",
+      hero: {
+        rentNow: "Rent now"
+      },
+      mostPopularShowsSwiper: {
+        title: "Most popular"
+      }
     },
     registerPage: {
       title: "Register!",
@@ -153,7 +158,12 @@ let strings = new LocalizedStrings({
       searchInfo: "Tylko angielskie lub oryginalne nazwy"
     },
     mainPage: {
-      title: "STRONA GŁÓWNA",
+      hero: {
+        rentNow: "Wypożcz teraz"
+      },
+      mostPopularShowsSwiper: {
+        title: "Najpopularniejsze"
+      }
     },
     registerPage: {
       title: "Zarejestruj się!",
