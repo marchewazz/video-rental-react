@@ -55,7 +55,7 @@ export default function Hero() {
     
 
     return (
-        <header className="bg-black h-[calc(100vh-100px)] lg:h-auto">
+        <header className="bg-black h-[calc(100vh-100px)] lg:h-auto lg:min-h-[600px]">
             { ready ? (
                 <Swiper
                 className="relative h-full"
@@ -74,13 +74,12 @@ export default function Hero() {
                 loop={true}
                 autoplay={{
                     delay: 3000,
-                    disableOnInteraction: false
                 }}
                 breakpoints={{
                     1024: {
                         autoplay: {
                             delay: 10000,
-                            disableOnInteraction: false
+
                         }
                     }
                 }}
