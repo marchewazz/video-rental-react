@@ -54,7 +54,7 @@ export default function MostPopularShowsSwiper() {
     return (
         <>
             { userDataReady && ready ? (
-                <Swiper className="w-full"
+                <Swiper className="w-full cursor-grab"
                 slidesPerView={1.7}
                 spaceBetween={20}
                 breakpoints={{
