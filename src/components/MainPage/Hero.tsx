@@ -20,10 +20,9 @@ export default function Hero() {
     const paginationRef = useRef(null)
 
     useEffect(() => {
-
         let tempRecomendations: any[] = []
-
-        recomendationsIDs.forEach((recomendationID: any, index: number) => {
+        
+        Promise.all(recomendationsIDs.map((recomendationID: string, index: number) => {
             ss.getShowData(recomendationID).then((res: any) => {
                 if (strings.getLanguage() != "en") {
                     translate({
@@ -36,21 +35,21 @@ export default function Hero() {
                     }).catch((e) => {
                       console.log(e);
                     }).finally(() => {
-                        tempRecomendations.push(res.data)
+                        tempRecomendations[index] = res.data
                         if (index === recomendationsIDs.length - 1) {
                             setRecomendations(tempRecomendations)
                             setReady(true)
                         }
                     })
                 } else {
-                    tempRecomendations.push(res.data)
+                    tempRecomendations[index] = res.data
                     if (index === recomendationsIDs.length - 1) {
                         setRecomendations(tempRecomendations)
                         setReady(true)
                     }
                 }
             })
-        })
+        }))
     }, [])
     
 

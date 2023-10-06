@@ -20,7 +20,7 @@ export default function UserLists() {
         setListReady(false)
         const list = userData.userLists[selectedListIndex];
         if (list.listShows.length) {
-            list.listShows.forEach((show: any, index: number) => {
+            Promise.all(list.listShows.map((show: any, index: number) => {
                 ss.getShowData(show.showID).then((res: any) => {
                     if (res.data.Response != "True") {
                         list.listShows.splice(index, 1)
@@ -35,8 +35,9 @@ export default function UserLists() {
                         setListReady(true)
                         setSelectedList(list)
                     }
+                    index++;
                 })
-            });
+            }))
         } else {
             setListReady(true)
             setSelectedList(list)

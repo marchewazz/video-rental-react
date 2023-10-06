@@ -21,34 +21,15 @@ export default function MostPopularShowsSwiper() {
 
         let tempMostPopularShows: any[] = []
 
-        mostPopularShowsIDs.forEach((recomendationID: any, index: number) => {
+        Promise.all(mostPopularShowsIDs.map((recomendationID: string, index: number) => {
             ss.getShowData(recomendationID).then((res: any) => {
-                if (strings.getLanguage() != "en") {
-                    translate({
-                      free_api: true,
-                      text: res.data.Plot,
-                      target_lang: strings.getLanguage() as unknown as DeeplLanguages,
-                      auth_key: process.env.REACT_APP_DEEPL_AUTH || ""
-                    }).then((translationRes: any) => {
-                      res.data.PlotTranslated = translationRes.data.translations[0].text
-                    }).catch((e) => {
-                      console.log(e);
-                    }).finally(() => {
-                        tempMostPopularShows.push(res.data)
-                        if (index === mostPopularShowsIDs.length - 1) {
-                            setMostPopularShows(tempMostPopularShows)
-                            setReady(true)
-                        }
-                    })
-                } else {
-                    tempMostPopularShows.push(res.data)
-                    if (index === mostPopularShowsIDs.length - 1) {
-                        setMostPopularShows(tempMostPopularShows)
-                        setReady(true)
-                    }
+                tempMostPopularShows[index] = res.data
+                if (index === mostPopularShowsIDs.length - 1) {
+                    setMostPopularShows(tempMostPopularShows)
+                    setReady(true)
                 }
             })
-        })
+        }))
     }, [])
 
     return (

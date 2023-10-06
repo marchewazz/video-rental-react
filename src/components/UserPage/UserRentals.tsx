@@ -22,21 +22,19 @@ export default function UserRentals() {
         setRentalsListReady(false)
         const rentalsList = userData.userRentals.filter((rental: Rental) => rental.rentalStatus === rentalsTab);
         if (rentalsList.length) {
-            rentalsList.forEach((rental: Rental, index: number) => {
+            Promise.all(rentalsList.map((rental: Rental, index: number) => {
                 ss.getShowData(rental.rentalShowID).then((res: any) => {
                     if (res.data.Response != "True") {
-                        rentalsList.splice(index, 1)
+                        rentalsList.splice(index - 1, 1)
                     } else {
                         rentalsList[index] = Object.assign(rentalsList[index], { rentalShowTitle: res.data.Title, rentalShowPoster: res.data.Poster })
                     }
                     if(index === rentalsList.length - 1) {
-                        console.log(rentalsList);
-                        
                         setRentalsListReady(true)
                         setRentalsList(rentalsList)
                     }
                 })
-            });
+            }))
         } else {
             setRentalsListReady(true)
             setRentalsList(rentalsList)
