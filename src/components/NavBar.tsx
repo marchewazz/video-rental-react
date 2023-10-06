@@ -134,9 +134,9 @@ export default function NavBar(props: {
         <>
           <div
             onClick={() => setShowMobileNavigation(false)}
-            className="w-full h-full absolute bg-earie-black z-[1023] top-0 left-0 opacity-80 cursor-pointer"
+            className="w-screen h-screen absolute bg-earie-black z-[1023] top-0 left-0 opacity-80 cursor-pointer"
           ></div>
-          <div className="absolute h-full w-2/3 sm:w-1/2 md:w-1/3 bg-white dark:bg-earie-black top-0 right-0 z-[1024] flex flex-col">
+          <div className="absolute h-screen w-2/3 sm:w-1/2 md:w-1/3 bg-white dark:bg-earie-black top-0 right-0 z-[1024] flex flex-col">
             <button className="bg-light-green self-end p-2 rounded-full m-2"
             onClick={() => setShowMobileNavigation(false)}>
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
