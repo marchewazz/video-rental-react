@@ -56,7 +56,7 @@ let strings = new LocalizedStrings({
     },
     showPage: {
       notFound: "Cannot find show with this ID",
-      rentButton: "You can lend {title} for 30 days for {price}$",
+      rentButton: "You can rent {title} for 30 days for {price}$",
       notEnoughMoney: "You have not enough money. You need: {price}$",
       addToFavorites: "Add to favorites",
       removeFromFavorites: "Remove from favorites",
