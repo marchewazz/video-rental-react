@@ -8,6 +8,7 @@ import {
 import ShowsService from "../services/ShowsService.service";
 
 import strings from "../utilities/strings";
+import MostPopularShowsSwiper from "../components/MainPage/MostPopularShowsSwiper";
 
 export default function SearchPage() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -78,6 +79,7 @@ export default function SearchPage() {
                 <p className="text-center text-3xl font-semibold dark:text-white mb-5">
                   {strings.formatString(strings.searchPage.notFoundSubTitle)}
                 </p>
+                <MostPopularShowsSwiper />
               </>
             )}
           </>
