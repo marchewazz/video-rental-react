@@ -23,8 +23,6 @@ export default function ShowPage() {
 
   useEffect(() => {
     ss.getShowData(showid || "").then(async (res: any) => {
-      console.log(res.data);
-      
       if (res.data.Type != "movie" && res.data.Type != "series") setShowData({ Response: "False" })
       else {
         if (strings.getLanguage() != "en") {
