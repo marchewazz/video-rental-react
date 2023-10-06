@@ -5,6 +5,7 @@ import translate, { DeeplLanguages } from "deepl";
 import strings from "../../utilities/strings";
 import { Link, useOutletContext } from "react-router-dom";
 import Context from "../../models/Context.model";
+import LoadingComponent from "../LoadingComponent";
 
 export default function MostPopularShowsSwiper() {
 
@@ -71,9 +72,9 @@ export default function MostPopularShowsSwiper() {
                     })}
                  </Swiper>
             ) : (
-                <p>
-                    Loading...
-                </p>
+                <div className="flex justify-center">
+                    <LoadingComponent />
+                </div>
             )}
         </>
     )

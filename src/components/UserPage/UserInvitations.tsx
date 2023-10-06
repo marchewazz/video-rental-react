@@ -5,6 +5,7 @@ import { useOutletContext } from "react-router-dom";
 import UsersService from "../../services/UsersService.service";
 import InvitationDisplay from "./InvitationDisplay";
 import strings from "../../utilities/strings";
+import LoadingComponent from "../LoadingComponent";
 
 export default function UserInvitaions() {
     
@@ -58,7 +59,9 @@ export default function UserInvitaions() {
             )}
             </>
       ) : (
-        <p>Loading...</p>
+        <div className="flex items-center justify-center">
+          <LoadingComponent />
+        </div>
       )}
     </div>
 )

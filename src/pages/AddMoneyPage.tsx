@@ -4,6 +4,7 @@ import { ChangeEvent, useEffect, useRef, useState } from "react";
 import Context from "../models/Context.model";
 import generateRandomString from "../utilities/randomString";
 import PopUpMessage from "../models/PopUpMessage.model";
+import LoadingComponent from "../components/LoadingComponent";
 
 export default function AddMoneyPage() {
 
@@ -110,7 +111,9 @@ export default function AddMoneyPage() {
             </div>
           </>
         ) : (
-          <p>Loading...</p>
+          <div className="flex items-center justify-center">
+            <LoadingComponent />
+          </div>
         )}
       </div>
       

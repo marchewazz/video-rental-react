@@ -6,6 +6,7 @@ import UserDataDisplay from "../components/UserPage/UserDataDisplay";
 import UserDataLists from "../components/UserPage/UserDataLists";
 
 import strings from "../utilities/strings";
+import LoadingComponent from "../components/LoadingComponent";
 
 export default function UserPage() {
 
@@ -29,9 +30,9 @@ export default function UserPage() {
                         <UserDataLists />
                     </div>
                 ) : (
-                    <p>
-                        Loading...
-                    </p>
+                    <div className="flex items-center justify-center">
+                        <LoadingComponent />
+                    </div>
                 )}
             </div>
         </main>

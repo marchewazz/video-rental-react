@@ -4,6 +4,7 @@ import Context from "../../models/Context.model";
 import List from "../../models/List.model";
 import ShowsService from "../../services/ShowsService.service";
 import strings from "../../utilities/strings";
+import LoadingComponent from "../LoadingComponent";
 
 export default function UserLists() {
 
@@ -94,9 +95,9 @@ export default function UserLists() {
                     )}
                 </>
             ) : (
-                <p>
-                    Loading...
-                </p>
+                <div className="flex items-center justify-center">
+                    <LoadingComponent />
+                </div>
             )}
             
         </div>

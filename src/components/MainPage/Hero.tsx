@@ -7,6 +7,7 @@ import strings from '../../utilities/strings';
 import translate, { DeeplLanguages } from 'deepl';
 
 import { Link } from 'react-router-dom';
+import LoadingComponent from '../LoadingComponent';
 
 export default function Hero() {
 
@@ -54,10 +55,10 @@ export default function Hero() {
     
 
     return (
-        <header className="main-background h-[calc(100vh-100px)] lg:h-auto lg:min-h-[600px]">
+        <header className="main-background flex h-[calc(100vh-100px)] lg:h-auto lg:min-h-[600px]">
             { ready ? (
                 <Swiper
-                className="relative h-full"
+                className="relative h-full w-full"
                 modules={[Pagination, Autoplay]}
                 spaceBetween={0}
                 slidesPerView={1}
@@ -117,10 +118,8 @@ export default function Hero() {
                 <div className="flex justify-center bg-opacity-30 py-2 bg-black absolute bottom-0 z-10 gap-2 w-full" ref={paginationRef}></div>
                 </Swiper>
             ) : (
-                <div className="container">
-                    <p>
-                        Loading...
-                    </p>
+                <div className="container flex justify-center items-center">
+                    <LoadingComponent />
                 </div>
             )}
             

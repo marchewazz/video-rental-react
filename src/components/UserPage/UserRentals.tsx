@@ -5,6 +5,7 @@ import Context from "../../models/Context.model"
 import ShowsService from "../../services/ShowsService.service"
 import strings from "../../utilities/strings"
 import RentalDisplay from "./RentalDisplay"
+import LoadingComponent from "../LoadingComponent"
 
 export default function UserRentals() {
 
@@ -83,9 +84,9 @@ export default function UserRentals() {
                         )}
                     </>
                 ) : (
-                    <p>
-                        Loading...
-                    </p>
+                    <div className="flex items-center justify-center">
+                        <LoadingComponent />
+                    </div>
                 ) }
             </div>
         </div>

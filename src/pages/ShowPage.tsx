@@ -10,6 +10,7 @@ import { Params, useOutletContext } from "react-router-dom";
 import Context from "../models/Context.model";
 
 import translate, { DeeplLanguages } from "deepl";
+import LoadingComponent from "../components/LoadingComponent";
 
 export default function ShowPage() {
   const [showData, setShowData] = useState<any>();
@@ -61,7 +62,9 @@ export default function ShowPage() {
             )}
           </>
         ) : (
-          <p>Loading...</p>
+          <div className="flex items-center justify-center">
+            <LoadingComponent />
+          </div>
         )}
       </div>
     </main>

@@ -7,6 +7,7 @@ import { useOutletContext } from "react-router-dom";
 import Context from "../models/Context.model";
 import Hero from "../components/MainPage/Hero";
 import MostPopularShowsSwiper from "../components/MainPage/MostPopularShowsSwiper";
+import LoadingComponent from "../components/LoadingComponent";
 
 export default function MainPage() {
 

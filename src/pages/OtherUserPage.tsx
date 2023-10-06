@@ -7,6 +7,7 @@ import strings from "../utilities/strings";
 
 import Context from "../models/Context.model";
 import OtherUserDataResponse from "../models/responses/OtherUserDataResponse.model";
+import LoadingComponent from "../components/LoadingComponent";
 
 export default function OtherUserPage() {
 
@@ -48,9 +49,9 @@ export default function OtherUserPage() {
                     )}
                 </>
             ) : (
-                <p>
-                    Loading...
-                </p>
+                <div className="flex items-center justify-center">
+                    <LoadingComponent />
+                </div>
             )}
         </main>
     )

@@ -4,6 +4,7 @@ import strings from "../utilities/strings";
 import DarkModeToggler from "./DarkModeToggler";
 import { useEffect, useState } from "react";
 import SearchBar from "./SearchBar";
+import LoadingComponent from "./LoadingComponent";
 
 export default function NavBar(props: {
   userData: UserData | undefined;
@@ -71,7 +72,9 @@ export default function NavBar(props: {
           </button>
         </>
         ) : (
-          <p>Loading...</p>
+          <div className="flex items-center justify-center">
+            <LoadingComponent />
+          </div>
         )}
         </>
         ) : (

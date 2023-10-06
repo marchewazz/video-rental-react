@@ -5,6 +5,7 @@ import Friend from "../../models/Friend.model";
 import UsersService from "../../services/UsersService.service";
 import strings from "../../utilities/strings";
 import FriendDisplay from "./FriendDisplay";
+import LoadingComponent from "../LoadingComponent";
 
 export default function UserFriends() {
   const [friendsList, setFriendsList] = useState<Friend[]>([]);
@@ -61,7 +62,9 @@ export default function UserFriends() {
             )}
             </>
       ) : (
-        <p>Loading...</p>
+        <div className="flex items-center justify-center">
+          <LoadingComponent />
+        </div>
       )}
     </div>
   );

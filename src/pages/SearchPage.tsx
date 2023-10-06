@@ -9,6 +9,7 @@ import ShowsService from "../services/ShowsService.service";
 
 import strings from "../utilities/strings";
 import MostPopularShowsSwiper from "../components/MainPage/MostPopularShowsSwiper";
+import LoadingComponent from "../components/LoadingComponent";
 
 export default function SearchPage() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -84,7 +85,9 @@ export default function SearchPage() {
             )}
           </>
         ) : (
-          <p>Loading...</p>
+          <div className="flex items-center justify-center">
+            <LoadingComponent />
+          </div>
         )}
       </div>
     </main>
