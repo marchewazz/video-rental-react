@@ -36,7 +36,6 @@ export default function UserLists() {
                         setListReady(true)
                         setSelectedList(list)
                     }
-                    index++;
                 })
             }))
         } else {

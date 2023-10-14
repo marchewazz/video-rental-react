@@ -83,7 +83,14 @@ let strings = new LocalizedStrings({
       invitationText: "You got an invitation",
       acceptButton: "Accept",
       rejectButton: "Reject",
-      sendInvitation: "Send invitation"
+      sendInvitation: "Send invitation",
+      comparasions: {
+        friendRentedIt: "Friend rented it",
+        friendLikeIt: "Friend likes it",
+        bothLikeIt: "You both like it",
+        bothRentedIt: "You both rented it",
+        noFriends: "You need to be friends to see comparasions"
+      }
     },
     searchPage: {
       title: "Results for: ",
@@ -230,7 +237,14 @@ let strings = new LocalizedStrings({
       invitationText: "Masz zaproszenie",
       acceptButton: "Zaakceptuj",
       rejectButton: "Odrzuć",
-      sendInvitation: "Wyślij zaproszenie"
+      sendInvitation: "Wyślij zaproszenie",
+      comparasions: {
+        friendRentedIt: "Znajomy to wypożyczył",
+        friendLikeIt: "Znajomy lubi to",
+        bothLikeIt: "Oboje to lunicie",
+        bothRentedIt: "Oboje to wypożyczyliście",
+        noFriends: "Musicie być znajomymi by zobaczyć porównania"
+      }
     },
     searchPage: {
       title: "Wyniki wyszukiwania dla: ",
