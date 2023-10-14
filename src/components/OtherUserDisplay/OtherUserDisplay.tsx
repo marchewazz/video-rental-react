@@ -9,6 +9,7 @@ import PopUpMessage from "../../models/PopUpMessage.model";
 import generateRandomString from "../../utilities/randomString";
 
 import OtherUserData from "../../models/OtherUserData.model";
+import Comparasions from "./Comparasions";
 
 export default function OtherUserDisplay(props: {
   otherUserData: OtherUserData;
@@ -33,6 +34,8 @@ export default function OtherUserDisplay(props: {
   const disableDeleteFriendButtonRef = useRef<string>(
     disableDeleteFriendButton
   );
+
+    const [comparasions, setComparasions] = useState({});
 
   const { userData, socket } = useOutletContext<Context>();
 
@@ -90,6 +93,15 @@ export default function OtherUserDisplay(props: {
   }
 
   useEffect(() => {
+    if (userData.userFriends.some((friend: Friend) => friend.friendID === props.otherUserData.userID)) {
+      socket.emit("getComparasions", { friendID: props.otherUserData.userID })
+    } else {
+      setComparasions({})
+    }
+  }, [userData.userFriends])
+  
+
+  useEffect(() => {
     if (socket) {
       socket.on("emitPopUpNotification", (data: PopUpMessage) => {
         if (data.eventID === disableSendInvitationButtonRef.current)
@@ -107,6 +119,15 @@ export default function OtherUserDisplay(props: {
         if (data.eventID === disableDeleteFriendButtonRef.current)
           setDisableDeleteFriendButton("");
       });
+      socket.on("getComparasions", (data: any) => {
+        if (data.message === "comparasion") {
+          for (const key of ["bothRentedIt", "bothLikeIt", "friendLikeIt", "friendRentedIt"]) {
+            for (const index in data[key]) {
+              
+            }
+          }
+        } else setComparasions({})
+      })
     }
   }, [socket]);
 
@@ -267,7 +288,8 @@ export default function OtherUserDisplay(props: {
                 ) : (
                   <button
                     className="bg-light-green border-2 border-dark-green text-white rounded-2xl p-3 flex duration-300 transition-all ease-in-out
-                    dark:text-earie-black hover:bg-dark-green"
+                    dark:text-earie-black hover:bg-dark-green
+                    disabled:bg-gray-400 disabled:border-earie-black dark:disabled:border-white disabled:text-white"
                     disabled={disableSendInvitationButton != ""}
                     onClick={sendInvitation}
                   >
@@ -287,6 +309,7 @@ export default function OtherUserDisplay(props: {
           </>
         )}
       </>
+      <Comparasions otherUserData={props.otherUserData} />
     </div>
   );
 }
