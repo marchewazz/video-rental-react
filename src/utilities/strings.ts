@@ -120,6 +120,10 @@ let strings = new LocalizedStrings({
       emptyCancelledRentalsLists: "No cancelled rentals",
       noInvitations: "No invitations",
       noFriends: "No friends",
+      rentalStarted: "Started: ",
+      rentalEnding: "Ending: ",
+      rentalExpired: "Expired: ",
+      rentalCancelled: "Cancelled: ",
       nav: {
         lists: "Lists",
         friends: "Friends",
@@ -278,6 +282,7 @@ let strings = new LocalizedStrings({
       friendsText: "Jesteście znajomymi od {date}",
       rentalStarted: "Od: ",
       rentalEnding: "Kończy się: ",
+      rentalExpired: "Wygasa: ",
       rentalCancelled: "Anulowano: ",
       nav: {
         lists: "Listy",
