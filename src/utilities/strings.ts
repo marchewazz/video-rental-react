@@ -116,6 +116,7 @@ let strings = new LocalizedStrings({
       favorites: "Favorites",
       friendsText: "You are friends since {date}",
       emptyActiveRentalsLists: "No active rentals",
+      emptyExpiredRentalsLists: "No expired rentals",
       emptyCancelledRentalsLists: "No cancelled rentals",
       noInvitations: "No invitations",
       noFriends: "No friends",
@@ -125,6 +126,7 @@ let strings = new LocalizedStrings({
         invitations: "Invitations",
         rentals: "Rentals",
         rentalsActive: "Active",
+        rentalsExpired: "Expired",
         rentalsCancelled: "Cancelled"
       }
     },
@@ -269,6 +271,7 @@ let strings = new LocalizedStrings({
       emptyList: "Lista jest pusta!",
       favorites: "Ulubione",
       emptyActiveRentalsLists: "Brak aktywnych wypożyczeń",
+      emptyExpiredRentalsLists: "Brak wygasłych wypożyczeń",
       emptyCancelledRentalsLists: "Brak anulowanych wypożyczeń",
       noInvitations: "Brak zaproszeń",
       noFriends: "Brak znajomych",
@@ -282,6 +285,7 @@ let strings = new LocalizedStrings({
         invitations: "Zaproszenia",
         rentals: "Wypożyczenia",
         rentalsActive: "Aktywne",
+        rentalsExpired: "Wygasłe",
         rentalsCancelled: "Anulowane"
       }
     },
