@@ -6,6 +6,7 @@ import Rental from "../../models/Rental.model";
 import Context from "../../models/Context.model";
 import generateRandomString from "../../utilities/randomString";
 import PopUpMessage from "../../models/PopUpMessage.model";
+import CountdownTimer from "./CountdownTimer";
 
 
 export default function ShowDisplay(props: any) {
@@ -220,8 +221,12 @@ export default function ShowDisplay(props: any) {
                 rental["rentalStatus"] === "active"
             ) ? (
               <>
+                <CountdownTimer date={userData.userRentals.filter(
+                (rental: any) =>
+                rental["rentalShowID"] === props.showData.imdbID &&
+                rental["rentalStatus"] === "active")[0].rentalExpiring} />
                 <button
-                    className="cancel-button w-3/4 self-center mt-5 md:mt-auto"
+                    className="cancel-button w-3/4 self-center mt-5"
                   disabled={disableCancelRentButton != ""}
                   onClick={cancelRent}
                 >

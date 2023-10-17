@@ -29,7 +29,7 @@ export default function RentalDisplay(props: { rental: Rental }) {
                 {strings.profilePage.rentalEnding}
               </span>
               <span className="profile-data-value">
-                {`${new Date(props.rental.rentalStart || "").toLocaleDateString()} ${new Date(props.rental.rentalStart || "").toLocaleTimeString()}`}
+                {`${new Date(props.rental.rentalExpiring || "").toLocaleDateString()} ${new Date(props.rental.rentalExpiring || "").toLocaleTimeString()}`}
               </span>
             </p>
           </>
