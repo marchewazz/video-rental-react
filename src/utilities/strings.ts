@@ -95,7 +95,9 @@ let strings = new LocalizedStrings({
     searchPage: {
       title: "Results for: ",
       notFoundTitle: "We don't have movies or series for: ",
-      notFoundSubTitle: "Check others!"
+      notFoundUsers: "No users found",
+      notFoundSubTitle: "Check others!",
+      usersTitle: "Users"
     },
     popUpNotifications: {
       rented: "Rented",
@@ -255,7 +257,9 @@ let strings = new LocalizedStrings({
     searchPage: {
       title: "Wyniki wyszukiwania dla: ",
       notFoundTitle: "Nie mamy filmów czy seriali dla frazy: ",
-      notFoundSubTitle: "Sprawdź inne!"
+      notFoundUsers: "Nie ma użytkowników z tym nickiem",
+      notFoundSubTitle: "Sprawdź inne!",
+      usersTitle: "Użytkownicy"
     },
     popUpNotifications: {
       rented: "Wypożyczono",

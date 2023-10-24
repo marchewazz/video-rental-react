@@ -37,7 +37,14 @@ export default function RentalDisplay(props: { rental: Rental }) {
           <>
             { props.rental.rentalStatus === "expired" ? (
               <>
-
+                <p>
+                  <span className="profile-data-category">
+                    {strings.profilePage.rentalExpired}
+                  </span>
+                  <span className="profile-data-value">
+                    {`${new Date(props.rental.rentalExpiredDate || "").toLocaleDateString()} ${new Date(props.rental.rentalExpiredDate || "").toLocaleTimeString()}`}
+                  </span>
+                </p>
               </>
             ) : (
               <>
