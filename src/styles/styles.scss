@@ -26,6 +26,7 @@ html, body {
   -webkit-font-smoothing: antialiased;
   height: 100vh;
   width: 100vw;
+  overflow-x: hidden;
   margin: 0;
   padding: 0;
 }
@@ -58,7 +59,7 @@ select {
 
 @layer components {
   .main-background {
-    @apply dark:bg-[#000] transition-all duration-300
+    @apply bg-white dark:bg-[#000] transition-all duration-300
   }
   .accept-button {
     @apply bg-green-500 border-2 border-dark-green text-dark-green p-3 rounded-2xl transition-all duration-300

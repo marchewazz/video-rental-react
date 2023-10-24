@@ -21,7 +21,7 @@ export default function RentalDisplay(props: { rental: Rental }) {
                 {strings.profilePage.rentalStarted}
               </span>
               <span className="profile-data-value">
-                {new Date(props.rental.rentalStart || "").toISOString()}
+                {`${new Date(props.rental.rentalStart || "").toLocaleDateString()} ${new Date(props.rental.rentalStart || "").toLocaleTimeString()}`}
               </span>
             </p>
             <p>
@@ -29,28 +29,35 @@ export default function RentalDisplay(props: { rental: Rental }) {
                 {strings.profilePage.rentalEnding}
               </span>
               <span className="profile-data-value">
-                {new Date(props.rental.rentalExpiring || "").toISOString()}
+                {`${new Date(props.rental.rentalExpiring || "").toLocaleDateString()} ${new Date(props.rental.rentalExpiring || "").toLocaleTimeString()}`}
               </span>
             </p>
           </>
         ) : (
           <>
-            <p>
-              <span className="profile-data-category">
-                {strings.profilePage.rentalStarted}
-              </span>
-              <span className="profile-data-value">
-                {new Date(props.rental.rentalStart || "").toISOString()}
-              </span>
-            </p>
-            <p>
-              <span className="profile-data-category">
-                {strings.profilePage.rentalCancelled}
-              </span>
-              <span className="profile-data-value">
-                {new Date(props.rental.rentalCancelledDate || "").toISOString()}
-              </span>
-            </p>
+            { props.rental.rentalStatus === "expired" ? (
+              <>
+                <p>
+                  <span className="profile-data-category">
+                    {strings.profilePage.rentalExpired}
+                  </span>
+                  <span className="profile-data-value">
+                    {`${new Date(props.rental.rentalExpiredDate || "").toLocaleDateString()} ${new Date(props.rental.rentalExpiredDate || "").toLocaleTimeString()}`}
+                  </span>
+                </p>
+              </>
+            ) : (
+              <>
+                <p>
+                  <span className="profile-data-category">
+                    {strings.profilePage.rentalCancelled}
+                  </span>
+                  <span className="profile-data-value">
+                    {`${new Date(props.rental.rentalCancelledDate || "").toLocaleDateString()} ${new Date(props.rental.rentalCancelledDate || "").toLocaleTimeString()}`}
+                  </span>
+                </p>
+              </>
+            )}
           </>
         )}
       </div>

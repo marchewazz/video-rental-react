@@ -9,7 +9,7 @@ export default function Footer() {
 
   return (
     <footer className="py-5 lg:py-10 border-t-2 border-light-green bg-dark-green dark:bg-earie-black transition-all duration-300">
-      <div className="container flex flex-wrap justify-between items-center h-full">
+      <div className="container flex flex-wrap justify-between items-center h-min">
         <div className="w-full lg:w-auto flex justify-end">
           <Link to="/">
             <img className="w-20 dark:invert transition-all duration-300" src="/images/logo.png" />

@@ -95,7 +95,9 @@ let strings = new LocalizedStrings({
     searchPage: {
       title: "Results for: ",
       notFoundTitle: "We don't have movies or series for: ",
-      notFoundSubTitle: "Check others!"
+      notFoundUsers: "No users found",
+      notFoundSubTitle: "Check others!",
+      usersTitle: "Users"
     },
     popUpNotifications: {
       rented: "Rented",
@@ -116,15 +118,21 @@ let strings = new LocalizedStrings({
       favorites: "Favorites",
       friendsText: "You are friends since {date}",
       emptyActiveRentalsLists: "No active rentals",
+      emptyExpiredRentalsLists: "No expired rentals",
       emptyCancelledRentalsLists: "No cancelled rentals",
       noInvitations: "No invitations",
       noFriends: "No friends",
+      rentalStarted: "Started: ",
+      rentalEnding: "Ending: ",
+      rentalExpired: "Expired: ",
+      rentalCancelled: "Cancelled: ",
       nav: {
         lists: "Lists",
         friends: "Friends",
         invitations: "Invitations",
         rentals: "Rentals",
         rentalsActive: "Active",
+        rentalsExpired: "Expired",
         rentalsCancelled: "Cancelled"
       }
     },
@@ -249,7 +257,9 @@ let strings = new LocalizedStrings({
     searchPage: {
       title: "Wyniki wyszukiwania dla: ",
       notFoundTitle: "Nie mamy filmów czy seriali dla frazy: ",
-      notFoundSubTitle: "Sprawdź inne!"
+      notFoundUsers: "Nie ma użytkowników z tym nickiem",
+      notFoundSubTitle: "Sprawdź inne!",
+      usersTitle: "Użytkownicy"
     },
     popUpNotifications: {
       rented: "Wypożyczono",
@@ -269,12 +279,14 @@ let strings = new LocalizedStrings({
       emptyList: "Lista jest pusta!",
       favorites: "Ulubione",
       emptyActiveRentalsLists: "Brak aktywnych wypożyczeń",
+      emptyExpiredRentalsLists: "Brak wygasłych wypożyczeń",
       emptyCancelledRentalsLists: "Brak anulowanych wypożyczeń",
       noInvitations: "Brak zaproszeń",
       noFriends: "Brak znajomych",
       friendsText: "Jesteście znajomymi od {date}",
       rentalStarted: "Od: ",
       rentalEnding: "Kończy się: ",
+      rentalExpired: "Wygasa: ",
       rentalCancelled: "Anulowano: ",
       nav: {
         lists: "Listy",
@@ -282,6 +294,7 @@ let strings = new LocalizedStrings({
         invitations: "Zaproszenia",
         rentals: "Wypożyczenia",
         rentalsActive: "Aktywne",
+        rentalsExpired: "Wygasłe",
         rentalsCancelled: "Anulowane"
       }
     },

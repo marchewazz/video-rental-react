@@ -44,19 +44,19 @@ export default function UserRentals() {
 
     return (
         <div>
-            <div className="grid grid-cols-2 my-5">
+            <div className="grid grid-cols-3 my-5">
                 <div>
                     <input className="peer hidden" type="radio" name="rentalsLists" id="active" checked={rentalsTab === "active"} onChange={() => setRentalsTab("active")} />
                     <label className="profile-tab-button rounded-l-full" htmlFor="active">
                         { strings.profilePage.nav.rentalsActive }
                     </label>
                 </div>
-                {/* <div>
-                    <label htmlFor="expired">
-                        expired
+                <div>
+                    <input className="peer hidden" type="radio" name="rentalsLists" id="expired" checked={rentalsTab === "expired"} onChange={() => setRentalsTab("expired")} />
+                    <label className="profile-tab-button" htmlFor="expired">
+                        { strings.profilePage.nav.rentalsExpired }
                     </label>
-                    <input type="radio" name="rentalsLists" id="expired" checked={rentalsTab === "expired"} onChange={() => setRentalsTab("expired")} />
-                </div> */}
+                </div>
                 <div>
                     <input className="peer hidden" type="radio" name="rentalsLists" id="cancelled" checked={rentalsTab === "cancelled"} onChange={() => setRentalsTab("cancelled")} />
                     <label className="profile-tab-button rounded-r-full" htmlFor="cancelled">
@@ -77,9 +77,17 @@ export default function UserRentals() {
                                     { strings.profilePage.emptyActiveRentalsLists }
                                 </p>
                             ) : (
-                                <p className="text-center text-3xl lg:text-5xl text-gray-600 dark:text-white">
-                                    { strings.profilePage.emptyCancelledRentalsLists }
-                                </p>
+                                <>
+                                    { rentalsTab === "cancelled" ? (
+                                        <p className="text-center text-3xl lg:text-5xl text-gray-600 dark:text-white">
+                                            { strings.profilePage.emptyCancelledRentalsLists }
+                                        </p>
+                                    ) : (
+                                        <p className="text-center text-3xl lg:text-5xl text-gray-600 dark:text-white">
+                                            { strings.profilePage.emptyExpiredRentalsLists }
+                                        </p>
+                                    )}
+                                </>
                             )
                         )}
                     </>
