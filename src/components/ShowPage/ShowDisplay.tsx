@@ -79,8 +79,6 @@ export default function ShowDisplay(props: any) {
   }
 
   useEffect(() => {
-    console.log(props);
-    
     if (socket) {
       socket.on("emitPopUpNotification", (data: PopUpMessage) => {
         if (data.eventID === disableAddToFavoritesButtonRef.current)
