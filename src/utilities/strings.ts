@@ -67,7 +67,14 @@ let strings = new LocalizedStrings({
       ratingCategory: "Rating: ",
       ratingValue: "{rating}/{votes} votes",
       series: "SERIES",
-      movie: "MOVIE"
+      movie: "MOVIE",
+      countdownTimer: {
+        title: "Your rental ends in:",
+        days: "days",
+        hours: "hours",
+        minutes: "minutes",
+        seconds: "seconds"
+      }
     },
     addMoneyPage: {
       title: "Add money",
@@ -229,7 +236,14 @@ let strings = new LocalizedStrings({
       ratingCategory: "Ocena: ",
       ratingValue: "{rating}/{votes} głosów",
       series: "SERIAL",
-      movie: "FILM"
+      movie: "FILM",
+      countdownTimer: {
+        title: "Twoje wypożyczenie kończy się za:",
+        days: "dni",
+        hours: "godzin",
+        minutes: "minut",
+        seconds: "sekund"
+      }
     },
     addMoneyPage: {
       title: "Dodaj środki",

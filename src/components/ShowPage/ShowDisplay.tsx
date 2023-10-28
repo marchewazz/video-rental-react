@@ -111,13 +111,15 @@ export default function ShowDisplay(props: any) {
   }, [disableCancelRentButton]);
 
   return (
-    <div className="flex flex-wrap lg:flex-nowrap">
-      <img
-        className="rounded-3xl border-2 border-light-green ml-auto mr-auto md:w-1/3 lg:w-auto max-h-[450px]"
-        src={props.showData.Poster}
-        alt=""
-      />
-      <div className="p-4 max-h-[450px] flex flex-col w-full md:w-2/3">
+    <div className="flex flex-wrap">
+      <div className="rounded-3xl border-2 border-light-green flex ml-auto mr-auto lg:ml-0 lg:w-[300px]">
+          <img
+            className={`rounded-3xl ${!props.showData.Poster || props.showData.Poster == "N/A" ? "justify-self-center self-center" : "w-full h-full" }`}
+            src={!props.showData.Poster || props.showData.Poster == "N/A" ? "../images/no-image-icon.png" : props.showData.Poster}
+            alt=""
+          />
+      </div>
+      <div className="p-4 flex flex-col w-full lg:w-3/5">
       {userData.userLists[0].listShows.some(
           (item: any) => item.showID === props.showData.imdbID
         ) ? (
@@ -165,13 +167,18 @@ export default function ShowDisplay(props: any) {
         )}
         <h5 className="text-sm text-gray-400">
           {
-            strings.showPage[
-              props.showData.Type as keyof typeof strings.showPage
-            ]
+            <>
+              { props.showData.Type === "series" ? (
+                strings.showPage.series
+              ) : (
+                strings.showPage.movie
+              )}
+            </>
           }
         </h5>
         <h3 className="font-bold text-4xl text-teal">{props.showData.Title}</h3>
-        <p>
+        { props.showData.Released && props.showData.Released != "N/A" ? (
+          <p>
           <span className="show-stat-category">
             {strings.showPage.releaseDate}
           </span>
@@ -179,9 +186,11 @@ export default function ShowDisplay(props: any) {
             {new Date(props.showData.Released).toLocaleString().split(",")[0]}
           </span>
         </p>
+        ) : (null)}
         {props.showData.Type === "series" ? (
           <>
-            <p>
+            { props.showData.totalSeasons && props.showData.totalSeasons != "N/A" ? (
+              <p>
               <span className="show-stat-category">
                 {strings.showPage.totalSeasons}
               </span>
@@ -189,18 +198,21 @@ export default function ShowDisplay(props: any) {
                 {props.showData.totalSeasons}
               </span>
             </p>
+            ) : (null)}
           </>
         ) : (
           <>
-            <p>
-              <span className="show-stat-category">
-                {strings.showPage.runTime}
-              </span>
-              <span className="show-stat-value">{props.showData.Runtime}</span>
-            </p>
+            { props.showData.Runtime && props.showData.Runtime != "N/A" ? (
+                <p>
+                <span className="show-stat-category">
+                  {strings.showPage.runTime}
+                </span>
+                <span className="show-stat-value">{props.showData.Runtime}</span>
+              </p>
+            ) : (null)}
           </>
         )}
-        {props.showData.imdbRating && props.showData.imdbVotes ? (
+        {props.showData.imdbRating && props.showData.imdbVotes && props.showData.imdbRating != "N/A" && props.showData.imdbVotes != "N/A" ? (
           <p>
             <span className="show-stat-category">
               {strings.showPage.ratingCategory}
@@ -220,19 +232,22 @@ export default function ShowDisplay(props: any) {
                 rental["rentalShowID"] === props.showData.imdbID &&
                 rental["rentalStatus"] === "active"
             ) ? (
-              <>
+              <div className="mt-8 flex flex-col">
+                <header className="text-center text-2xl dark:text-white mb-3">
+                  { strings.showPage.countdownTimer.title }
+                </header>
                 <CountdownTimer date={userData.userRentals.filter(
                 (rental: any) =>
                 rental["rentalShowID"] === props.showData.imdbID &&
                 rental["rentalStatus"] === "active")[0].rentalExpiring} />
                 <button
-                    className="cancel-button w-3/4 self-center mt-5"
+                    className="cancel-button w-3/4 self-center justify-self-center mt-5"
                   disabled={disableCancelRentButton != ""}
                   onClick={cancelRent}
                 >
                   {strings.showPage.cancelButtonText}
                 </button>
-              </>
+              </div>
             ) : userData.userBalance > price ? (
               <button
                 className="accept-button w-3/4 self-center mt-5 md:mt-auto"
@@ -256,7 +271,7 @@ export default function ShowDisplay(props: any) {
       </div>
       <div className="lg:w-full p-4 flex flex-col justify-between">
         <p className="h-full text-xl dark:text-white font-light leading-9">
-            { strings.getLanguage() != "en" && props.showData.PlotTranslated ? (
+            { strings.getLanguage() != "en" && props.showData.PlotTranslated && props.showData.PlotTranslated != "N/A" ? (
                 <>
                     { props.showData.PlotTranslated }
                     <span className="block text-gray-400 text-right text-base">
@@ -264,7 +279,11 @@ export default function ShowDisplay(props: any) {
                     </span>
                 </>
             ) : (
-                props.showData.Plot
+              <>
+                { props.showData.PlotTranslated && props.showData.PlotTranslated != "N/A" ? (
+                  props.showData.Plot
+                ):(null)}
+              </>
             )}
         </p>
       </div>
