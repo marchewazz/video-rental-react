@@ -111,13 +111,13 @@ export default function ShowDisplay(props: any) {
   }, [disableCancelRentButton]);
 
   return (
-    <div className="flex flex-wrap lg:flex-nowrap">
+    <div className="flex flex-wrap">
       <img
-        className="rounded-3xl border-2 border-light-green ml-auto mr-auto md:w-1/3 lg:w-auto max-h-[450px]"
+        className="rounded-3xl border-2 border-light-green ml-auto mr-auto lg:ml-0 lg:w-auto"
         src={props.showData.Poster}
         alt=""
       />
-      <div className="p-4 max-h-[450px] flex flex-col w-full md:w-2/3">
+      <div className="p-4 flex flex-col w-full lg:w-3/5">
       {userData.userLists[0].listShows.some(
           (item: any) => item.showID === props.showData.imdbID
         ) ? (
@@ -165,9 +165,13 @@ export default function ShowDisplay(props: any) {
         )}
         <h5 className="text-sm text-gray-400">
           {
-            strings.showPage[
-              props.showData.Type as keyof typeof strings.showPage
-            ]
+            <>
+              { props.showData.Type === "series" ? (
+                strings.showPage.series
+              ) : (
+                strings.showPage.movie
+              )}
+            </>
           }
         </h5>
         <h3 className="font-bold text-4xl text-teal">{props.showData.Title}</h3>
@@ -220,19 +224,22 @@ export default function ShowDisplay(props: any) {
                 rental["rentalShowID"] === props.showData.imdbID &&
                 rental["rentalStatus"] === "active"
             ) ? (
-              <>
+              <div className="mt-8 flex flex-col">
+                <header className="text-center text-2xl dark:text-white mb-3">
+                  { strings.showPage.countdownTimer.title }
+                </header>
                 <CountdownTimer date={userData.userRentals.filter(
                 (rental: any) =>
                 rental["rentalShowID"] === props.showData.imdbID &&
                 rental["rentalStatus"] === "active")[0].rentalExpiring} />
                 <button
-                    className="cancel-button w-3/4 self-center mt-5"
+                    className="cancel-button w-3/4 self-center justify-self-center mt-5"
                   disabled={disableCancelRentButton != ""}
                   onClick={cancelRent}
                 >
                   {strings.showPage.cancelButtonText}
                 </button>
-              </>
+              </div>
             ) : userData.userBalance > price ? (
               <button
                 className="accept-button w-3/4 self-center mt-5 md:mt-auto"
