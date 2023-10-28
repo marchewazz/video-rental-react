@@ -79,6 +79,8 @@ export default function ShowDisplay(props: any) {
   }
 
   useEffect(() => {
+    console.log(props);
+    
     if (socket) {
       socket.on("emitPopUpNotification", (data: PopUpMessage) => {
         if (data.eventID === disableAddToFavoritesButtonRef.current)
@@ -112,11 +114,13 @@ export default function ShowDisplay(props: any) {
 
   return (
     <div className="flex flex-wrap">
-      <img
-        className="rounded-3xl border-2 border-light-green ml-auto mr-auto lg:ml-0 lg:w-auto"
-        src={props.showData.Poster}
-        alt=""
-      />
+      <div className="rounded-3xl border-2 border-light-green flex ml-auto mr-auto lg:ml-0 lg:w-[300px]">
+          <img
+            className={`rounded-3xl ${!props.showData.Poster || props.showData.Poster == "N/A" ? "justify-self-center self-center" : "w-full h-full" }`}
+            src={!props.showData.Poster || props.showData.Poster == "N/A" ? "../images/no-image-icon.png" : props.showData.Poster}
+            alt=""
+          />
+      </div>
       <div className="p-4 flex flex-col w-full lg:w-3/5">
       {userData.userLists[0].listShows.some(
           (item: any) => item.showID === props.showData.imdbID
@@ -175,7 +179,8 @@ export default function ShowDisplay(props: any) {
           }
         </h5>
         <h3 className="font-bold text-4xl text-teal">{props.showData.Title}</h3>
-        <p>
+        { props.showData.Released && props.showData.Released != "N/A" ? (
+          <p>
           <span className="show-stat-category">
             {strings.showPage.releaseDate}
           </span>
@@ -183,9 +188,11 @@ export default function ShowDisplay(props: any) {
             {new Date(props.showData.Released).toLocaleString().split(",")[0]}
           </span>
         </p>
+        ) : (null)}
         {props.showData.Type === "series" ? (
           <>
-            <p>
+            { props.showData.totalSeasons && props.showData.totalSeasons != "N/A" ? (
+              <p>
               <span className="show-stat-category">
                 {strings.showPage.totalSeasons}
               </span>
@@ -193,18 +200,21 @@ export default function ShowDisplay(props: any) {
                 {props.showData.totalSeasons}
               </span>
             </p>
+            ) : (null)}
           </>
         ) : (
           <>
-            <p>
-              <span className="show-stat-category">
-                {strings.showPage.runTime}
-              </span>
-              <span className="show-stat-value">{props.showData.Runtime}</span>
-            </p>
+            { props.showData.Runtime && props.showData.Runtime != "N/A" ? (
+                <p>
+                <span className="show-stat-category">
+                  {strings.showPage.runTime}
+                </span>
+                <span className="show-stat-value">{props.showData.Runtime}</span>
+              </p>
+            ) : (null)}
           </>
         )}
-        {props.showData.imdbRating && props.showData.imdbVotes ? (
+        {props.showData.imdbRating && props.showData.imdbVotes && props.showData.imdbRating != "N/A" && props.showData.imdbVotes != "N/A" ? (
           <p>
             <span className="show-stat-category">
               {strings.showPage.ratingCategory}
@@ -263,7 +273,7 @@ export default function ShowDisplay(props: any) {
       </div>
       <div className="lg:w-full p-4 flex flex-col justify-between">
         <p className="h-full text-xl dark:text-white font-light leading-9">
-            { strings.getLanguage() != "en" && props.showData.PlotTranslated ? (
+            { strings.getLanguage() != "en" && props.showData.PlotTranslated && props.showData.PlotTranslated != "N/A" ? (
                 <>
                     { props.showData.PlotTranslated }
                     <span className="block text-gray-400 text-right text-base">
@@ -271,7 +281,11 @@ export default function ShowDisplay(props: any) {
                     </span>
                 </>
             ) : (
-                props.showData.Plot
+              <>
+                { props.showData.PlotTranslated && props.showData.PlotTranslated != "N/A" ? (
+                  props.showData.Plot
+                ):(null)}
+              </>
             )}
         </p>
       </div>
