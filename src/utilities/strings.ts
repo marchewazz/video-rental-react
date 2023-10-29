@@ -117,6 +117,8 @@ let strings = new LocalizedStrings({
       invitationReceived: "{senderNick} sent you an invitation",
       viewProfile: "View profile",
       errorMessage: "Error, try again later",
+      profileEdited: "Profile edited",
+      nickTaken: "Nick is taken"
     },
     profilePage: {
       title: "Your profile",
@@ -141,7 +143,7 @@ let strings = new LocalizedStrings({
         rentalsActive: "Active",
         rentalsExpired: "Expired",
         rentalsCancelled: "Cancelled"
-      }
+      },
     },
     seriesPage: {
       title: "Series page could be here but API doesn't allow search only for series :("
@@ -286,6 +288,8 @@ let strings = new LocalizedStrings({
       invitationReceived: "{senderNick} wysłał(a) Ci zaproszenie",
       viewProfile: "Zobacz profil",
       errorMessage: "Wystąpił błąd, spróbuj ponownie później",
+      profileEdited: "Edytowano profil",
+      nickTaken: "Nick jest zajęty"
     },
     profilePage: {
       title: "Twój profil",
