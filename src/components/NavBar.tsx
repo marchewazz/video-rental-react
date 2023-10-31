@@ -2,9 +2,11 @@ import { Link, Location, useLocation } from "react-router-dom";
 import UserData from "../models/UserData.model";
 import strings from "../utilities/strings";
 import DarkModeToggler from "./DarkModeToggler";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import SearchBar from "./SearchBar";
 import LoadingComponent from "./LoadingComponent";
+
+import { animate } from "framer-motion"
 
 export default function NavBar(props: {
   userData: UserData | undefined;
@@ -18,6 +20,9 @@ export default function NavBar(props: {
 }) {
   const [showMobileNavigation, setShowMobileNavigation] =
     useState<boolean>(false);
+
+  const mobileNavBarRef = useRef(null);
+  const mobileNavBarBackgroundRef = useRef(null);
 
   const location: Location = useLocation();
 
@@ -93,7 +98,22 @@ export default function NavBar(props: {
   useEffect(() => {
     if (props.width > 1024) setShowMobileNavigation(false)
   }, [props.width])
+
+  useEffect(() => {
+    if (showMobileNavigation) {
+      showAnimation()
+    }
+  }, [showMobileNavigation])
   
+  function showAnimation() {
+    animate(mobileNavBarRef.current, { x: ["100%", "0%"] }, { duration: .2 })
+    animate(mobileNavBarBackgroundRef.current, { opacity: [0, .8] }, { duration: .2 })
+  }
+
+  function hideAnimation() {
+    animate(mobileNavBarRef.current, { x: ["0%", "100%"] }, { duration: .2 })
+    animate(mobileNavBarBackgroundRef.current, { opacity: [.8, 0] }, { duration: .2 }).then(() => setShowMobileNavigation(false))
+  }
 
   return (
     <nav className="border-b-2 border-light-green h-[100px] bg-dark-green dark:bg-earie-black transition-all duration-300 w-full fixed top-0 z-[9999]">
@@ -136,12 +156,13 @@ export default function NavBar(props: {
       {showMobileNavigation ? (
         <>
           <div
-            onClick={() => setShowMobileNavigation(false)}
+            ref={mobileNavBarBackgroundRef}
+            onClick={() => hideAnimation()}
             className="w-screen h-screen absolute bg-earie-black z-[1023] top-0 left-0 opacity-80 cursor-pointer"
           ></div>
-          <div className="absolute h-screen w-2/3 sm:w-1/2 md:w-1/3 bg-white dark:bg-earie-black top-0 right-0 z-[1024] flex flex-col">
+          <div ref={mobileNavBarRef} className="absolute h-screen w-2/3 sm:w-1/2 md:w-1/3 bg-white dark:bg-earie-black top-0 right-0 z-[1024] flex flex-col">
             <button className="bg-light-green self-end p-2 rounded-full m-2"
-            onClick={() => setShowMobileNavigation(false)}>
+            onClick={() => hideAnimation()}>
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
               </svg>
