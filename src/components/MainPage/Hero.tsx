@@ -55,7 +55,7 @@ export default function Hero() {
     
 
     return (
-        <header className="main-background flex h-[calc(100vh-100px)] lg:h-auto lg:min-h-[600px]">
+        <header className="bg-white dark:bg-[#000] transition-all duration-300 flex h-[calc(100vh-100px)] lg:h-auto lg:min-h-[600px]">
             { ready ? (
                 <Swiper
                 className="relative h-full w-full"

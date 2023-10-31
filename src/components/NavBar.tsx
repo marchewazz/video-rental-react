@@ -96,7 +96,7 @@ export default function NavBar(props: {
   
 
   return (
-    <nav className="border-b-2 border-light-green h-[100px] bg-dark-green dark:bg-earie-black transition-all duration-300 sticky top-0 z-[9999]">
+    <nav className="border-b-2 border-light-green h-[100px] bg-dark-green dark:bg-earie-black transition-all duration-300 w-full fixed top-0 z-[9999]">
       <div className="container flex justify-between items-center h-full transition-all duration-300">
         <div>
           <Link to="/">
