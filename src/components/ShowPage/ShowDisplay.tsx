@@ -280,7 +280,7 @@ export default function ShowDisplay(props: any) {
                 </>
             ) : (
               <>
-                { props.showData.PlotTranslated && props.showData.PlotTranslated != "N/A" ? (
+                { props.showData.Plot && props.showData.Plot != "N/A" ? (
                   props.showData.Plot
                 ):(null)}
               </>
