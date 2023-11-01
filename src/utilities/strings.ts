@@ -22,9 +22,9 @@ let strings = new LocalizedStrings({
     registerPage: {
       title: "Register!",
       form: {
-        repeatPassword: "Powtórz hasło...",
-        passEmail: "Podaj email...",
-        passNick: "Podaj nick...",
+        repeatPassword: "Repeat password...",
+        passEmail: "Pass email...",
+        passNick: "Pass nick...",
         missingNick: "Pass nick",
         atSignInNick: "Nick cannot contain at-sign",
         missingEmail: "Pass email",
@@ -43,8 +43,8 @@ let strings = new LocalizedStrings({
     loginPage: {
       title: "Login!",
       form: {
-        passPassword: "Podaj hasło...",
-        passEmailOrNick: "Podaj email lub nick...",
+        passPassword: "Pass password...",
+        passEmailOrNick: "Pass email or nick...",
         missingNickOrEmail: "Pass nick or email",
         missingPassword: "Pass password",
         emailNotExists: "There is no account with this email",
