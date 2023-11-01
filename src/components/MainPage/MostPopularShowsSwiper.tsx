@@ -1,11 +1,10 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import ShowsService from "../../services/ShowsService.service";
 import { useEffect, useState } from "react";
-import translate, { DeeplLanguages } from "deepl";
-import strings from "../../utilities/strings";
 import { Link, useOutletContext } from "react-router-dom";
 import Context from "../../models/Context.model";
 import LoadingComponent from "../LoadingComponent";
+import { animate, stagger } from "framer-motion";
 
 export default function MostPopularShowsSwiper() {
 
@@ -33,6 +32,11 @@ export default function MostPopularShowsSwiper() {
         }))
     }, [])
 
+    useEffect(() => {
+      if (userDataReady && ready) animate(".most-popular-shows-slide", { x: [-300, 0], opacity: [0, 1] }, { delay: stagger(.2) })
+    }, [userDataReady, ready])
+    
+
     return (
         <>
             { userDataReady && ready ? (
@@ -52,7 +56,7 @@ export default function MostPopularShowsSwiper() {
                    //  1536: {},
                 }}>
                     { mostPopularShows.map((show: any, index: number) => {
-                         return <SwiperSlide className="relative !h-auto group" key={index}>
+                         return <SwiperSlide className="most-popular-shows-slide relative !h-auto group" key={index}>
                             <Link
                             className="relative rounded-3xl border-2 border-light-green flex h-full w-full"
                             to={`../show/${show.imdbID}`}
