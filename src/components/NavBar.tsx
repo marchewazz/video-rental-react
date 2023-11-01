@@ -37,7 +37,7 @@ export default function NavBar(props: {
               balance: props.userData.userBalance,
             })}
           </div>
-          <div className={`nav-item-clickable p-4 ${props.width > 1024 ? "parallelogram" : ""}`}>
+          <div className={`nav-item-clickable ${props.width > 1024 ? "parallelogram" : "p-4"}`}>
             <Link
               className="h-full w-full flex items-center"
               to="/add-money"
@@ -45,7 +45,7 @@ export default function NavBar(props: {
               {strings.nav.addMoney}
             </Link>
           </div>
-          <div className={`nav-item-clickable p-4 ${props.width > 1024 ? "parallelogram" : ""}`}>
+          <div className={`nav-item-clickable ${props.width > 1024 ? "parallelogram" : "p-4 "}`}>
             <Link
               className="h-full w-full flex items-center"
               to="/myprofile"
@@ -57,7 +57,7 @@ export default function NavBar(props: {
             </Link>
           </div>
           <button
-            className={`nav-item-clickable p-4 ${props.width > 1024 ? "parallelogram" : ""}`}
+            className={`nav-item-clickable ${props.width > 1024 ? "parallelogram px-4" : "p-4"}`}
             onClick={props.logoutFunction}
           >
             <svg
@@ -84,10 +84,10 @@ export default function NavBar(props: {
         </>
         ) : (
           <>
-            <div className={`nav-item-clickable p-4 ${props.width > 1024 ? "parallelogram" : ""}`}>
+            <div className={`nav-item-clickable ${props.width > 1024 ? "parallelogram" : "p-4"}`}>
               <Link to="/login">{strings.nav.login}</Link>
             </div>
-            <div className={`nav-item-clickable p-4 ${props.width > 1024 ? "parallelogram" : ""}`}>
+            <div className={`nav-item-clickable ${props.width > 1024 ? "parallelogram" : "p-4"}`}>
               <Link to="/register">{strings.nav.register}</Link>
             </div>
           </>

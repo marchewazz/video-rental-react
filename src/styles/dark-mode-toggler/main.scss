@@ -4,8 +4,8 @@
 
 @layer components {
     .dark-mode-toggler-label {
-        @apply bg-earie-black rounded-xl cursor-pointer p-1 transition-all ease-in-out duration-300
-        dark:bg-white
+        @apply bg-earie-black hover:bg-gray-950 rounded-xl cursor-pointer p-1 transition-all ease-in-out duration-300
+        dark:bg-white dark:hover:bg-slate-200
     }
     .dark-mode-toggler-icon {
         @apply fill-white w-8 h-8
