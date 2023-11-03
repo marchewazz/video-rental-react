@@ -25,7 +25,7 @@ export default function NavBar(props: {
   const mobileNavBarBackgroundRef = useRef(null);
 
   const location: Location = useLocation();
-
+  
   const links = (
     <>
       { !props.onlyNonLoggedPaths.includes(location.pathname) ? (
@@ -98,6 +98,11 @@ export default function NavBar(props: {
   useEffect(() => {
     if (props.width > 1024) setShowMobileNavigation(false)
   }, [props.width])
+
+  useEffect(() => {
+    if (location && mobileNavBarBackgroundRef.current && mobileNavBarRef.current) hideAnimation()
+  }, [location.pathname])
+  
 
   useEffect(() => {
     if (showMobileNavigation) {
