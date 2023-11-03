@@ -76,7 +76,10 @@ function AppLayout() {
     localStorage.setItem("token", "")
     setIsUserLogged(false)
     setUserDataReady(false)
-    socket?.disconnect()
+    if (socket) {
+      socket?.emit("logout")
+      socket?.disconnect()
+    }
     setSocket(null)
     navigate("/login")
   }
