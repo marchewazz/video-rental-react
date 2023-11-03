@@ -4,9 +4,9 @@ import strings from "../../utilities/strings";
 
 export default function RentalDisplay(props: { rental: Rental }) {
   return (
-    <div className="flex mb-5">
-      <Link to={`/show/${props.rental.rentalShowID}`}>
-        <div className="rounded-3xl border-2 flex border-light-green w-[170px] h-[250px]">
+    <div className="flex flex-col md:flex-row mb-5">
+      <Link className="self-center md:self-auto" to={`/show/${props.rental.rentalShowID}`}>
+        <div className="rounded-3xl border-2 flex border-light-green w-[170px] h-[250px] hover:scale-110 transition-all duration-200 ease-in-out">
           <img
             className={`rounded-3xl ${!props.rental.rentalShowPoster|| props.rental.rentalShowPoster == "N/A" ? "justify-self-center self-center" : "w-full h-full" }`}
             src={!props.rental.rentalShowPoster || props.rental.rentalShowPoster == "N/A" ? "images/no-image-icon.png" : props.rental.rentalShowPoster}
@@ -14,7 +14,7 @@ export default function RentalDisplay(props: { rental: Rental }) {
           />
         </div>
       </Link>
-      <div className="flex flex-col justify-evenly ml-5">
+      <div className="flex flex-col justify-evenly mt-2 md:mt-0 md:ml-5">
         <p className="font-bold text-dark-green dark:text-light-green text-4xl">{props.rental.rentalShowTitle}</p>
         {props.rental.rentalStatus === "active" ? (
           <>

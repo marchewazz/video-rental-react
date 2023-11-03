@@ -11,6 +11,8 @@ import Context from "../models/Context.model";
 
 import translate, { DeeplLanguages } from "deepl";
 import LoadingComponent from "../components/LoadingComponent";
+import { motion } from "framer-motion";
+import Page from "./Page";
 
 export default function ShowPage() {
   const [showData, setShowData] = useState<any>();
@@ -49,7 +51,7 @@ export default function ShowPage() {
   }, []);
 
   return (
-    <main className="main-background">
+    <Page>
       <div className="container py-10">
         {ready && userDataReady ? (
           <>
@@ -67,6 +69,6 @@ export default function ShowPage() {
           </div>
         )}
       </div>
-    </main>
+    </Page>
   );
 }

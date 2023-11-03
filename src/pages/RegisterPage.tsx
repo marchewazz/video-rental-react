@@ -4,6 +4,7 @@ import RegisterFormData from "../models/RegisterFormData.model";
 
 import AuthService from "../services/AuthService.service";
 import { Link } from "react-router-dom";
+import Page from "./Page";
 
 export default function RegisterPage() {
 
@@ -77,7 +78,7 @@ export default function RegisterPage() {
     }
 
     return (
-        <main className="main-background">
+        <Page>
             <div className="container py-10 flex flex-col">
                 <p className="font-semibold text-6xl italic text-dark-green dark:text-light-green mb-10">
                     { strings.registerPage.title }
@@ -112,6 +113,6 @@ export default function RegisterPage() {
                     <input className="accept-button cursor-pointer" disabled={disabledButton} type="submit" value={strings.registerPage.form.submitButtonText} />
                 </form>
             </div>
-        </main>
+        </Page>
     )
 }

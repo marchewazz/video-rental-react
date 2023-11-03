@@ -4,6 +4,7 @@ import strings from "../utilities/strings";
 import LoginFormData from "../models/LoginFormData.model";
 import AuthService from "../services/AuthService.service";
 import { NavigateFunction, useNavigate } from "react-router-dom";
+import Page from "./Page";
 
 export default function LoginPage() {
 
@@ -54,7 +55,7 @@ export default function LoginPage() {
     }
 
     return (
-        <main className="main-background">
+        <Page>
             <div className="container py-10 flex flex-col">
                 <p className="font-semibold text-6xl italic text-dark-green dark:text-light-green mb-10">
                     { strings.loginPage.title }
@@ -78,6 +79,6 @@ export default function LoginPage() {
                     <input className="accept-button cursor-pointer" disabled={disabledButton} type="submit" value={strings.loginPage.form.submitButtonText} />
                 </form>
             </div>
-        </main>
+        </Page>
     )
 }

@@ -11,6 +11,7 @@ import strings from "../utilities/strings";
 import MostPopularShowsSwiper from "../components/MainPage/MostPopularShowsSwiper";
 import LoadingComponent from "../components/LoadingComponent";
 import UsersService from "../services/UsersService.service";
+import Page from "./Page";
 
 export default function SearchPage() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -49,7 +50,7 @@ export default function SearchPage() {
   }, [searchParams]);
 
   return (
-    <main className="main-background">
+    <Page>
       <div className="container py-10">
         { ready ? (
           <>
@@ -73,8 +74,8 @@ export default function SearchPage() {
                           src={!show.Poster || show.Poster == "N/A" ? "images/no-image-icon.png" : show.Poster}
                           alt=""
                         />
-                        <div className="collapse rounded-3xl flex items-end absolute group-hover:visible w-full h-full bg-earie-black opacity-90 top-0 right-0 p-2 z-50">
-                          <p className="text-white font-bold text-2xl">
+                        <div className="rounded-3xl flex items-end absolute group-hover:bg-black w-full h-full opacity-80 top-0 right-0 p-4 z-50 transition-all duration-300 ease-in-out">
+                          <p className="opacity-0 text-white font-bold text-2xl group-hover:opacity-100 transition-all duration-300 ease-in-out">
                             {show.Title}
                           </p>
                         </div>
@@ -97,14 +98,15 @@ export default function SearchPage() {
                 <MostPopularShowsSwiper />
               </>
             )}
+            <hr className="my-8 w-3/4 m-auto border-t-[3px]" />
             {searchResults.users.length ? (
               <>
-                <p className="text-4xl font-extrabold dark:text-white my-5">
+                <p className="text-4xl font-extrabold dark:text-white">
                   {strings.searchPage.usersTitle}
                 </p>
                 <div className="flex flex-col">
-                  { searchResults.users.map((user: { userID: string, userNick: string }) => {
-                    return (<Link to={`/user/${user.userID}`}
+                  { searchResults.users.map((user: { userID: string, userNick: string }, index: number) => {
+                    return (<Link to={`/user/${user.userID}`} key={index}
                     className="text-dark-green dark:text-white p-3 text-xl hover:bg-earie-black hover:text-white">
                       { user.userNick }
                     </Link>)
@@ -112,7 +114,7 @@ export default function SearchPage() {
                 </div>
               </>
             ) : (
-              <p className="text-center text-4xl font-extrabold dark:text-white my-5">
+              <p className="text-center text-4xl font-extrabold dark:text-white">
                   {strings.searchPage.notFoundUsers}
               </p>
             )}
@@ -123,6 +125,6 @@ export default function SearchPage() {
           </div>
         )}
       </div>
-    </main>
+    </Page>
   );
 }

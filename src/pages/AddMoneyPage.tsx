@@ -5,6 +5,7 @@ import Context from "../models/Context.model";
 import generateRandomString from "../utilities/randomString";
 import PopUpMessage from "../models/PopUpMessage.model";
 import LoadingComponent from "../components/LoadingComponent";
+import Page from "./Page";
 
 export default function AddMoneyPage() {
 
@@ -90,7 +91,7 @@ export default function AddMoneyPage() {
   
 
   return (
-    <main className="main-background">
+    <Page>
       <div className="container py-10 flex flex-col">
         {userDataReady ? (
           <>
@@ -116,7 +117,6 @@ export default function AddMoneyPage() {
           </div>
         )}
       </div>
-      
-    </main>
+    </Page>
   );
 }

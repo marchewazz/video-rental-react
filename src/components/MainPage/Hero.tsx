@@ -6,19 +6,24 @@ import ShowsService from '../../services/ShowsService.service';
 import strings from '../../utilities/strings';
 import translate, { DeeplLanguages } from 'deepl';
 
-import { Link } from 'react-router-dom';
+import { Link, useOutletContext } from 'react-router-dom';
 import LoadingComponent from '../LoadingComponent';
+import { animate } from 'framer-motion';
+import Context from '../../models/Context.model';
 
 export default function Hero() {
 
     const [recomendations, setRecomendations] = useState<any[]>([])
     const [ready, setReady] = useState<boolean>(false)
-
+    
     const recomendationsIDs: string[] = ["tt0317219", "tt0126029", "tt0114709"]
+
+    const { width } = useOutletContext<Context>()
 
     const ss: ShowsService = new ShowsService()
 
     const paginationRef = useRef(null)
+    const heroSwiperRef = useRef(null)
 
     useEffect(() => {
         let tempRecomendations: any[] = []
@@ -53,11 +58,19 @@ export default function Hero() {
         }))
     }, [])
     
+    useEffect(() => {
+        if (ready) {
+            if (width < 1024) animate(heroSwiperRef.current, { y: [100, 0], opacity: [0, 1] }, { duration: 1 }) 
+            else animate(heroSwiperRef.current, { y: [-200, 0], opacity: [0, 1] }, { duration: 1 })
+        }
+    }, [ready])
+    
 
     return (
-        <header className="main-background flex h-[calc(100vh-100px)] lg:h-auto lg:min-h-[600px]">
+        <header className="bg-white dark:bg-[#000] transition-all duration-300 flex h-[calc(100vh-100px)] lg:h-auto lg:min-h-[600px]">
             { ready ? (
                 <Swiper
+                ref={heroSwiperRef}
                 className="relative h-full w-full"
                 modules={[Pagination, Autoplay]}
                 spaceBetween={0}

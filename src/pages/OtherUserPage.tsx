@@ -8,6 +8,7 @@ import strings from "../utilities/strings";
 import Context from "../models/Context.model";
 import OtherUserDataResponse from "../models/responses/OtherUserDataResponse.model";
 import LoadingComponent from "../components/LoadingComponent";
+import Page from "./Page";
 
 export default function OtherUserPage() {
 
@@ -37,7 +38,7 @@ export default function OtherUserPage() {
     
 
     return (
-        <main className="main-background">
+        <Page>
             { ready && userDataReady && response ? (
                 <>
                     { response.message === "userData" && response.userData ? (
@@ -53,6 +54,6 @@ export default function OtherUserPage() {
                     <LoadingComponent />
                 </div>
             )}
-        </main>
+        </Page>
     )
 }

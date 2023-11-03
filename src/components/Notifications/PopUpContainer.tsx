@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react"
 import strings from "../../utilities/strings"
 import PopUpMessage from "../../models/PopUpMessage.model";
 import { Link } from "react-router-dom";
+import PopUpElement from "./PopUpElement";
 
 export default function PopUpContainer(props: any) {
 
@@ -17,7 +18,7 @@ export default function PopUpContainer(props: any) {
           const timeout = setTimeout(() => {
             setNotifications(notificationRef.current.slice(1))
             setNotificationsElements(notificationElementsRef.current.slice(1))
-          }, 3000);
+          }, 5000);
           return () => {
             clearTimeout(timeout);
           };
@@ -29,28 +30,9 @@ export default function PopUpContainer(props: any) {
     useEffect(() => {
       notificationRef.current = notifications;
       
-      const successMessages: string[] = ["rented", "rentalCancelled", "moneyAdded", "addedToFavorites", "removedFromFavorites", "invitationSent", "invitationReceived", "profileEdited", "nickTaken"];
-      const errorMessages: string[] = ["errorMessage", "noMoney"];
-
       notifications.forEach((notification: PopUpMessage) => {
         setNotificationsElements([...notificationsElements, (
-          <div className={`${successMessages.includes(notification.message) ? "notification-success" : ""} 
-          ${errorMessages.includes(notification.message) ? "notification-error" : ""}`
-          }>
-            { notification.message === "invitationReceived" ? (
-              <p>
-                { strings.formatString(strings.popUpNotifications.invitationReceived, { senderNick: notification.senderNick })}
-                <Link to={`/user/${notification.senderID}`}>
-                  { strings.popUpNotifications.viewProfile}
-                </Link>
-              </p>
-            ) : (
-              <p>
-                { strings.popUpNotifications[notification.message as keyof typeof strings.popUpNotifications] || ""}
-              </p>
-            )}
-            
-          </div>
+          <PopUpElement notification={notification} />
         )])
       });
     }, [notifications])

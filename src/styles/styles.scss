@@ -59,7 +59,7 @@ select {
 
 @layer components {
   .main-background {
-    @apply bg-white dark:bg-[#000] transition-all duration-300
+    @apply bg-white dark:bg-[#000] transition-all duration-300 pt-[100px]
   }
   .accept-button {
     @apply bg-green-500 border-2 border-dark-green text-dark-green p-3 rounded-2xl transition-all duration-300
