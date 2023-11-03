@@ -11,6 +11,7 @@ import strings from "../utilities/strings";
 import MostPopularShowsSwiper from "../components/MainPage/MostPopularShowsSwiper";
 import LoadingComponent from "../components/LoadingComponent";
 import UsersService from "../services/UsersService.service";
+import Page from "./Page";
 
 export default function SearchPage() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -49,7 +50,7 @@ export default function SearchPage() {
   }, [searchParams]);
 
   return (
-    <main className="main-background">
+    <Page>
       <div className="container py-10">
         { ready ? (
           <>
@@ -124,6 +125,6 @@ export default function SearchPage() {
           </div>
         )}
       </div>
-    </main>
+    </Page>
   );
 }
