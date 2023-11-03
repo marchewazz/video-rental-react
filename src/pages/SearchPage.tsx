@@ -74,8 +74,8 @@ export default function SearchPage() {
                           src={!show.Poster || show.Poster == "N/A" ? "images/no-image-icon.png" : show.Poster}
                           alt=""
                         />
-                        <div className="rounded-3xl flex items-end absolute group-hover:bg-black w-full h-full  opacity-80 top-0 right-0 p-4 z-50 transition-all duration-300 ease-in-out">
-                          <p className="text-transparent text-white font-bold text-2xl group-hover:text-white transition-all duration-300 ease-in-out">
+                        <div className="rounded-3xl flex items-end absolute group-hover:bg-black w-full h-full opacity-80 top-0 right-0 p-4 z-50 transition-all duration-300 ease-in-out">
+                          <p className="opacity-0 text-white font-bold text-2xl group-hover:opacity-100 transition-all duration-300 ease-in-out">
                             {show.Title}
                           </p>
                         </div>
