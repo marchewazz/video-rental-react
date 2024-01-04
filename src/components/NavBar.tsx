@@ -37,17 +37,13 @@ export default function NavBar(props: {
               balance: props.userData.userBalance,
             })}
           </div>
-          <div className={`nav-item-clickable ${props.width > 1024 ? "parallelogram" : "p-4"}`}>
             <Link
-              className="h-full w-full flex items-center"
-              to="/add-money"
-            >
+              className={`nav-item-clickable p-4 ${props.width > 1024 ? "parallelogram" : ""}`}
+              to="/add-money">
               {strings.nav.addMoney}
             </Link>
-          </div>
-          <div className={`nav-item-clickable ${props.width > 1024 ? "parallelogram" : "p-4 "}`}>
             <Link
-              className="h-full w-full flex items-center"
+              className={`nav-item-clickable p-4 ${props.width > 1024 ? "parallelogram" : ""}`}
               to="/myprofile"
             >
               {" "}
@@ -55,9 +51,8 @@ export default function NavBar(props: {
                 nickName: props.userData.userNick,
               })}
             </Link>
-          </div>
           <button
-            className={`nav-item-clickable ${props.width > 1024 ? "parallelogram px-4" : "p-4"}`}
+            className={`nav-item-clickable p-4 ${props.width > 1024 ? "parallelogram px-4" : ""}`}
             onClick={props.logoutFunction}
           >
             <svg
@@ -84,12 +79,8 @@ export default function NavBar(props: {
         </>
         ) : (
           <>
-            <div className={`nav-item-clickable ${props.width > 1024 ? "parallelogram" : "p-4"}`}>
-              <Link to="/login">{strings.nav.login}</Link>
-            </div>
-            <div className={`nav-item-clickable ${props.width > 1024 ? "parallelogram" : "p-4"}`}>
-              <Link to="/register">{strings.nav.register}</Link>
-            </div>
+            <Link className={`nav-item-clickable p-4 ${props.width > 1024 ? "parallelogram" : ""}`} to="/login">{strings.nav.login}</Link>
+            <Link className={`nav-item-clickable p-4 ${props.width > 1024 ? "parallelogram" : ""}`} to="/register">{strings.nav.register}</Link>
           </>
         )}
     </>
@@ -174,7 +165,7 @@ export default function NavBar(props: {
             </button>
             <div>
               <Link to="/">
-                <img className="w-16 ml-4 mb-5 dark:invert" src="images/logo.png" />
+                <img className="w-16 ml-4 mb-5 dark:invert" src="/images/logo.png" />
               </Link>
             </div>
             {links}
