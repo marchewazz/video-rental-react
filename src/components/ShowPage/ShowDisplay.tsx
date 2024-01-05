@@ -114,7 +114,7 @@ export default function ShowDisplay(props: any) {
     <div className="flex flex-wrap">
       <div className="rounded-3xl border-2 border-light-green flex ml-auto mr-auto lg:ml-0 lg:w-[300px]">
           <img
-            className={`rounded-3xl ${!props.showData.Poster || props.showData.Poster == "N/A" ? "justify-self-center self-center" : "w-full h-full" }`}
+            className={`rounded-3xl ${!props.showData.Poster || props.showData.Poster == "N/A" ? "justify-self-center self-center" : "w-full" } lg:h-[495px]`}
             src={!props.showData.Poster || props.showData.Poster == "N/A" ? "../images/no-image-icon.png" : props.showData.Poster}
             alt=""
           />
@@ -232,7 +232,7 @@ export default function ShowDisplay(props: any) {
                 rental["rentalShowID"] === props.showData.imdbID &&
                 rental["rentalStatus"] === "active"
             ) ? (
-              <div className="mt-8 flex flex-col">
+              <div className="mt-8 flex flex-col mt-auto">
                 <header className="text-center text-2xl dark:text-white mb-3">
                   { strings.showPage.countdownTimer.title }
                 </header>
