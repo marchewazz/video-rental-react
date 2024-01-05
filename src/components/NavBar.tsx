@@ -7,6 +7,7 @@ import SearchBar from "./SearchBar";
 import LoadingComponent from "./LoadingComponent";
 
 import { animate } from "framer-motion"
+import LanguageSetter from "./LanguageSetter";
 
 export default function NavBar(props: {
   userData: UserData | undefined;
@@ -141,10 +142,13 @@ export default function NavBar(props: {
               <>
                 {links}
                 <SearchBar />
-                <DarkModeToggler
-                  darkMode={props.darkMode}
-                  darkModeChangeFunction={props.darkModeChangeFunction}
-                />
+                <div className="flex flex-col items-center">
+                  <DarkModeToggler
+                    darkMode={props.darkMode}
+                    darkModeChangeFunction={props.darkModeChangeFunction}
+                  />
+                  <LanguageSetter />
+                </div>
               </>
             )}
           </>
@@ -174,6 +178,7 @@ export default function NavBar(props: {
               darkMode={props.darkMode}
               darkModeChangeFunction={props.darkModeChangeFunction}
             />
+            <LanguageSetter />
           </div>
         </>
       ) : null}

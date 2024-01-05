@@ -104,7 +104,7 @@ function AppLayout() {
   }, [location.pathname])
 
   return (
-    <div className={`${darkMode && "dark"}`}>
+    <div className={`${darkMode && "dark"} w-screen`}>
       <div className="bg-dark-green dark:bg-earie-black min-h-screen transition-all duration-300 overflow-x-hidden">
         <NavBar userData={userData} isUserLogged={isUserLogged} logoutFunction={logout} onlyNonLoggedPaths={onlyNonLoggedPaths} darkMode={darkMode} darkModeChangeFunction={changeDarkMode} width={width} height={height} />
         <Outlet context={{socket, userData, isUserLogged, userDataReady, darkMode, width}} />
