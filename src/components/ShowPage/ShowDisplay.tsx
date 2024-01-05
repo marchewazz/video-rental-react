@@ -271,12 +271,23 @@ export default function ShowDisplay(props: any) {
       </div>
       <div className="lg:w-full p-4 flex flex-col justify-between">
         <p className="h-full text-xl dark:text-white font-light leading-9">
-            { strings.getLanguage() != "en" && props.showData.PlotTranslated && props.showData.PlotTranslated != "N/A" ? (
+            { strings.getLanguage() != "en" ? (
                 <>
-                    { props.showData.PlotTranslated }
-                    <span className="block text-gray-400 text-right text-base">
-                        { strings.util.translationInfo }
-                    </span>
+                    { props.showData.PlotTranslated && props.showData.PlotTranslated ? (
+                      <>
+                          { props.showData.PlotTranslated }
+                        <span className="block text-gray-400 text-right text-base">
+                            { strings.util.translationInfo }
+                        </span>
+                      </>
+                    ) : (
+                      <>
+                        { props.showData.Plot }
+                        <span className="block text-gray-400 text-base">
+                          { strings.showPage.couldntGetPlotTranslated }
+                        </span>
+                      </>
+                    )}
                 </>
             ) : (
               <>

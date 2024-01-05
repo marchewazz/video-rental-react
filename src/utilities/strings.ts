@@ -68,6 +68,7 @@ let strings = new LocalizedStrings({
       ratingValue: "{rating}/{votes} votes",
       series: "SERIES",
       movie: "MOVIE",
+      couldntGetPlotTranslated: "We couldn't get the plot translated",
       countdownTimer: {
         title: "Your rental ends in:",
         days: "days",
@@ -239,6 +240,7 @@ let strings = new LocalizedStrings({
       ratingValue: "{rating}/{votes} głosów",
       series: "SERIAL",
       movie: "FILM",
+      couldntGetPlotTranslated: "Nie udało nam się przetłmaczyć opisu",
       countdownTimer: {
         title: "Twoje wypożyczenie kończy się za:",
         days: "dni",
