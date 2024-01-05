@@ -64,7 +64,7 @@ export default function UserRentals() {
                     </label>
                 </div>
             </div>
-            <div>
+            <div className={`max-h-[540px] ${rentalsList?.length ? "overflow-y-auto" : ""}`}>
                 { rentalsListReady ? (
                     <>
                         { rentalsList?.length ? (

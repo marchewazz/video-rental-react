@@ -81,9 +81,6 @@ export default function UserLists() {
                                         </div>
                                         ) : (null)}
                                     </div>
-                                    <p className="text-center dark:text-white text-xl">
-                                        { show.Title }
-                                    </p>
                                 </Link>
                             }) }
                         </div>

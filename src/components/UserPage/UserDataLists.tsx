@@ -41,7 +41,7 @@ export default function UserDataLists() {
                     <input className="peer hidden" type="radio" name="userDataLists" id="invitations" checked={selectedTab === "invitations"} onChange={() => setSelectedTab("invitations")} />
                     <label className="profile-tab-button rounded-bl-full md:rounded-none relative" htmlFor="invitations">
                         { userData.userInvitations.length ? (
-                            <span className="absolute flex h-5 w-5 -top-2 right-2">
+                            <span className="absolute flex h-5 w-5 left-3 top-11 lg:-top-2 lg:right-2">
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
                                 <span className="relative inline-flex rounded-full h-5 w-5 bg-red-500"></span>
                             </span>

@@ -42,18 +42,18 @@ export default function InvitationDisplay(props: { invitation: Invitation }) {
   }, [disableRejectButton]);
 
   return (
-    <div className="flex items-center w-4/5 lg:w-1/2 justify-between mb-4">
+    <div className="flex items-center w-full sm:w-1/2 justify-between mb-4">
       <div className="flex flex-col">
         <Link
           to={`/user/${props.invitation.senderID}`}
-          className="underline text-2xl dark:text-white"
+          className="underline lg:text-2xl dark:text-white"
         >
           {props.invitation.senderNick}
         </Link>
       </div>
-      <div className="flex flex-col">
+      <div className="flex gap-5">
         <button
-          className="bg-green-700 disabled:bg-gray-700 rounded-lg w-10 h-10 flex items-center justify-center mb-4 hover:bg-green-900 transition-all duration-200 ease-in-out"
+          className="bg-green-700 disabled:bg-gray-700 rounded-lg w-10 h-10 flex items-center justify-center hover:bg-green-900 transition-all duration-200 ease-in-out"
           disabled={disableAcceptButton != ""}
           onClick={acceptInvitation}
         >
