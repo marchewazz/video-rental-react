@@ -71,15 +71,20 @@ export default function UserLists() {
                         <div className="grid gap-10 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
                             { selectedList?.listShows.map((show: any, index: number) => {
                                 return <Link to={`/show/${show.showID}`} key={index}
-                                className="group hover:scale-110 transition-all duration-200 ease-in-out">
+                                className="group transition-all duration-200 ease-in-out">
                                     <div className="relative overflow-hidden rounded-3xl border-2 flex border-light-green w-full h-full max-h-[400px]">
                                         <img className={`${!show.Poster || show.Poster == "N/A" ? "justify-self-center self-center" : "w-full h-full" } rounded-3xl`}
                                         src={!show.Poster || show.Poster == "N/A" ? "images/no-image-icon.png" : show.Poster} />
                                         { userData.userRentals.some((rental: any) => rental["rentalShowID"] === show.showID && rental["rentalStatus"] === "active") ? (
-                                        <div className="absolute list-show-rented-etiquete -rotate-45 bg-light-green text-center">
+                                        <div className="absolute list-show-rented-etiquete -rotate-45 bg-light-green text-center z-[100]">
                                             { strings.popUpNotifications.rented.toUpperCase() }
                                         </div>
                                         ) : (null)}
+                                        <div className="rounded-3xl flex items-end absolute group-hover:bg-black w-full h-full opacity-80 top-0 right-0 p-4 z-50 transition-all duration-300 ease-in-out">
+                                            <p className="opacity-0 text-white font-bold text-2xl group-hover:opacity-100 transition-all duration-300 ease-in-out">
+                                              {show.Title}
+                                            </p>
+                                        </div>
                                     </div>
                                 </Link>
                             }) }
