@@ -30,6 +30,10 @@ export default function RegisterPage() {
                 setNickMessage(strings.registerPage.form.atSignInNick)
                 correct = false
             }
+            if (nick.length > 15) {
+                setNickMessage(strings.registerPage.form.tooLongNick)
+                correct = false
+            }
         }
         if (!email) {
             setEmailMessage(strings.registerPage.form.missingEmail)
@@ -85,7 +89,7 @@ export default function RegisterPage() {
                 </p>
                 <form onSubmit={submitForm} className="flex flex-col self-center">
                     <div className="my-5">
-                        <input className="text-input w-full" placeholder={strings.registerPage.form.passNick} type="text" name="nick" onChange={(e) => {setRegisterMessage("");setNickMessage(""); setNick(e.target.value)}} />
+                        <input className="text-input w-full" placeholder={strings.registerPage.form.passNick} type="text" name="nick" onChange={(e) => {setRegisterMessage("");setNickMessage(""); setNick(e.target.value.trim())}} />
                         <p className="px-4 text-red-700 font-bold">
                             { nickMessage }
                         </p>
