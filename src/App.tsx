@@ -33,6 +33,7 @@ import SeriesPage from "./pages/SeriesPage";
 import CookiesPage from "./pages/CookiesPage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 import NotFoundPage from "./pages/NotFoundPage";
+import strings from "./utilities/strings";
 
 function AppLayout() {
 
@@ -104,10 +105,17 @@ function AppLayout() {
     }
   }, [location.pathname])
 
+  useEffect(() => {
+    if (localStorage.getItem("language") == "pl" || localStorage.getItem("language") == "en") strings.setLanguage(localStorage.getItem("language"))
+    else localStorage.setItem("language", strings.getLanguage())
+    setLanguageReady(true)
+  }, [])
+  
+
   return (
     <div className={`${darkMode && "dark"} w-screen`}>
       <div className="bg-dark-green dark:bg-earie-black min-h-screen transition-all duration-300 overflow-x-hidden">
-        <NavBar userData={userData} isUserLogged={isUserLogged} logoutFunction={logout} languageReadyChangeFunction={setLanguageReady} onlyNonLoggedPaths={onlyNonLoggedPaths} darkMode={darkMode} darkModeChangeFunction={changeDarkMode} width={width} height={height} />
+        <NavBar userData={userData} isUserLogged={isUserLogged} logoutFunction={logout} onlyNonLoggedPaths={onlyNonLoggedPaths} darkMode={darkMode} darkModeChangeFunction={changeDarkMode} width={width} height={height} />
         <Outlet context={{socket, userData, isUserLogged, userDataReady, darkMode, languageReady ,width}} />
         <PopUpContainer socket={socket} />
         <Footer />

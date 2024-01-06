@@ -1,18 +1,12 @@
 import { Dispatch, SetStateAction, useEffect } from "react"
 import strings from "../utilities/strings"
 
-export default function LanguageSetter(props: { languageReadyChangeFunction: Dispatch<SetStateAction<boolean>> }) {
+export default function LanguageSetter() {
     
     function changeLanguage(language: string): void {
         localStorage.setItem("language", language)
         window.location.reload();
     }
-
-    useEffect(() => {
-        if (localStorage.getItem("language") == "pl" || localStorage.getItem("language") == "en") strings.setLanguage(localStorage.getItem("language"))
-        else localStorage.setItem("language", strings.getLanguage())
-        props.languageReadyChangeFunction(true)
-    }, [])
     
     return (
         <div className="p-4 gap-4 flex lg:gap-2 lg:p-0">

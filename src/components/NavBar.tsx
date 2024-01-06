@@ -16,7 +16,6 @@ export default function NavBar(props: {
   onlyNonLoggedPaths: string[];
   darkMode: boolean;
   darkModeChangeFunction: React.ChangeEventHandler<HTMLInputElement>;
-  languageReadyChangeFunction: Dispatch<SetStateAction<boolean>>;
   height: number;
   width: number;
 }) {
@@ -148,7 +147,7 @@ export default function NavBar(props: {
                     darkMode={props.darkMode}
                     darkModeChangeFunction={props.darkModeChangeFunction}
                   />
-                  <LanguageSetter languageReadyChangeFunction={props.languageReadyChangeFunction}  />
+                  <LanguageSetter />
                 </div>
               </>
             )}
@@ -179,7 +178,7 @@ export default function NavBar(props: {
               darkMode={props.darkMode}
               darkModeChangeFunction={props.darkModeChangeFunction}
             />
-            <LanguageSetter languageReadyChangeFunction={props.languageReadyChangeFunction} />
+            <LanguageSetter />
           </div>
         </>
       ) : null}
