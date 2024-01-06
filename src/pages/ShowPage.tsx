@@ -20,7 +20,7 @@ export default function ShowPage() {
 
   const { showid }: Readonly<Params<string>> = useParams<string>();
 
-  const { userDataReady } = useOutletContext<Context>();
+  const { userDataReady,languageReady } = useOutletContext<Context>();
 
   const ss: ShowsService = new ShowsService();
 
@@ -53,7 +53,7 @@ export default function ShowPage() {
   return (
     <Page>
       <div className="container py-10">
-        {ready && userDataReady ? (
+        {ready && userDataReady && languageReady ? (
           <>
             {showData.Response === "True" ? (
               <>

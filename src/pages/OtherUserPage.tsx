@@ -16,7 +16,7 @@ export default function OtherUserPage() {
 
     const { userid } = useParams();
 
-    const { userData, socket, userDataReady } = useOutletContext<Context>();
+    const { userData, socket, userDataReady, languageReady } = useOutletContext<Context>();
 
     const navigate = useNavigate()
 
@@ -39,7 +39,7 @@ export default function OtherUserPage() {
 
     return (
         <Page>
-            { ready && userDataReady && response ? (
+            { ready && userDataReady && response && languageReady ? (
                 <>
                     { response.message === "userData" && response.userData ? (
                         <OtherUserDisplay otherUserData={response.userData} />

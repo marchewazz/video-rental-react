@@ -6,6 +6,7 @@ export default interface Context {
     userData: UserData, 
     isUserLogged: boolean, 
     userDataReady: boolean,
+    languageReady: boolean,
     darkMode: boolean,
     width: number
 }

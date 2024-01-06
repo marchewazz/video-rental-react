@@ -40,8 +40,9 @@ function AppLayout() {
   const [socket, setSocket] = useState<Socket<typeof DefaultEventsMap, typeof DefaultEventsMap> | null>(null);
   const [isUserLogged, setIsUserLogged] = useState<boolean>(false)
   const [userDataReady, setUserDataReady] = useState<boolean>(false)
+  const [languageReady, setLanguageReady] = useState<boolean>(false)
   const [darkMode, setDarkMode] = useState<boolean>(localStorage.getItem("darkMode") == "true" || false)
-
+  
   const { width, height }: { width: number, height: number } = useWindowDimensions();
   const navigate: NavigateFunction = useNavigate()
   const location: Location = useLocation()
@@ -106,8 +107,8 @@ function AppLayout() {
   return (
     <div className={`${darkMode && "dark"} w-screen`}>
       <div className="bg-dark-green dark:bg-earie-black min-h-screen transition-all duration-300 overflow-x-hidden">
-        <NavBar userData={userData} isUserLogged={isUserLogged} logoutFunction={logout} onlyNonLoggedPaths={onlyNonLoggedPaths} darkMode={darkMode} darkModeChangeFunction={changeDarkMode} width={width} height={height} />
-        <Outlet context={{socket, userData, isUserLogged, userDataReady, darkMode, width}} />
+        <NavBar userData={userData} isUserLogged={isUserLogged} logoutFunction={logout} languageReadyChangeFunction={setLanguageReady} onlyNonLoggedPaths={onlyNonLoggedPaths} darkMode={darkMode} darkModeChangeFunction={changeDarkMode} width={width} height={height} />
+        <Outlet context={{socket, userData, isUserLogged, userDataReady, darkMode, languageReady ,width}} />
         <PopUpContainer socket={socket} />
         <Footer />
       </div>

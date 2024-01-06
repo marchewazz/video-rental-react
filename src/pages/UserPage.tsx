@@ -10,16 +10,16 @@ import Page from "./Page";
 
 export default function UserPage() {
 
-    const { userDataReady } = useOutletContext<Context>();
+    const { userDataReady, languageReady } = useOutletContext<Context>();
 
     return (
         <Page>
             <div className="container py-10">
-                <h3 className="font-semibold text-6xl italic text-dark-green dark:text-light-green mb-10">
-                    { strings.profilePage.title }
-                </h3>
-                { userDataReady ? (
+                { userDataReady && languageReady ? (
                     <div>
+                        <h3 className="font-semibold text-6xl italic text-dark-green dark:text-light-green mb-10">
+                            { strings.profilePage.title }
+                        </h3>
                         <UserDataDisplay />
                         <UserDataLists />
                     </div>

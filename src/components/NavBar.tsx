@@ -2,7 +2,7 @@ import { Link, Location, useLocation } from "react-router-dom";
 import UserData from "../models/UserData.model";
 import strings from "../utilities/strings";
 import DarkModeToggler from "./DarkModeToggler";
-import { useEffect, useRef, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import SearchBar from "./SearchBar";
 import LoadingComponent from "./LoadingComponent";
 
@@ -16,6 +16,7 @@ export default function NavBar(props: {
   onlyNonLoggedPaths: string[];
   darkMode: boolean;
   darkModeChangeFunction: React.ChangeEventHandler<HTMLInputElement>;
+  languageReadyChangeFunction: Dispatch<SetStateAction<boolean>>;
   height: number;
   width: number;
 }) {
@@ -147,7 +148,7 @@ export default function NavBar(props: {
                     darkMode={props.darkMode}
                     darkModeChangeFunction={props.darkModeChangeFunction}
                   />
-                  <LanguageSetter />
+                  <LanguageSetter languageReadyChangeFunction={props.languageReadyChangeFunction}  />
                 </div>
               </>
             )}
@@ -178,7 +179,7 @@ export default function NavBar(props: {
               darkMode={props.darkMode}
               darkModeChangeFunction={props.darkModeChangeFunction}
             />
-            <LanguageSetter />
+            <LanguageSetter languageReadyChangeFunction={props.languageReadyChangeFunction} />
           </div>
         </>
       ) : null}

@@ -1,8 +1,8 @@
-import { useEffect } from "react"
+import { Dispatch, SetStateAction, useEffect } from "react"
 import strings from "../utilities/strings"
 
-export default function LanguageSetter() {
-
+export default function LanguageSetter(props: { languageReadyChangeFunction: Dispatch<SetStateAction<boolean>> }) {
+    
     function changeLanguage(language: string): void {
         localStorage.setItem("language", language)
         window.location.reload();
@@ -11,6 +11,7 @@ export default function LanguageSetter() {
     useEffect(() => {
         if (localStorage.getItem("language") == "pl" || localStorage.getItem("language") == "en") strings.setLanguage(localStorage.getItem("language"))
         else localStorage.setItem("language", strings.getLanguage())
+        props.languageReadyChangeFunction(true)
     }, [])
     
     return (

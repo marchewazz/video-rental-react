@@ -29,7 +29,7 @@ export default function SearchPage() {
 
   const navigate = useNavigate();
 
-  const { userData, userDataReady } = useOutletContext<Context>();
+  const { userData, userDataReady, languageReady } = useOutletContext<Context>();
 
   useEffect(() => {
     if (!searchParams.get("s")) navigate("/");
@@ -56,7 +56,7 @@ export default function SearchPage() {
   return (
     <Page>
       <div className="container py-10">
-        { ready && userDataReady ? (
+        { ready && userDataReady && languageReady ? (
           <>
             {searchResults.shows.length ? (
               <>
