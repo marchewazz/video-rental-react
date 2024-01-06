@@ -68,7 +68,7 @@ export default function UserLists() {
             { listReady ? (
                 <>
                     { selectedList?.listShows.length ? (
-                        <div className="grid gap-10 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
+                        <div className="grid gap-10 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                             { selectedList?.listShows.map((show: any, index: number) => {
                                 return <Link to={`/show/${show.showID}`} key={index}
                                 className="group transition-all duration-200 ease-in-out">
