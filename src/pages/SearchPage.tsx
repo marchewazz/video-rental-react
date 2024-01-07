@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import {
   Link,
   useNavigate,
+  useOutletContext,
   useParams,
   useSearchParams,
 } from "react-router-dom";
@@ -12,6 +13,7 @@ import MostPopularShowsSwiper from "../components/MainPage/MostPopularShowsSwipe
 import LoadingComponent from "../components/LoadingComponent";
 import UsersService from "../services/UsersService.service";
 import Page from "./Page";
+import Context from "../models/Context.model";
 
 export default function SearchPage() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -26,6 +28,8 @@ export default function SearchPage() {
   const us: UsersService = new UsersService();
 
   const navigate = useNavigate();
+
+  const { userData, userDataReady, languageReady } = useOutletContext<Context>();
 
   useEffect(() => {
     if (!searchParams.get("s")) navigate("/");
@@ -52,7 +56,7 @@ export default function SearchPage() {
   return (
     <Page>
       <div className="container py-10">
-        { ready ? (
+        { ready && userDataReady && languageReady ? (
           <>
             {searchResults.shows.length ? (
               <>
@@ -66,7 +70,7 @@ export default function SearchPage() {
                   {searchResults.shows.map((show: any) => {
                     return (
                       <Link
-                        className="group relative rounded-3xl border-2 border-light-green flex"
+                        className="group overflow-hidden relative rounded-3xl border-2 border-light-green flex"
                         to={`../show/${show.imdbID}`}
                       >
                         <img
@@ -74,6 +78,11 @@ export default function SearchPage() {
                           src={!show.Poster || show.Poster == "N/A" ? "images/no-image-icon.png" : show.Poster}
                           alt=""
                         />
+                        { userData.userRentals.some((rental: any) => rental["rentalShowID"] === show.imdbID && rental["rentalStatus"] === "active") ? (
+                          <div className="absolute list-show-rented-etiquete -rotate-45 bg-light-green text-center z-[100]">
+                              { strings.popUpNotifications.rented.toUpperCase() }
+                          </div>
+                        ) : (null)}
                         <div className="rounded-3xl flex items-end absolute group-hover:bg-black w-full h-full opacity-80 top-0 right-0 p-4 z-50 transition-all duration-300 ease-in-out">
                           <p className="opacity-0 text-white font-bold text-2xl group-hover:opacity-100 transition-all duration-300 ease-in-out">
                             {show.Title}

@@ -33,6 +33,7 @@ import SeriesPage from "./pages/SeriesPage";
 import CookiesPage from "./pages/CookiesPage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 import NotFoundPage from "./pages/NotFoundPage";
+import strings from "./utilities/strings";
 
 function AppLayout() {
 
@@ -40,8 +41,9 @@ function AppLayout() {
   const [socket, setSocket] = useState<Socket<typeof DefaultEventsMap, typeof DefaultEventsMap> | null>(null);
   const [isUserLogged, setIsUserLogged] = useState<boolean>(false)
   const [userDataReady, setUserDataReady] = useState<boolean>(false)
+  const [languageReady, setLanguageReady] = useState<boolean>(false)
   const [darkMode, setDarkMode] = useState<boolean>(localStorage.getItem("darkMode") == "true" || false)
-
+  
   const { width, height }: { width: number, height: number } = useWindowDimensions();
   const navigate: NavigateFunction = useNavigate()
   const location: Location = useLocation()
@@ -80,6 +82,7 @@ function AppLayout() {
       socket?.emit("logout")
       socket?.disconnect()
     }
+    setUserData(undefined)
     setSocket(null)
     navigate("/login")
   }
@@ -103,11 +106,18 @@ function AppLayout() {
     }
   }, [location.pathname])
 
+  useEffect(() => {
+    if (localStorage.getItem("language") == "pl" || localStorage.getItem("language") == "en") strings.setLanguage(localStorage.getItem("language"))
+    else localStorage.setItem("language", strings.getLanguage())
+    setLanguageReady(true)
+  }, [])
+  
+
   return (
     <div className={`${darkMode && "dark"}`}>
-      <div className="bg-dark-green dark:bg-earie-black min-h-screen transition-all duration-300 overflow-x-hidden">
-        <NavBar userData={userData} isUserLogged={isUserLogged} logoutFunction={logout} onlyNonLoggedPaths={onlyNonLoggedPaths} darkMode={darkMode} darkModeChangeFunction={changeDarkMode} width={width} height={height} />
-        <Outlet context={{socket, userData, isUserLogged, userDataReady, darkMode, width}} />
+      <NavBar userData={userData} isUserLogged={isUserLogged} logoutFunction={logout} onlyNonLoggedPaths={onlyNonLoggedPaths} darkMode={darkMode} darkModeChangeFunction={changeDarkMode} width={width} height={height} />
+      <div id="scrollable" className="bg-dark-green dark:bg-earie-black min-h-[calc(100vh-100px)] max-h-[calc(100vh-100px)] mt-[100px] transition-all duration-300 overflow-x-hidden overflow-y-auto">
+        <Outlet context={{socket, userData, isUserLogged, userDataReady, darkMode, languageReady ,width}} />
         <PopUpContainer socket={socket} />
         <Footer />
       </div>

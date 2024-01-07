@@ -34,6 +34,7 @@ let strings = new LocalizedStrings({
         passwordNotTheSame: "Passwords are not the same",
         nickTaken: "Nick is already taken",
         emailTaken: "This email is already registered",
+        tooLongNick: "Nick cannot be longer than 15 characters",
         errorMessage: "There is some error, try again later",
         registeredSuccess: "Registered, login ",
         registeredSuccessHere: "here",
@@ -51,6 +52,8 @@ let strings = new LocalizedStrings({
         nickNotExists: "There is no account with this nick",
         wrongPassword: "Wrong password",
         errorMessage: "There is some error, try again later",
+        generateAccount: "Generate account",
+        generateAccountPassword: "Passoword: ",
         submitButtonText: "Login"
       }
     },
@@ -68,6 +71,7 @@ let strings = new LocalizedStrings({
       ratingValue: "{rating}/{votes} votes",
       series: "SERIES",
       movie: "MOVIE",
+      couldntGetPlotTranslated: "We couldn't get the plot translated",
       countdownTimer: {
         title: "Your rental ends in:",
         days: "days",
@@ -205,6 +209,7 @@ let strings = new LocalizedStrings({
         passwordNotTheSame: "Hasła nie są takie same",
         nickTaken: "Nick jest już zajęty",
         emailTaken: "Ten mail jest już zarejestrowany",
+        tooLongNick: "Nick nie może mieć więcej niż 15 znaków",
         errorMessage: "Wystąpił błąd, spróbuj ponownie później",
         registeredSuccess: "Zarejestrowano, zaloguj się ",
         registeredSuccessHere: "tutaj",
@@ -222,6 +227,8 @@ let strings = new LocalizedStrings({
         nickNotExists: "Nie ma konta z takim nickiem",
         wrongPassword: "Błędne hasło",
         errorMessage: "Wystąpił błąd, spróbuj ponownie później",
+        generateAccount: "Generuj konto",
+        generateAccountPassword: "Hasło: ",
         submitButtonText: "Zaloguj"
       }
     },
@@ -239,6 +246,7 @@ let strings = new LocalizedStrings({
       ratingValue: "{rating}/{votes} głosów",
       series: "SERIAL",
       movie: "FILM",
+      couldntGetPlotTranslated: "Nie udało nam się przetłmaczyć opisu",
       countdownTimer: {
         title: "Twoje wypożyczenie kończy się za:",
         days: "dni",

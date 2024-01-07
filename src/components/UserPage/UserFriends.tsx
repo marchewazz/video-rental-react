@@ -46,7 +46,7 @@ export default function UserFriends() {
   }, [userData.userFriends, userDataReady]);
 
   return (
-    <div className="flex flex-col items-center">
+    <div className={`flex flex-col items-center max-h-40 ${friendsList?.length ? "overflow-y-auto" : ""}`}>
       {ready ? (
         <>
             {friendsList?.length ? (

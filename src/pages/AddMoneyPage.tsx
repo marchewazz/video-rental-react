@@ -14,7 +14,7 @@ export default function AddMoneyPage() {
 
   const [inputMoney, setInputMoney] = useState<string>("0");
 
-  const { socket, userData, userDataReady } = useOutletContext<Context>();
+  const { socket, userData, userDataReady, languageReady } = useOutletContext<Context>();
 
   function formatInput(event: ChangeEvent<HTMLInputElement>): void {
     const allowedChars: string[] = [
@@ -93,7 +93,7 @@ export default function AddMoneyPage() {
   return (
     <Page>
       <div className="container py-10 flex flex-col">
-        {userDataReady ? (
+        {userDataReady && languageReady ? (
           <>
             <p className="font-semibold text-6xl italic text-dark-green dark:text-light-green mb-10">
               {strings.addMoneyPage.title}

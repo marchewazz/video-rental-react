@@ -5,6 +5,7 @@ import { Link, useOutletContext } from "react-router-dom";
 import Context from "../../models/Context.model";
 import LoadingComponent from "../LoadingComponent";
 import { animate, stagger } from "framer-motion";
+import strings from "../../utilities/strings";
 
 export default function MostPopularShowsSwiper() {
 
@@ -58,7 +59,7 @@ export default function MostPopularShowsSwiper() {
                     { mostPopularShows.map((show: any, index: number) => {
                          return <SwiperSlide className="most-popular-shows-slide relative !h-auto group" key={index}>
                             <Link
-                            className="relative rounded-3xl border-2 border-light-green flex h-full w-full"
+                            className="relative overflow-hidden rounded-3xl border-2 border-light-green flex h-full w-full"
                             to={`../show/${show.imdbID}`}
                             >
                                 <img
@@ -66,10 +67,13 @@ export default function MostPopularShowsSwiper() {
                                   src={!show.Poster || show.Poster == "N/A" ? "images/no-image-icon.png" : show.Poster}
                                   alt=""
                                 />
-                                <div className="collapse rounded-3xl flex items-end absolute group-hover:visible w-full h-full bg-earie-black opacity-90 top-0 right-0 p-2 z-50">
-                                  <p className="text-white font-bold text-2xl">
-                                    {show.Title}
-                                  </p>
+                                <div className="absolute list-show-rented-etiquete -rotate-45 bg-light-green text-center z-[100]">
+                                    { strings.popUpNotifications.rented.toUpperCase() }
+                                </div>
+                                <div className="rounded-3xl flex items-end absolute group-hover:bg-black w-full h-full opacity-80 top-0 right-0 p-4 z-50 transition-all duration-300 ease-in-out">
+                                    <p className="opacity-0 text-white font-bold text-2xl group-hover:opacity-100 transition-all duration-300 ease-in-out">
+                                      {show.Title}
+                                    </p>
                                 </div>
                             </Link>
                          </SwiperSlide>

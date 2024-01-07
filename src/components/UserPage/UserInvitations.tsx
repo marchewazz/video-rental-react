@@ -43,7 +43,7 @@ export default function UserInvitaions() {
   }, [userData.userInvitations, userDataReady]);
 
   return (
-    <div className="flex flex-col items-center">
+    <div className={`flex flex-col items-center max-h-40 ${invitations?.length ? "overflow-y-auto" : ""}`}>
       {ready ? (
         <>
             {invitations?.length ? (

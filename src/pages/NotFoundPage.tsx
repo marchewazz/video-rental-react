@@ -2,6 +2,7 @@ import { NavigateFunction, useNavigate, useOutletContext } from "react-router-do
 import Context from "../models/Context.model";
 import { useEffect } from "react";
 import Page from "./Page";
+import LoadingComponent from "../components/LoadingComponent";
 
 export default function NotFoundPage() {
 
@@ -20,9 +21,7 @@ export default function NotFoundPage() {
     return (
         <Page>
             <div className="container py-10">
-                <p className="text-4xl lg:text-6xl text-center font-extrabold dark:text-white">
-                    Loading...
-                </p>
+                <LoadingComponent />
             </div>
         </Page>
     )

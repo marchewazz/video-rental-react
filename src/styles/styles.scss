@@ -56,10 +56,9 @@ select {
   appearance: none;
 }
 
-
 @layer components {
   .main-background {
-    @apply bg-white dark:bg-[#000] transition-all duration-300 pt-[100px]
+    @apply bg-white dark:bg-[#000] transition-all duration-300
   }
   .accept-button {
     @apply bg-green-500 border-2 border-dark-green text-dark-green p-3 rounded-2xl transition-all duration-300
@@ -97,4 +96,41 @@ select {
     -ms-transform: skew(10deg);
     -o-transform: skew(10deg);
   }
+}
+
+#scrollable::-webkit-scrollbar {
+  width: 10px;
+}
+
+#scrollable::-webkit-scrollbar-track {
+  background: #191716;
+}
+
+#scrollable::-webkit-scrollbar-thumb {
+  background: #00bfb2;
+}
+
+#scrollable::-webkit-scrollbar-thumb:hover {
+  background: #294643;
+}
+
+:not(#scrollable)::-webkit-scrollbar {
+  width: 12px;
+}
+
+:not(#scrollable)::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+:not(#scrollable)::-webkit-scrollbar-thumb {
+  background: #00bfb2;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+}
+
+:not(#scrollable)::-webkit-scrollbar-thumb:hover {
+  background: #294643;
 }

@@ -13,8 +13,8 @@ export default function PopUpElement(props: { notification: PopUpMessage}) {
           }>
             { props.notification.message === "invitationReceived" ? (
               <p>
-                { strings.formatString(strings.popUpNotifications.invitationReceived, { senderNick: props.notification.senderNick })}
-                <Link to={`/user/${props.notification.senderID}`}>
+                { strings.formatString(strings.popUpNotifications.invitationReceived, { senderNick: props.notification.senderNick })} {" "}
+                <Link className="underline" to={`/user/${props.notification.senderID}`}>
                   { strings.popUpNotifications.viewProfile}
                 </Link>
               </p>
