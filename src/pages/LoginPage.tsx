@@ -12,6 +12,8 @@ import Page from "./Page";
 import LoadingComponent from "../components/LoadingComponent";
 import Context from "../models/Context.model";
 import GenerateAccount from "../components/LoginRegisterPages/GenerateAccount";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 export default function LoginPage() {
   const [nick, setNick] = useState<string>("");
@@ -19,6 +21,8 @@ export default function LoginPage() {
   const [password, setPassword] = useState<string>("");
   const [passwordMessage, setPasswordMessage] = useState<string>("");
   const [loginMessage, setLoginMessage] = useState<string>("");
+
+  const [showPassword, setShowPassword] = useState<boolean>(false)
 
   const [disabledButton, setDisabledButton] = useState(false);
 
@@ -91,17 +95,22 @@ export default function LoginPage() {
                 <p className="px-4 text-red-700 font-bold">{nickMessage}</p>
               </div>
               <div className="my-5">
-                <input
-                  className="text-input w-full"
-                  placeholder={strings.loginPage.form.passPassword}
-                  type="password"
-                  name="password"
-                  onChange={(e) => {
-                    setLoginMessage("");
-                    setPasswordMessage("");
-                    setPassword(e.target.value);
-                  }}
-                />
+                <div className="relative">
+                  <input
+                    className="text-input w-full pr-10"
+                    placeholder={strings.loginPage.form.passPassword}
+                    type={ showPassword ? "text" : "password" }
+                    name="password"
+                    onChange={(e) => {
+                      setLoginMessage("");
+                      setPasswordMessage("");
+                      setPassword(e.target.value);
+                    }}
+                  />
+                  <button className="absolute hover:scale-110 transition-all duration-100 ease-in-out text-white h-full w-10 right-0" onClick={(e) => { e.preventDefault(); setShowPassword(!showPassword) }}>
+                    { showPassword ? <FontAwesomeIcon icon={faEyeSlash} /> : <FontAwesomeIcon icon={faEye} /> }
+                  </button>
+                </div>
                 <p className="px-4 text-red-700 font-bold">{passwordMessage}</p>
               </div>
               <p className="px-4 mb-5 text-red-700 font-bold">{loginMessage}</p>

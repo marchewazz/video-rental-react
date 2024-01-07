@@ -8,6 +8,8 @@ import Page from "./Page";
 import LoadingComponent from "../components/LoadingComponent";
 import Context from "../models/Context.model";
 import GenerateAccount from "../components/LoginRegisterPages/GenerateAccount";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEyeSlash, faEye } from "@fortawesome/free-solid-svg-icons";
 
 export default function RegisterPage() {
   const [nick, setNick] = useState<string>("");
@@ -18,6 +20,9 @@ export default function RegisterPage() {
   const [repeatedPassword, setRepeatedPassword] = useState<string>("");
   const [passwordMessage, setPasswordMessage] = useState<string>("");
   const [registerMessage, setRegisterMessage] = useState<string>("");
+
+  const [showPassword, setShowPassword] = useState<boolean>(false)
+  const [showRepeatedPassword, setShowRepeatedPassword] = useState<boolean>(false)
 
   const [disabledButton, setDisabledButton] = useState(false);
 
@@ -136,29 +141,39 @@ export default function RegisterPage() {
                 />
                 <p className="px-4 text-red-700 font-bold">{emailMessage}</p>
               </div>
-              <div className="my-5">
-                <input
-                  className="text-input w-full mb-5"
-                  placeholder={strings.loginPage.form.passPassword}
-                  type="password"
-                  name="passoword"
-                  onChange={(e) => {
-                    setRegisterMessage("");
-                    setPasswordMessage("");
-                    setPassword(e.target.value);
-                  }}
-                />
-                <input
-                  className="text-input w-full"
-                  placeholder={strings.registerPage.form.repeatPassword}
-                  type="password"
-                  name="repeatedPassoword"
-                  onChange={(e) => {
-                    setRegisterMessage("");
-                    setPasswordMessage("");
-                    setRepeatedPassword(e.target.value);
-                  }}
-                />
+              <div className="my-5 flex flex-col gap-5">
+                <div className="relative">
+                  <input
+                    className="text-input w-full pr-10"
+                    placeholder={strings.loginPage.form.passPassword}
+                    type="password"
+                    name="passoword"
+                    onChange={(e) => {
+                      setRegisterMessage("");
+                      setPasswordMessage("");
+                      setPassword(e.target.value);
+                    }}
+                  />
+                  <button className="absolute hover:scale-110 transition-all duration-100 ease-in-out text-white h-full w-10 right-0" onClick={(e) => { e.preventDefault(); setShowPassword(!showPassword) }}>
+                    { showPassword ? <FontAwesomeIcon icon={faEyeSlash} /> : <FontAwesomeIcon icon={faEye} /> }
+                  </button>
+                </div>
+                <div className="relative">
+                  <input
+                    className="text-input w-full pr-10"
+                    placeholder={strings.registerPage.form.repeatPassword}
+                    type="password"
+                    name="repeatedPassoword"
+                    onChange={(e) => {
+                      setRegisterMessage("");
+                      setPasswordMessage("");
+                      setRepeatedPassword(e.target.value);
+                    }}
+                  />
+                  <button className="absolute hover:scale-110 transition-all duration-100 ease-in-out text-white h-full w-10 right-0" onClick={(e) => { e.preventDefault(); setShowRepeatedPassword(!showRepeatedPassword) }}>
+                    { showRepeatedPassword ? <FontAwesomeIcon icon={faEyeSlash} /> : <FontAwesomeIcon icon={faEye} /> }
+                  </button>
+                </div>
                 <p className="px-4 text-red-700 font-bold">{passwordMessage}</p>
               </div>
               <p
