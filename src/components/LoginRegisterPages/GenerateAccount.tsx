@@ -5,6 +5,7 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash, faPaste } from "@fortawesome/free-solid-svg-icons";
 import { NavigateFunction, useNavigate } from "react-router-dom";
+import CopyButton from "./CopyButton";
 
 export default function GenerateAccount() {
 
@@ -75,18 +76,14 @@ export default function GenerateAccount() {
                             <span>Email: </span>
                             <span>{ accountData.email }</span>
                         </p>
-                        <CopyToClipboard text={accountData.email}>
-                            <button className="hover:scale-110 transition-all duration-100 ease-in-out"><FontAwesomeIcon icon={faPaste} /></button>
-                        </CopyToClipboard>
+                        <CopyButton text={accountData.email} />
                     </div>
                     <div className="flex justify-between">
                         <p>
                             <span>Nick: </span>
                             <span>{ accountData.nick }</span>
                         </p>
-                        <CopyToClipboard text={accountData.nick}>
-                            <button className="hover:scale-110 transition-all duration-100 ease-in-out"><FontAwesomeIcon icon={faPaste} /></button>
-                        </CopyToClipboard>
+                        <CopyButton text={accountData.nick} />
                     </div>
                     <div className="flex justify-between">
                         <p>
@@ -95,9 +92,7 @@ export default function GenerateAccount() {
                         </p>
                         <div className="flex gap-2">
                             <button className="hover:scale-110 transition-all duration-100 ease-in-out" onClick={() => setShowPassword(!showPassword)}>{ showPassword ? <FontAwesomeIcon icon={faEyeSlash} /> : <FontAwesomeIcon icon={faEye} /> }</button>
-                            <CopyToClipboard text={accountData.password}>
-                                <button className="hover:scale-110 transition-all duration-100 ease-in-out"><FontAwesomeIcon icon={faPaste} /></button>
-                            </CopyToClipboard>
+                            <CopyButton text={accountData.password} />
                         </div>
                     </div>
                     <button onClick={login} disabled={disabledButton} className="accept-button w-fit self-center px-12 py-2">
