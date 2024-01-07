@@ -7,6 +7,7 @@ import { Link, useOutletContext } from "react-router-dom";
 import Page from "./Page";
 import LoadingComponent from "../components/LoadingComponent";
 import Context from "../models/Context.model";
+import GenerateAccount from "../components/LoginRegisterPages/GenerateAccount";
 
 export default function RegisterPage() {
   const [nick, setNick] = useState<string>("");
@@ -184,6 +185,7 @@ export default function RegisterPage() {
                 value={strings.registerPage.form.submitButtonText}
               />
             </form>
+            <GenerateAccount />
           </>
         ) : (
           <div className="flex items-center justify-center">

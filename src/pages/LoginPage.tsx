@@ -11,6 +11,7 @@ import {
 import Page from "./Page";
 import LoadingComponent from "../components/LoadingComponent";
 import Context from "../models/Context.model";
+import GenerateAccount from "../components/LoginRegisterPages/GenerateAccount";
 
 export default function LoginPage() {
   const [nick, setNick] = useState<string>("");
@@ -46,7 +47,6 @@ export default function LoginPage() {
       setDisabledButton(true);
       as.loginUser(userData)
         .then(async (res: any) => {
-          console.log(res);
           const message: unknown = res.data.message;
           if (message === "logged") {
             localStorage.setItem("token", res.data.token);
@@ -112,6 +112,7 @@ export default function LoginPage() {
                 value={strings.loginPage.form.submitButtonText}
               />
             </form>
+            <GenerateAccount />
           </>
         ) : (
           <div className="flex items-center justify-center">

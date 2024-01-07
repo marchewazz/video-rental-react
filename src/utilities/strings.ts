@@ -52,6 +52,8 @@ let strings = new LocalizedStrings({
         nickNotExists: "There is no account with this nick",
         wrongPassword: "Wrong password",
         errorMessage: "There is some error, try again later",
+        generateAccount: "Generate account",
+        generateAccountPassword: "Passoword: ",
         submitButtonText: "Login"
       }
     },
@@ -225,6 +227,8 @@ let strings = new LocalizedStrings({
         nickNotExists: "Nie ma konta z takim nickiem",
         wrongPassword: "Błędne hasło",
         errorMessage: "Wystąpił błąd, spróbuj ponownie później",
+        generateAccount: "Generuj konto",
+        generateAccountPassword: "Hasło: ",
         submitButtonText: "Zaloguj"
       }
     },
