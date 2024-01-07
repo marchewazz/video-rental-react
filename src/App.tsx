@@ -115,8 +115,8 @@ function AppLayout() {
 
   return (
     <div className={`${darkMode && "dark"}`}>
-      <div className="bg-dark-green dark:bg-earie-black min-h-screen transition-all duration-300 overflow-x-hidden">
-        <NavBar userData={userData} isUserLogged={isUserLogged} logoutFunction={logout} onlyNonLoggedPaths={onlyNonLoggedPaths} darkMode={darkMode} darkModeChangeFunction={changeDarkMode} width={width} height={height} />
+      <NavBar userData={userData} isUserLogged={isUserLogged} logoutFunction={logout} onlyNonLoggedPaths={onlyNonLoggedPaths} darkMode={darkMode} darkModeChangeFunction={changeDarkMode} width={width} height={height} />
+      <div id="scrollable" className="bg-dark-green dark:bg-earie-black min-h-[calc(100vh-100px)] max-h-[calc(100vh-100px)] mt-[100px] transition-all duration-300 overflow-x-hidden overflow-y-auto">
         <Outlet context={{socket, userData, isUserLogged, userDataReady, darkMode, languageReady ,width}} />
         <PopUpContainer socket={socket} />
         <Footer />
