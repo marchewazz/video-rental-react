@@ -82,7 +82,6 @@ function AppLayout() {
       socket?.emit("logout")
       socket?.disconnect()
     }
-    setUserDataReady(false)
     setUserData(undefined)
     setSocket(null)
     navigate("/login")
