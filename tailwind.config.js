@@ -21,7 +21,6 @@ module.exports = {
         "teal": "#028090",
         "dark-green": "#294643",
         "earie-black": "#191716",
-        "white": "#FFF"
       }
     }     
   },

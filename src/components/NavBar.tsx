@@ -39,12 +39,12 @@ export default function NavBar(props: {
             })}
           </div>
             <Link
-              className={`nav-item-clickable p-4 ${props.width > 1024 ? "parallelogram" : ""}`}
+              className={`nav-item-clickable p-4 ${props.width >= 1024 ? "parallelogram" : ""}`}
               to="/add-money">
               {strings.nav.addMoney}
             </Link>
             <Link
-              className={`nav-item-clickable p-4 ${props.width > 1024 ? "parallelogram" : ""}`}
+              className={`nav-item-clickable p-4 ${props.width >= 1024 ? "parallelogram" : ""}`}
               to="/myprofile"
             >
               {" "}
@@ -53,7 +53,7 @@ export default function NavBar(props: {
               })}
             </Link>
           <button
-            className={`nav-item-clickable p-4 ${props.width > 1024 ? "parallelogram px-4" : ""}`}
+            className={`nav-item-clickable p-4 ${props.width >= 1024 ? "parallelogram px-4" : ""}`}
             onClick={props.logoutFunction}
           >
             <svg
@@ -80,15 +80,15 @@ export default function NavBar(props: {
         </>
         ) : (
           <>
-            <Link className={`nav-item-clickable p-4 ${props.width > 1024 ? "parallelogram" : ""}`} to="/login">{strings.nav.login}</Link>
-            <Link className={`nav-item-clickable p-4 ${props.width > 1024 ? "parallelogram" : ""}`} to="/register">{strings.nav.register}</Link>
+            <Link className={`nav-item-clickable p-4 ${props.width >= 1024 ? "parallelogram" : ""}`} to="/login">{strings.nav.login}</Link>
+            <Link className={`nav-item-clickable p-4 ${props.width >= 1024 ? "parallelogram" : ""}`} to="/register">{strings.nav.register}</Link>
           </>
         )}
     </>
   );
 
   useEffect(() => {
-    if (props.width > 1024) setShowMobileNavigation(false)
+    if (props.width >= 1024) setShowMobileNavigation(false)
   }, [props.width])
 
   useEffect(() => {
