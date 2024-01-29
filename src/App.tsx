@@ -107,7 +107,7 @@ function AppLayout() {
   }, [location.pathname])
 
   useEffect(() => {
-    if (localStorage.getItem("language") == "pl" || localStorage.getItem("language") == "en") strings.setLanguage(localStorage.getItem("language") || "en")
+    if (localStorage.getItem("language") == "pl" || localStorage.getItem("language") == "en") strings.setLanguage(localStorage.getItem("language") || "")
     else localStorage.setItem("language", strings.getLanguage())
     setLanguageReady(true)
   }, [])
