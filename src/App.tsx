@@ -52,7 +52,7 @@ function AppLayout() {
   const onlyNonLoggedPaths: string[] = ["/login", "/register"];
 
   function connectToSocketServer(): void {
-    const socket: Socket = io("http://localhost:8000", { query: { token: localStorage.getItem("token") } });
+    const socket: Socket = io(`${process.env.REACT_APP_BACKEND_URL}`, { query: { token: localStorage.getItem("token") } });
     setSocket(socket);
 
     socket.on('connect', () => {
