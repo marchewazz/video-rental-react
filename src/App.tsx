@@ -79,7 +79,7 @@ function AppLayout() {
     setIsUserLogged(false)
     setUserDataReady(false)
     if (socket) {
-      socket?.emit("logout")
+      (socket as any).emit("logout")
       socket?.disconnect()
     }
     setUserData(undefined)
@@ -107,7 +107,7 @@ function AppLayout() {
   }, [location.pathname])
 
   useEffect(() => {
-    if (localStorage.getItem("language") == "pl" || localStorage.getItem("language") == "en") strings.setLanguage(localStorage.getItem("language"))
+    if (localStorage.getItem("language") == "pl" || localStorage.getItem("language") == "en") strings.setLanguage(localStorage.getItem("language") || "en")
     else localStorage.setItem("language", strings.getLanguage())
     setLanguageReady(true)
   }, [])
