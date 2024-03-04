@@ -67,9 +67,11 @@ export default function MostPopularShowsSwiper() {
                                   src={!show.Poster || show.Poster == "N/A" ? "images/no-image-icon.png" : show.Poster}
                                   alt=""
                                 />
-                                <div className="absolute list-show-rented-etiquete -rotate-45 bg-light-green text-center z-[100]">
-                                    { strings.popUpNotifications.rented.toUpperCase() }
-                                </div>
+                                { userData.userRentals.some((rental: any) => rental["rentalShowID"] === show.imdbID && rental["rentalStatus"] === "active") ? (
+                                    <div className="absolute list-show-rented-etiquete -rotate-45 bg-light-green text-center z-[100]">
+                                        { strings.popUpNotifications.rented.toUpperCase() }
+                                    </div>
+                                ) : (null)}
                                 <div className="rounded-3xl flex items-end absolute group-hover:bg-black w-full h-full opacity-80 top-0 right-0 p-4 z-50 transition-all duration-300 ease-in-out">
                                     <p className="opacity-0 text-white font-bold text-2xl group-hover:opacity-100 transition-all duration-300 ease-in-out">
                                       {show.Title}
