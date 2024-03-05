@@ -4,7 +4,7 @@ import strings from "../../utilities/strings";
 
 export default function PopUpElement(props: { notification: PopUpMessage}) {
 
-    const successMessages: string[] = ["rented", "rentalCancelled", "moneyAdded", "addedToFavorites", "removedFromFavorites", "invitationSent", "invitationReceived", "profileEdited", "nickTaken"];
+    const successMessages: string[] = ["rented", "rentalCancelled", "moneyAdded", "addedToFavorites", "removedFromFavorites", "invitationSent", "invitationReceived", "profileEdited", "nickTaken", "serverInfo"];
     const errorMessages: string[] = ["errorMessage", "noMoney"];    
 
     return (
@@ -13,7 +13,7 @@ export default function PopUpElement(props: { notification: PopUpMessage}) {
           }>
             { props.notification.message === "invitationReceived" ? (
               <p>
-                { strings.formatString(strings.popUpNotifications.invitationReceived, { senderNick: props.notification.senderNick })} {" "}
+                { strings.formatString(strings.popUpNotifications.invitationReceived, { senderNick: props.notification.senderNick || "" })} {" "}
                 <Link className="underline" to={`/user/${props.notification.senderID}`}>
                   { strings.popUpNotifications.viewProfile}
                 </Link>

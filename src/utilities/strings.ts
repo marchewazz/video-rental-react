@@ -1,6 +1,6 @@
 import LocalizedStrings from "react-localization";
 
-let strings = new LocalizedStrings({
+const strings = new LocalizedStrings({
   en: {
     nav: {
       login: "LOGIN",
@@ -122,7 +122,8 @@ let strings = new LocalizedStrings({
       viewProfile: "View profile",
       errorMessage: "Error, try again later",
       profileEdited: "Profile edited",
-      nickTaken: "Nick is taken"
+      nickTaken: "Nick is taken",
+      serverInfo: "It may take a while to load as there are some free hosting limitations, but it's gonna be ok :)"
     },
     profilePage: {
       title: "Your profile",
@@ -297,7 +298,8 @@ let strings = new LocalizedStrings({
       viewProfile: "Zobacz profil",
       errorMessage: "Wystąpił błąd, spróbuj ponownie później",
       profileEdited: "Edytowano profil",
-      nickTaken: "Nick jest zajęty"
+      nickTaken: "Nick jest zajęty",
+      serverInfo: "Ładowanie może chwilę zająć z powodu limitów darmowego hostingu, ale załaduje się :)"
     },
     profilePage: {
       title: "Twój profil",

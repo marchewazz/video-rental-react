@@ -41,6 +41,13 @@ export default function PopUpContainer(props: any) {
       notificationElementsRef.current = notificationsElements;
     }, [notificationsElements])
     
+    useEffect(() => {
+      setNotifications([...notifications, { message: "serverInfo" }])  
+      setTimeout(() => {
+        setNotifications(notificationRef.current.slice(1))
+        setNotificationsElements(notificationElementsRef.current.slice(1))
+      }, 10000);
+    }, [])
     
     return (
         <div className="pop-up-container">
