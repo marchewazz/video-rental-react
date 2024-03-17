@@ -42,6 +42,7 @@ function AppLayout() {
   const [isUserLogged, setIsUserLogged] = useState<boolean>(false)
   const [userDataReady, setUserDataReady] = useState<boolean>(false)
   const [languageReady, setLanguageReady] = useState<boolean>(false)
+  const [language, setLanguage] = useState<string>("")
   const [darkMode, setDarkMode] = useState<boolean>(localStorage.getItem("darkMode") == "true" || false)
   
   const { width, height }: { width: number, height: number } = useWindowDimensions();
@@ -92,6 +93,12 @@ function AppLayout() {
     localStorage.setItem("darkMode", (!darkMode.valueOf()).toString())
   }  
 
+  function changeLanguage(language: string): void {
+    localStorage.setItem("language", language)
+    strings.setLanguage(language)
+    setLanguage(language)
+  }
+
   useEffect(() => {
     if (onlyNonLoggedPaths.includes(location.pathname)) {
       if (localStorage.getItem("token")) {
@@ -109,13 +116,14 @@ function AppLayout() {
   useEffect(() => {
     if (localStorage.getItem("language") == "pl" || localStorage.getItem("language") == "en") strings.setLanguage(localStorage.getItem("language") || "")
     else localStorage.setItem("language", strings.getLanguage())
+    setLanguage(strings.getLanguage())
     setLanguageReady(true)
   }, [])
   
 
   return (
     <div className={`${darkMode && "dark"}`}>
-      <NavBar userData={userData} isUserLogged={isUserLogged} logoutFunction={logout} onlyNonLoggedPaths={onlyNonLoggedPaths} darkMode={darkMode} darkModeChangeFunction={changeDarkMode} width={width} height={height} />
+      <NavBar userData={userData} isUserLogged={isUserLogged} logoutFunction={logout} onlyNonLoggedPaths={onlyNonLoggedPaths} darkMode={darkMode} darkModeChangeFunction={changeDarkMode} languageChangeFunction={changeLanguage} width={width} height={height} />
       <div id="scrollable" className="bg-dark-green dark:bg-earie-black min-h-[calc(100vh-100px)] max-h-[calc(100vh-100px)] mt-[100px] transition-all duration-300 overflow-x-hidden overflow-y-auto">
         <Outlet context={{socket, userData, isUserLogged, userDataReady, darkMode, languageReady ,width}} />
         <PopUpContainer socket={socket} />
