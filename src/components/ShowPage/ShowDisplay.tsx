@@ -250,7 +250,7 @@ export default function ShowDisplay(props: any) {
               </div>
             ) : userData.userBalance > price ? (
               <button
-                className="accept-button w-3/4 self-center mt-5 md:mt-auto"
+                className="accept-button w-3/4 self-center mt-5 lg:mt-auto"
                 disabled={disableRentButton != ""}
                 onClick={rentShow}
               >
